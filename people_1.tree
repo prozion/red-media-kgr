@@ -1,0 +1,4 @@
+historical_people +a:HistoricalPerson d:"Исторические персоналии"
+	Блох_Иосиф_Самуил bdate:1850 bplace:Вена profession:раввин
+	Маркс_Карл eq:Маркс bdate:05.05.1818 bplace:Трир ddate:14.03.1883 dplace:Лондон
+	Энгельс_Фридрих eq:Энгельс bdate:28.11.1820 bplace:Бармен ddate:05.08.1895 dplace:Лондон profession:пайщик
