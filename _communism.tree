@@ -13,7 +13,7 @@ communism a:owl/Ontology ns:https://purl.org/communism# dc/title:"Knowledge grap
 				PolishStrike
 				WildcatStrike
 		Branch
-		MediaOutlet
+		Media
 			Blog
 				Dzen
 				Livejournal
@@ -22,6 +22,9 @@ communism a:owl/Ontology ns:https://purl.org/communism# dc/title:"Knowledge grap
 				Twitter
 				Vkontakte
 				Youtube
+			Chat
+			Library
+			Newspaper
 		Contact subclass-of:rdfs/Literal
 			Email
 			Facebook
@@ -106,10 +109,11 @@ communism a:owl/Ontology ns:https://purl.org/communism# dc/title:"Knowledge grap
 		degree domain:Person range:University
 			ba 
 			ma
-		end domain:Datable range:Date
+		end domain:Datable,rdf/Statement range:Date
 			rend d:"last release" domain:owl/Thing
 		faction domain:Person range:Faction
 		founder domain:Organization range:Person
+		founded-by domain:rdf/Statement range:Organization
 		from domain:Party range:Party
 		group domain:owl/Thing range:WorkingGroup
 		homepage domain:Person range:Website
@@ -119,26 +123,29 @@ communism a:owl/Ontology ns:https://purl.org/communism# dc/title:"Knowledge grap
 			current-hq
 			former-hq
 		ideology domain:Person range:ViewsSystem
+			ideology-trend
 		member domain:Person,Organization range:Organization
+		merged-with domain:rdf/Statement range:Organization
 		name domain:Nameable range:rdfs/Literal
 			previous-name
 			real-name
 			real-surname
 		nick domain:Nameable range:rdfs/Literal
 		office domain:Organization range:City
-		org range:Organization
-			uni domain:owl/Thing range:University
-			institute domain:owl/Thing range:Institute
+		org domain:owl/Thing range:Organization
+			uni range:University
+			institute range:Institute
 		p d:"priority" domain:owl/Thing range:rdfs/Literal
 		party domain:Person,Faction,Group range:Party
 		part-of domain:Structurable
 		place
 			bplace domain:Person range:Date d:"birthplace"
 			dplace domain:Person range:Date d:"place of death"
+		project range:Project
 		profession domain:Person range:Profession
 		renamed-to domain:Organization range:Organization
 		research-center domain:owl/Thing range:ResearchCenter
-		start domain:Datable range:Date
+		start domain:Datable,rdf/Statement range:Date
 		status domain:owl/Thing range:rdfs/Literal
 		subsidiary-of domain:Organization range:Organization
 		time-interval range:TimeInterval
@@ -146,14 +153,20 @@ communism a:owl/Ontology ns:https://purl.org/communism# dc/title:"Knowledge grap
 		town domain:Person range:City
 		url domain:owl/Thing range:rdfs/Literal
 			vk
-		users-number domain:SNResource range:rdfs/Literal
+				vk-old
+			yt
+		users-number domain:Media range:rdfs/Literal
 			u
-		project range:Project
+				vk-u
+				yt-u
+		written domain:Text range:Date
 		year domain:Datable range:Year
 	individuals
 		[events.tree]
 		[media.tree]
 		[meetings.tree]
-		[organizations.tree]
-		[people.tree]
+		[organizations_2.tree]
+		[people_2.tree]
+		[people_3.tree]
+		[texts.tree]
 		; [various-kgr//universities.tree]

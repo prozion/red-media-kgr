@@ -1,0 +1,33 @@
+political_economy a:owl/Ontology ns:https://purl.org/political_economy# dc/title:"An ontology over political economy"
+	namespaces
+		rdf ns:http://www.w3.org/1999/02/22-rdf-syntax-ns#
+		rdfs ns:http://www.w3.org/2000/01/rdf-schema#
+		owl ns:http://www.w3.org/2002/07/owl#
+		dc ns:http://purl.org/dc/elements/1.1/
+	classes 
+		owl/Thing +a:owl/Class +hi-inv-rel:subclass-of
+			Капитал
+				ПеременныйКапитал
+				ПостоянныйКапитал
+				ОборотныйКапитал
+				ОсновнойКапитал
+			Фабрика
+		РабочаяСила subclass-of:ОборотныйКапитал,ПеременныйКапитал
+			НеобходимыйТруд
+			ПрибавочныйТруд
+		Сырье subclass-of:ОборотныйКапитал,ПостоянныйКапитал
+		ВспомогательныйМатериал subclass-of:ОборотныйКапитал,ПостоянныйКапитал
+			Энергия
+				Топливо
+				Электроэнергия
+		Машина subclass-of:ОсновнойКапитал,ПостоянныйКапитал
+			Станок
+		Здание subclass-of:ОсновнойКапитал,ПостоянныйКапитал
+			Цех
+	properties +a:rdf/Property +hi-inv-rel:subproperty-of
+		фабрика domain:Цех range:Фабрика
+	individuals
+		Ростсельмаш a:Фабрика
+		Механосборочный_цех_№8 a:Цех фабрика:Ростсельмаш
+		
+

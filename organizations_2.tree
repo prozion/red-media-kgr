@@ -3,18 +3,44 @@
 		КПК deabbr:"Коммунистическая партия Китая" start:1921
 		КПРФ a:Party
 	малые_партии_и_движения
-		Рабочая_парадигма vk:vk.com/paradigma_operarium u:71
-		Рабочий_Контроль
-		РОТ_Фронт deabbr:"Российский Объединенный Трудовой Фронт" url:rotfront.org vk:vk.com/rot_front u:19K
+		РПК deabbr:"Российская партия коммунистов" start:1991 end:2001^merged-with:РКРП_РПК
+		РКРП deabbr:"Российская коммунистическая рабочая партия" start:1991 end:2001^merged-with:РКРП_РПК url:rkrpb.ru
+		Международная_марксистская_тенденция start:1992 branch:Троцкизм url:marxist.com
+		РПР eq:Рабочая_партия_России start:1993 url:r-p-w.ru vk:vk.com/rabpartyrus u:730
 		РРП deabbr:"Революционная рабочая партия" start:1999 branch:Троцкизм url:rwp.ru vk:vk.com/rwp_rwp u:31877
-		Трудовой_Нижний_Новгород
+		РМП eq:Российская_маоистская_партия start:2000 url:maoism.ru,rusmaoparty.org vk:vk.com/rusmaoparty u:3554
+		РКРП-КПСС eq:РКРП-РПК start:2001 party-registration:<t>^end:2007
+		Российский_Трудовой_Фронт eq:РОТ_Фронт deabbr:"Российский Объединенный Трудовой Фронт" start:2010^founded-by:РКРП-КПСС party-registration:<t>^end:2020 url:rotfront.org vk:vk.com/rot_front u:19K
+		Левый_блок start:2015 url:leftblock.org
+		Марксистская_тенденция start:2019^from:Международная_марксистская_тенденция^from:РРП branch:Троцкизм url:marxist.news
+		Рабочая_парадигма vk:vk.com/paradigma_operarium u:733
+		Рабочий_путь url:work-way.com
+		Рабочий_Контроль vk:vk.com/rk_community u:59
+		Союз_марксистов vk:vk.com/marx_union u:11073
+		Трудовой_Нижний_Новгород start:2019^from:РОТ_Фронт url:labornn.ru
 	профсоюзы
 		Защита
+		КТР deabbr:"Конфедерация труда России" start:1995 hq:Москва
+		Курьер start:06.2020
+		МПРА
+		Учитель
+		ФНПР
 	марксистские_кружки +a:Circle
-		Марксистский_клуб_РнД city:Ростов-на-Дону party:Рабочий_Контроль
-		Марксистский_кружок_Импульс city:Москва club:ТК_Импульс vk:vk.com/marx_club_msk u:27 
-		Марксистский_кружок_РРП_Москвы city:Москва party:РРП vk:vk.com/rwp_marxism u:778 
-		Марксистский_кружок_Трудового_Нижнего_Новгорода city:Нижний_Новгород vk:vk.com/tnnmarks u:79
-	clubs
+		Вектор type:объединительный
+		КрасноBY type:объединительный
+		Маяк t:изолирующийся
+		МЛРД_Рабочий_Путь t:изолирующийся
+		Политштурм t:изолирующийся
+		Прорывист t:изолирующийся
+		Рабочая_парадигма eq:Наука_Марксизм t:изолирующийся
+		Рабочий_класс t:изолирующийся
+		РРП type:объединительный
+		Союз_Марксистов type:объединительный
+	клубы
 		Коммунисты_Москвы_и_области vk:vk.com/rwp.moscow u:743
+		МК_Молот vk-old:vk.com/marx72
+		Политпросвет start:2011 org:РОТ_Фронт vk:vk.com/mk_politprosvet u:3100
+		Рабочий_путь url:work-way.com
 		ТК_Импульс branch:Технокоммунизм
+	проекты
+		Товарищ_Ростов vk:vk.com/tov_rostov u:1064
