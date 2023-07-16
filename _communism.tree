@@ -62,6 +62,8 @@ communism a:owl/Ontology ns:https://purl.org/communism# dc/title:"Knowledge grap
 			Club
 			GovernmentUnit
 			PoliticalOrganization
+				LeftOrganization
+					MarxistOrganization
 				PoliticalParty eq:Party
 					RulingParty
 			PublicProject

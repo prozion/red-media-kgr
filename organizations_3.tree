@@ -1,0 +1,31 @@
+марксистские_организации +a:MarxistOrganization
+	Вектор type:объединительный founder:Илья_Ярский
+	Ипульс
+	Красная_Юрта
+	КрасноBY type:объединительный
+	Левый_блок start:2015 url:leftblock.org
+	Марксистская_тенденция start:2019^from:Международная_марксистская_тенденция^from:РРП url:marxist.news
+	Маяк t:изолирующийся
+	Международная_марксистская_тенденция start:1992 url:marxist.com
+	Молот vk-old:vk.com/marx72
+	Новые_красные from:Союз_Марксистов
+	Общее_дело ref-by:Илья_Ярский
+	O21 ref-by:Илья_Ярский
+	Политштурм t:изолирующийся
+	Прорывист t:изолирующийся
+	Рабочая_парадигма eq:Наука_Марксизм t:изолирующийся vk:vk.com/paradigma_operarium u:733
+	Рабочее_товарищество vk:vk.com/rab_tov u:1891
+	Рабочий_класс t:изолирующийся
+	Рабочий_Контроль vk:vk.com/rk_community u:59
+	Рабочий_путь url:work-way.com t:изолирующийся
+	РКРПб deabbr:"Российская коммунистическая рабочая партия" start:1991 end:2001^merged-with:РКРП_РПК url:rkrpb.ru
+	РМП eq:Российская_маоистская_партия start:2000 url:maoism.ru,rusmaoparty.org vk:vk.com/rusmaoparty u:3554
+	Российский_Трудовой_Фронт eq:РОТ_Фронт deabbr:"Российский Объединенный Трудовой Фронт" start:2010^founded-by:РКРП-КПСС party-registration:<t>^end:2020 url:rotfront.org vk:vk.com/rot_front u:19K
+	Рот_Фронт vk:vk.com/mk_politprosvet u:3100
+	РПР eq:Рабочая_партия_России start:1993 url:r-p-w.ru vk:vk.com/rabpartyrus u:730
+	РРП deabbr:"Революционная рабочая партия" start:1999 branch:Троцкизм url:rwp.ru vk:vk.com/rwp_rwp u:31877 type:объединительный
+	Союз_марксистов vk:vk.com/marx_union u:11073 type:объединительный
+	CПО deabbr:"Союз пролетарского освобождения" moved-to:Рабочая_парадигма^year:202x
+	Спичка start:201x^from:Lenin_Crue
+	Трудовой_Нижний_Новгород start:2019^from:Рот_Фронт url:labornn.ru
+	Lenin_Crue
