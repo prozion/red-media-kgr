@@ -1,0 +1,12 @@
+classes +a:owl/Class +hi-inv-rel:subclass-of
+	Area subclass-of:owl/Thing
+	Country subclass-of:Object
+	Place subclass-of:owl/Thing
+		City
+properties +a:rdf/Property +hi-inv-rel:subproperty-of
+	country domain:Place range:Country
+	pop range:DecimalAbbreviated
+	place range:Place
+		city range:City
+	lat domain:Place range:Float d:"Latitude"
+	lon domain:Place range:Float d:"Longitude"

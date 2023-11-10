@@ -1,0 +1,9 @@
+classes +a:owl/Class +hi-inv-rel:subclass-of
+	rdfs/Literal
+		Decimal
+			DecimalAbbreviated
+		Float
+		Integer
+			IntegerAbbreviated
+		String
+			

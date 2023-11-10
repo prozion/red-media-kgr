@@ -1,0 +1,9 @@
+prefix : <https://purl.org/prozion/redkgr#>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+select distinct ?person ?media_n where {
+  ?person a :Person .
+  ?project (:founder|:author) ?person .
+  ?person :yt-n ?media_n .
+  filter (?media_n > 10000)
+}

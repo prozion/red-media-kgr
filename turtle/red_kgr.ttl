@@ -1,0 +1,736 @@
+@prefix : <https://purl.org/prozion/redkgr#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+
+:abbr
+ rdfs:comment "Abbreviation" ;
+ rdf:type rdf:Property ;
+ rdfs:range rdfs:Literal .
+
+:Area
+ rdf:type owl:Class ;
+ rdfs:subClassOf owl:Thing .
+
+:author
+ rdf:type rdf:Property ;
+ rdfs:subPropertyOf :founder, :coauthor .
+
+:bdate
+ rdfs:subPropertyOf :date ;
+ rdfs:comment "Date of birth" ;
+ rdf:type rdf:Property .
+
+:Blog
+ rdf:type owl:Class ;
+ rdfs:subClassOf :MediaProject .
+
+:Book
+ rdf:type owl:Class ;
+ rdfs:subClassOf :Project .
+
+:boosty
+ rdf:type rdf:Property ;
+ rdfs:subPropertyOf :url .
+
+:BourgeoisInstitution
+ rdf:type owl:Class ;
+ rdfs:subClassOf owl:Thing .
+
+:city
+ rdfs:subPropertyOf :place ;
+ rdf:type rdf:Property ;
+ rdfs:range :City .
+
+:City
+ rdf:type owl:Class ;
+ rdfs:subClassOf :Place .
+
+:coauthor
+ rdfs:subPropertyOf :contributor ;
+ rdfs:domain :Project ;
+ rdf:type rdf:Property ;
+ rdfs:range :Person .
+
+:Company
+ rdf:type owl:Class ;
+ rdfs:subClassOf :BourgeoisInstitution .
+
+:contributor
+ rdf:type rdf:Property .
+
+:country
+ rdfs:domain :Place ;
+ rdf:type rdf:Property ;
+ rdfs:range :Country .
+
+:Country
+ rdf:type owl:Class ;
+ rdfs:subClassOf :Object .
+
+:Date
+ rdf:type owl:Class ;
+ rdfs:subClassOf :Time .
+
+:date
+ rdf:type rdf:Property ;
+ rdfs:range :Date .
+
+:ddate
+ rdfs:subPropertyOf :date ;
+ rdfs:comment "Date of death" ;
+ rdf:type rdf:Property .
+
+:deabbr
+ rdfs:comment "Deabbreviation" ;
+ rdf:type rdf:Property ;
+ rdfs:range rdfs:Literal .
+
+:Decimal
+ rdf:type owl:Class ;
+ rdfs:subClassOf rdfs:Literal .
+
+:DecimalAbbreviated
+ rdf:type owl:Class ;
+ rdfs:subClassOf :Decimal .
+
+:def
+ rdfs:comment "Definition" ;
+ rdf:type rdf:Property ;
+ rdfs:range rdfs:Literal .
+
+:defunct-url
+ rdf:type rdf:Property ;
+ rdfs:subPropertyOf :url .
+
+:edu
+ rdfs:comment "Education, in what university the person made the studies and what (s)he graduated" ;
+ rdf:type rdf:Property ;
+ rdfs:range :University .
+
+:email
+ rdf:type rdf:Property ;
+ rdfs:range :Email .
+
+:Email
+ rdf:type owl:Class ;
+ rdfs:subClassOf :Uri .
+
+:end
+ rdf:type rdf:Property ;
+ rdfs:range :Time .
+
+:Float
+ rdf:type owl:Class ;
+ rdfs:subClassOf rdfs:Literal .
+
+:former-id
+ rdf:type rdf:Property ;
+ rdfs:subPropertyOf :id .
+
+:former-name
+ rdf:type rdf:Property ;
+ rdfs:subPropertyOf :name .
+
+:founder
+ rdfs:subPropertyOf :contributor ;
+ rdfs:domain :Project ;
+ rdf:type rdf:Property ;
+ rdfs:range :Person .
+
+:github
+ rdf:type rdf:Property ;
+ rdfs:subPropertyOf :url .
+
+:GroupOfObjects
+ rdf:type owl:Class ;
+ rdfs:subClassOf owl:Thing .
+
+:GroupOfPeople
+ rdf:type owl:Class ;
+ rdfs:subClassOf :GroupOfObjects .
+
+:guitarist
+ rdf:type rdf:Property ;
+ rdfs:subPropertyOf :musician .
+
+:host
+ rdf:type rdf:Property ;
+ rdfs:subPropertyOf :coauthor .
+
+:Id
+ rdf:type owl:Class ;
+ rdfs:subClassOf rdfs:Literal .
+
+:id
+ rdf:type rdf:Property .
+
+:Integer
+ rdf:type owl:Class ;
+ rdfs:subClassOf rdfs:Literal .
+
+:IntegerAbbreviated
+ rdf:type owl:Class ;
+ rdfs:subClassOf :Integer .
+
+:InterviewSite
+ rdf:type owl:Class ;
+ rdfs:subClassOf :MediaProject .
+
+:job
+ rdfs:comment "Where the person works(ed)" ;
+ rdf:type rdf:Property .
+
+:lat
+ rdfs:domain :Place ;
+ rdfs:comment "Latitude" ;
+ rdf:type rdf:Property ;
+ rdfs:range :Float .
+
+:Lecture
+ rdf:type owl:Class .
+
+:lecture
+ rdf:type rdf:Property ;
+ rdfs:range :Lecture .
+
+:Lenin_Crew
+ rdf:type :Project .
+
+:lon
+ rdfs:domain :Place ;
+ rdfs:comment "Longitude" ;
+ rdf:type rdf:Property ;
+ rdfs:range :Float .
+
+:MediaProject
+ rdf:type owl:Class ;
+ rdfs:subClassOf :Project .
+
+:messenger-id
+ rdf:type rdf:Property ;
+ rdfs:range :MessengerId .
+
+:MessengerId
+ rdf:type owl:Class ;
+ rdfs:subClassOf rdfs:Literal .
+
+:Ministry
+ rdf:type owl:Class ;
+ rdfs:subClassOf :StateOrganization .
+
+:MusicBand
+ rdf:type owl:Class ;
+ rdfs:subClassOf :Project .
+
+:musician
+ rdf:type rdf:Property ;
+ rdfs:subPropertyOf :contributor .
+
+:n
+ rdfs:comment "Number of users" ;
+ rdf:type rdf:Property ;
+ rdfs:range rdfs:Literal .
+
+:name
+ rdfs:subPropertyOf rdfs:label ;
+ rdfs:domain :Object ;
+ rdf:type rdf:Property ;
+ rdfs:range rdfs:Literal .
+
+:News
+ rdf:type owl:Class ;
+ rdfs:subClassOf :MediaProject .
+
+:Object
+ rdf:type owl:Class ;
+ rdfs:subClassOf owl:Thing .
+
+:old-url
+ rdf:type rdf:Property ;
+ rdfs:subPropertyOf :defunct-url .
+
+:Organization
+ rdf:type owl:Class ;
+ rdfs:subClassOf :Project .
+
+owl:Thing
+ rdf:type owl:Class .
+
+:participant
+ rdfs:subPropertyOf :contributor ;
+ rdfs:domain :Project ;
+ rdf:type rdf:Property ;
+ rdfs:range :Person .
+
+:patreon
+ rdf:type rdf:Property ;
+ rdfs:subPropertyOf :url .
+
+:Person
+ rdf:type owl:Class .
+
+:place
+ rdf:type rdf:Property ;
+ rdfs:range :Place .
+
+:Place
+ rdf:type owl:Class ;
+ rdfs:subClassOf owl:Thing .
+
+:pop
+ rdf:type rdf:Property ;
+ rdfs:range :DecimalAbbreviated .
+
+:Project
+ rdf:type owl:Class ;
+ rdfs:subClassOf owl:Thing .
+
+:Property
+ rdf:type owl:Class ;
+ rdfs:subClassOf :Object .
+
+:Rad_Cop
+ :url "radcop.online" ;
+ rdf:type :Company ;
+ :founder :Рустам_Гусейнов .
+
+rdfs:label
+ rdf:type rdf:Property .
+
+rdfs:Literal
+ rdf:type owl:Class .
+
+<https://purl.org/prozion/redkgr#>
+ rdf:type owl:Ontology ;
+ owl:imports <http://www.w3.org/1999/02/22-rdf-syntax-ns#>, <http://www.w3.org/2000/01/rdf-schema#>, <http://www.w3.org/2002/07/owl#>, <http://www.w3.org/2001/XMLSchema#> ;
+ rdfs:label "Knowledge graph on red movement" .
+
+:Remi_Meisner
+ :yt "youtube.com/@RemiMeisner" ;
+ :author :Реми_Майснер ;
+ rdf:type :Project ;
+ :yt-n "97.9K" .
+
+:Renmin_University_of_China
+ rdf:type :University ;
+ :place :Пекин .
+
+:ResearchInstitute
+ rdf:type owl:Class ;
+ rdfs:subClassOf :BourgeoisInstitution .
+
+:s
+ rdfs:comment "Source" ;
+ rdf:type rdf:Property ;
+ rdfs:range :Source .
+
+:s-url
+ rdfs:subPropertyOf :s, :url ;
+ rdf:type rdf:Property ;
+ rdfs:range :UrlCore .
+
+:sec-edu
+ rdfs:subPropertyOf :edu ;
+ rdfs:comment "Secondary education - school" ;
+ rdf:type rdf:Property ;
+ rdfs:range :SecondarySchool .
+
+:SecondarySchool
+ rdf:type owl:Class .
+
+:self-def
+ rdfs:domain :Source ;
+ rdfs:comment "Self-definition by the source" ;
+ rdf:type rdf:Property ;
+ rdfs:range rdfs:Literal .
+
+:singer
+ rdf:type rdf:Property ;
+ rdfs:subPropertyOf :musician .
+
+:Source
+ rdf:type owl:Class ;
+ rdfs:subClassOf rdfs:Literal .
+
+:speaker
+ rdfs:domain :Lecture ;
+ rdf:type rdf:Property ;
+ rdfs:range :Person .
+
+:start
+ rdf:type rdf:Property ;
+ rdfs:range :Time .
+
+:StateInstitute
+ rdf:type owl:Class ;
+ rdfs:subClassOf :StateOrganization .
+
+:StateOrganization
+ rdf:type owl:Class ;
+ rdfs:subClassOf :BourgeoisInstitution .
+
+:Station_Marx
+ :end "2022" ;
+ :yt "youtube.com/@STATIONMARX" ;
+ rdf:type :Project ;
+ :yt-n "49.5K" .
+
+:Stmt_Алексей_Сафронов_job_Аналитический_центр_при_Правительстве_РФ
+ rdf:type rdf:Statement ;
+ rdf:object :Аналитический_центр_при_Правительстве_РФ ;
+ rdf:predicate :job ;
+ :start "2015" ;
+ rdf:subject :Алексей_Сафронов ;
+ :end "2020" .
+
+:Stmt_Зеленоград_pop_262505
+ rdf:subject :Зеленоград ;
+ :year "2023" ;
+ rdf:type rdf:Statement ;
+ rdf:object "262505" ;
+ rdf:predicate :pop .
+
+:Stmt_Союз_марксистов_founder_Федор_Мухин
+ rdf:subject :Союз_марксистов ;
+ rdf:object :Федор_Мухин ;
+ rdf:predicate :founder ;
+ :s "youtu.be/GgQQ6Py-i_Q?t=47" ;
+ rdf:type rdf:Statement .
+
+:String
+ rdf:type owl:Class ;
+ rdfs:subClassOf rdfs:Literal .
+
+:tg
+ rdf:type rdf:Property ;
+ rdfs:subPropertyOf :messenger-id .
+
+:tg-n
+ rdfs:subPropertyOf :n ;
+ rdfs:comment "Number of subscribers for Telegram channel" ;
+ rdf:type rdf:Property .
+
+:Time
+ rdf:type owl:Class ;
+ rdfs:subClassOf rdfs:Literal .
+
+:title
+ rdf:type rdf:Property ;
+ rdfs:range rdfs:Literal .
+
+:University
+ rdf:type owl:Class .
+
+:Uri
+ rdf:type owl:Class ;
+ rdfs:subClassOf rdfs:Literal .
+
+:url
+ rdf:type rdf:Property ;
+ rdfs:range :UrlCore .
+
+:Url
+ rdf:type owl:Class ;
+ rdfs:subClassOf :Uri .
+
+:UrlCore
+ rdfs:subClassOf :Url ;
+ rdfs:comment "Url with prefixes removed: http://, https://, https://www. etc. to make it neater" ;
+ rdf:type owl:Class .
+
+:vk
+ rdf:type rdf:Property ;
+ rdfs:subPropertyOf :url .
+
+:vk-n
+ rdfs:subPropertyOf :n ;
+ rdfs:comment "Number of subscribers for Vkontakte public or group" ;
+ rdf:type rdf:Property .
+
+:year
+ rdf:type rdf:Property ;
+ rdfs:range :Year .
+
+:Year
+ rdf:type owl:Class ;
+ rdfs:subClassOf :Time .
+
+:yt
+ rdf:type rdf:Property ;
+ rdfs:subPropertyOf :url .
+
+:yt-n
+ rdfs:subPropertyOf :n ;
+ rdfs:comment "Number of subscribers for YouTube channel" ;
+ rdf:type rdf:Property .
+
+:Yugopnik
+ :yt "youtube.com/@YUGOPNIK" ;
+ rdf:type :Project ;
+ :yt-n "190K" .
+
+:Адаптация_пчел
+ :musician :Александр_Буслов ;
+ rdf:type :MusicBand .
+
+:Александр_Батов
+ rdf:type :Person .
+
+:Александр_Бузгалин
+ :ddate "18.10.2023" ;
+ rdf:type :Person .
+
+:Александр_Буслов
+ rdf:type :Person ;
+ :place :Нижний_Новгород .
+
+:Александр_Кубалов
+ rdf:type :Person .
+
+:Александра_Арабаджян
+ rdf:type :Person .
+
+:Алексей_Сафронов
+ :bdate "04.03.1987" ;
+ :job :Аналитический_центр_при_Правительстве_РФ ;
+ :vk "vk.com/id32200" ;
+ :edu :МГУУ_Правительства_Москвы, :Renmin_University_of_China ;
+ rdf:type :Person ;
+ :sec-edu :Школа_1528 .
+
+:Алерта
+ :musician :Александр_Кубалов ;
+ rdf:type :MusicBand .
+
+:Аналитический_центр_при_Правительстве_РФ
+ rdf:type :StateInstitute .
+
+:Андрей_Комолов
+ rdf:type :Person .
+
+:Андрей_Рудой
+ rdf:type :Person .
+
+:Борис_Кагарлицкий
+ rdf:type :Person .
+
+:Борис_Юлин
+ rdf:type :Person .
+
+:Вадим_Винник
+ rdf:type :Person .
+
+:Ванино
+ :pop "15314" ;
+ rdf:type :Place ;
+ :lat "49.089722" ;
+ :lon "140.255278" .
+
+:Василий_Садонин
+ rdf:type :Person ;
+ :vk "vk.com/vasilysadonin" ;
+ :place :Воронеж ;
+ :bplace :Ванино .
+
+:Вектор
+ rdf:type :Project ;
+ :founder :Илья_Ярский .
+
+:Вестник_Бури
+ :yt "youtube.com/@Vestnik_Buri" ;
+ rdf:type :Project ;
+ :yt-n "320K" ;
+ :founder :Андрей_Рудой .
+
+:Воронеж
+ :pop "1054111" ;
+ rdf:type :Place ;
+ :lat "51.661667" ;
+ :lon "39.200278" .
+
+:Выход_есть
+ :yt "youtube.com/@Vasiliy_Sadonin" ;
+ rdfs:label "Выход есть!" ;
+ rdf:type :Project ;
+ :yt-n "106K" ;
+ :founder :Василий_Садонин .
+
+:Гавана
+ rdf:type :Place .
+
+:Глеб_Маслов
+ rdf:type :Person ;
+ :job :Институт_экономики_РАН .
+
+:Гонсалес_Лопес
+ rdf:type :Person .
+
+:Джанни_Родари
+ :musician :Константин_Семин ;
+ rdf:type :MusicBand .
+
+:Дзержинск
+ :pop "231797" ;
+ rdf:type :Place ;
+ :lat "56.238333" ;
+ :lon "43.461667" .
+
+:Думай_сам_Думай_сейчас
+ :boosty "boosty.to/yhinkyourself" ;
+ :yt "youtube.com/@ThinkYourSelf_ThinkNow" ;
+ rdf:type :Project ;
+ :yt-n "189K" ;
+ :founder :Святослав_Варнашов .
+
+:Зеленоград
+ :pop "262505" ;
+ rdf:type :Place ;
+ :lat "55.991893" ;
+ :lon "37.214382" .
+
+:Иван_Поляков
+ rdf:type :Person .
+
+:Илья_Ярский
+ rdf:type :Person .
+
+:Институт_экономики_РАН
+ rdf:type :ResearchInstitute .
+
+:Китай
+ rdf:type :country .
+
+:Клим_Жуков
+ :participant :Олег_Двуреченский ;
+ :yt "youtube.com/@uzhukoffa" ;
+ rdf:type :Person, :Project, :InterviewSite ;
+ :yt-n "748K" .
+
+:Константин_Семин
+ :participant :Yugopnik ;
+ :yt "youtube.com/@Agit_Prop" ;
+ rdf:type :Person, :Project, :News, :InterviewSite ;
+ :yt-n "766K" .
+
+:КрасноBY
+ :yt "youtube.com/@krasnoby" ;
+ :lecture :Почему_нужно_мыслить_диалектически ;
+ rdf:type :Project ;
+ :yt-n "48.1K" .
+
+:Красное_ТВ
+ :yt "outube.com/@krasnoetv24" ;
+ rdf:type :Project ;
+ :yt-n "79K" ;
+ :founder :Олег_Двуреченский .
+
+:Красный_поворот
+ :yt "youtube.com/@red_turn" ;
+ rdf:type :Project ;
+ :yt-n "16.7K" .
+
+:Куба
+ rdf:type :country .
+
+:Мария_Тереза
+ rdf:type :Person .
+
+:МГУУ_Правительства_Москвы
+ rdf:type :University ;
+ :place :Москва .
+
+:Москва
+ :pop "11801572" ;
+ rdf:type :Place ;
+ :lat "55.753889" ;
+ :lon "37.620278" .
+
+:Нижний_Новгород
+ :pop "1276560" ;
+ rdf:type :Place ;
+ :lat "56.326944" ;
+ :lon "44.006111" .
+
+:Олег_Двуреченский
+ rdf:type :Person .
+
+:Олег_Ткач
+ :yt "youtube.com/@OlegTka4" ;
+ rdf:type :Person, :Project ;
+ :yt-n "7.8K" .
+
+:Пекин
+ rdf:type :Place .
+
+:Почему_нужно_мыслить_диалектически
+ rdf:type :Lecture ;
+ :speaker :Вадим_Винник ;
+ rdfs:label "Почему нужно мыслить диалектически?" .
+
+:Призыв_к_разуму
+ :yt "youtube.com/channel/UCLTIJiUaJklC1OuG92mBXLA" ;
+ :author :Иван_Поляков ;
+ rdf:type :Project ;
+ :yt-n "47.3K" .
+
+:Производственная_кооперация_radcop.online
+ :url "radcop.online" ;
+ :boosty "boosty.to/surmatmgs" ;
+ rdf:type :Project ;
+ :founder :Рустам_Гусейнов .
+
+:Простые_числа
+ :participant :Константин_Семин, :Рустам_Гусейнов, :Рафаэль_Абдулов, :Александр_Буслов, :Святослав_Варнашов, :Роман_Осин, :Александр_Кубалов, :Иван_Поляков, :Александр_Батов, :Александра_Арабаджян, :Гонсалес_Лопес, :Глеб_Маслов, :Александр_Бузгалин ;
+ :yt "youtube.com/@PN_chanel" ;
+ rdf:type :Project ;
+ :yt-n "409K" .
+
+:Рабочая_парадигма
+ owl:sameAs :Наука_марксизм ;
+ rdf:type :Project .
+
+:Рафаэль_Абдулов
+ rdf:type :Person .
+
+:Реми_Майснер
+ rdf:type :Person .
+
+:Роман_Осин
+ rdf:type :Person .
+
+:Россия
+ rdf:type :country .
+
+:Рустам_Гусейнов
+ rdf:type :Person .
+
+:Санкт-Петербург
+ :pop "5750134" ;
+ rdf:type :Place ;
+ :lat "59.939167" ;
+ :lon "30.315833" .
+
+:Святослав_Варнашов
+ rdf:type :Person .
+
+:Союз_марксистов
+ rdf:type :Project ;
+ :founder :Федор_Мухин .
+
+:Сталь_и_слезы
+ :place :Гавана ;
+ rdf:type :Project ;
+ :founder :Александра_Арабаджян ;
+ :tg "t.me/templando_acero" ;
+ :tg-n "2.7K" .
+
+:Федор_Мухин
+ rdf:type :Person .
+
+:Школа_1528
+ rdf:type :SecondarySchool ;
+ :place :Зеленоград .
+

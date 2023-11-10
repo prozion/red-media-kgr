@@ -1,0 +1,9 @@
+classes +a:owl/Class +hi-inv-rel:subclass-of
+	Person
+properties +a:rdf/Property +hi-inv-rel:subproperty-of
+	date
+		bdate d:"Date of birth"
+		ddate d:"Date of death"
+	edu range:University d:"Education, in what university the person made the studies and what (s)he graduated"
+		sec-edu range:SecondarySchool d:"Secondary education - school"
+	job d:"Where the person works(ed)"

@@ -1,0 +1,7 @@
+classes +a:owl/Class +hi-inv-rel:subclass-of
+	Lecture
+	University
+	SecondarySchool
+properties +a:rdf/Property +hi-inv-rel:subproperty-of
+	lecture range:Lecture
+	speaker domain:Lecture range:Person

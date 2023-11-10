@@ -1,0 +1,5 @@
+secondary_school +a:SecondarySchool
+	Школа_1528 place:Зеленоград
+universities +a:University
+	МГУУ_Правительства_Москвы place:Москва
+	Renmin_University_of_China place:Пекин

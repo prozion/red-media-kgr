@@ -1,0 +1,5 @@
+properties +a:rdf/Property +hi-inv-rel:subproperty-of
+	n range:rdfs/Literal d:"Number of users"
+		yt-n d:"Number of subscribers for YouTube channel"
+		vk-n d:"Number of subscribers for Vkontakte public or group"
+		tg-n d:"Number of subscribers for Telegram channel"

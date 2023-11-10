@@ -1,0 +1,20 @@
+prefix : <https://purl.org/prozion/redkgr#>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+select distinct ?person ?url where {
+  ?person a :Person .
+  {
+    ?person a :Blog .
+  } union
+  {
+    ?project rdfs:subClassOf* :Blog .
+    ?project ?founder ?person .
+    ?founder rdfs:subPropertyOf* :founder .
+  }
+  optional {
+    ?project :url ?url .
+  } .
+  optional {
+    ?person :yt ?url .
+  } .
+}

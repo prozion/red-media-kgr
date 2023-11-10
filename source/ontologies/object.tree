@@ -1,0 +1,17 @@
+classes +a:owl/Class +hi-inv-rel:subclass-of
+	Object subclass-of:owl/Thing
+		Property
+	Id subclass-of:rdfs/Literal
+	GroupOfObjects subclass-of:owl/Thing
+		GroupOfPeople
+properties +a:rdf/Property +hi-inv-rel:subproperty-of
+	abbr range:rdfs/Literal d:"Abbreviation"
+	deabbr range:rdfs/Literal d:"Deabbreviation"
+	def range:rdfs/Literal d:"Definition"
+	id
+		former-id
+	rdfs/label
+		name domain:Object range:rdfs/Literal
+			former-name
+	title range:rdfs/Literal
+			

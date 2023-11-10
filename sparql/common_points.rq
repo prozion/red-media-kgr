@@ -1,0 +1,13 @@
+prefix : <https://purl.org/prozion/redkgr#>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+select distinct ?project ?interaction_1 ?person_1 ?interaction_2 ?person_2 where {
+  values ?person_1 { :Клим_Жуков }
+  values ?person_2 { :Василий_Садонин }
+  ?project rdfs:subClassOf* :Project .
+  ?project ?interaction_1 ?person_1 .
+  ?project ?interaction_2 ?person_2 .
+  ?interaction_1 rdfs:subPropertyOf* :has_interaction .
+  ?interaction_2 rdfs:subPropertyOf* :has_interaction .
+}
+  order by asc(?project)
