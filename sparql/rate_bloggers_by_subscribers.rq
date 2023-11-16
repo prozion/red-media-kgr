@@ -1,0 +1,12 @@
+prefix : <https://purl.org/prozion/redkgr#>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix afn: <http://jena.apache.org/ARQ/function#>
+
+select distinct ?name ?number_of_users where {
+  ?person a :Person .
+  ?project (:founder|:author) ?person .
+  ?project :yt-n ?media_n .
+  bind (str(?media_n) as ?number_of_users) .
+  bind (replace(afn:localname(?person), "_", " ") as ?name) .
+  filter (?media_n > 10000)
+} order by desc(?media_n)

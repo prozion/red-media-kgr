@@ -1,0 +1,45 @@
+classes +a:owl/Class +hi-inv-rel:subclass-of
+	owl/Thing
+		Product
+			Lecture
+				Presentation
+			MediaProduct
+				Video
+					RecordedLecture
+					VideoConference
+					ProjectVideo
+				Newspaper
+			Music
+				Song
+				MusicAlbum
+			Text
+				Article
+				Book
+				Verse
+properties +a:rdf/Property +hi-inv-rel:subproperty-of
+	author domain:Product range:Person
+		coauthor
+	has_interaction
+		collaborates-with
+		contributor
+	contributor domain:Project range:Person
+		author
+		editor
+			editor-in-chief
+		interviewer
+		interviewee
+		participant
+			stream-participant
+		speaker
+			reviewer
+			lecturer
+		specialist
+			videographer
+			voice_actor
+			guitarist
+			singer
+			text-writer
+				music-text-writer
+	price
+	raw-material domain:Product range:rdfs/Literal d:"Сырье, детали, полуфабрикаты, необходимые для изготовления продукта"
+				

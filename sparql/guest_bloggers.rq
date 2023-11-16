@@ -1,0 +1,26 @@
+prefix : <https://purl.org/prozion/redkgr#>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix afn: <http://jena.apache.org/ARQ/function#>
+
+# Экспертная популярность: сколько раз блогер был гостем у других блогеров
+
+select
+  (afn:localname(max(?person)) as ?founder)
+  (afn:localname(?project) as ?host_channel)
+  (count (distinct ?video) as ?founder_filmed_n)
+  (group_concat(distinct afn:localname(?ytchannel)) as ?guest_channels)
+where {
+  ?project :founder ?person .
+  ?video ?r ?person .
+  ?r rdfs:subPropertyOf* :contributor .
+  ?video :channel ?ytchannel .
+  ?c rdfs:subPropertyOf* :contributor .
+  ?project a ?project_class .
+  ?project_class rdfs:subClassOf* :MediaProject .
+  ?person a :Person .
+  ?video a :Video .
+  filter(?ytchannel != ?project)
+}
+group by ?project
+# having(?founder_filmed_n > 1)
+order by desc(?founder_filmed_n)

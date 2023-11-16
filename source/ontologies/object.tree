@@ -10,6 +10,7 @@ properties +a:rdf/Property +hi-inv-rel:subproperty-of
 	def range:rdfs/Literal d:"Definition"
 	id
 		former-id
+	part-of domain:Object range:Object
 	rdfs/label
 		name domain:Object range:rdfs/Literal
 			former-name

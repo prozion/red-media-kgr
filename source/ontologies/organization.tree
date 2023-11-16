@@ -1,0 +1,72 @@
+classes +a:owl/Class +hi-inv-rel:subclass-of
+	owl/Thing
+		Organization subclass-of:Product d:"Группа людей, которая с помощью средств производства, перманентно выпускает продукт или оказывает услугу"
+			BourgeoisInstitution
+				Company
+					ClassicCooperative
+					Corporation
+					Startup
+				OfficialTradeUnion
+				PoliticalParty
+				PrivateEducationalOrgtanization
+				ResearchInstitute
+				ReligiousOrganization
+					Sect
+				StateOrganization
+					StateEducationalOrganization
+						SecondarySchool
+						University
+					StateInstitute
+						StateResearchInstitute subclass-of:ResearchInstitute
+					Ministry
+				TealOrganization
+			ProcommunistOrganization
+				RedCooperative
+				MarxistEducationalOrganization
+					EducationalClub
+					MarxistCircle
+				RealTradeUnion
+		Organization
+			EducationalOrganization
+				MarxistEducationalOrganization
+				PrivateEducationalOrganization
+				StateEducationalOrganization
+		Organization
+			Network
+		Organization
+			Cooperative
+				ClassicalCooperative
+				RedCooperative
+			MediaOrganization
+				InternetChannel
+				Newspaper
+					OnlineNewspaper
+					PrintedNewspaper
+				Radio
+			MusicPerformer
+				MusicBand
+				Rapper
+		TradeUnion
+			OfficialTradeUnion
+			RealTradeUnion
+		University +hi-inv-rel:part-of
+			Faculty
+properties +a:rdf/Property +hi-inv-rel:subproperty-of
+	member
+		leader
+			curator
+			general_secretary
+			president
+		musician
+			guitarist
+			singer
+			music-text-writer
+	org range:Organization
+	parent domain:Organization range:Organization
+		faculty-of
+	role
+		organizational-role
+			contact-person range:Person
+			coordinator
+	uni range:University
+		

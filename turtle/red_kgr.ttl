@@ -10,34 +10,70 @@
  rdf:type rdf:Property ;
  rdfs:range rdfs:Literal .
 
+:actor
+ rdf:type rdf:Property ;
+ rdfs:subPropertyOf :video_subject .
+
+:Alex_Gordon
+ rdf:type :Person .
+
 :Area
  rdf:type owl:Class ;
  rdfs:subClassOf owl:Thing .
 
+:Article
+ rdf:type owl:Class ;
+ rdfs:subClassOf :Text .
+
 :author
+ rdfs:subPropertyOf :contributor ;
+ rdfs:domain :Project ;
  rdf:type rdf:Property ;
- rdfs:subPropertyOf :founder, :coauthor .
+ rdfs:range :Person .
+
+:Bad_Comedian
+ :yt "youtube.com/@TheBadComedian" ;
+ rdf:type :YTChannel ;
+ :yt-n "5910000"^^xsd:positiveInteger ;
+ :founder :Евгений_Баженов .
 
 :bdate
  rdfs:subPropertyOf :date ;
  rdfs:comment "Date of birth" ;
  rdf:type rdf:Property .
 
-:Blog
- rdf:type owl:Class ;
- rdfs:subClassOf :MediaProject .
-
 :Book
  rdf:type owl:Class ;
- rdfs:subClassOf :Project .
+ rdfs:subClassOf :Text, :Project .
 
 :boosty
  rdf:type rdf:Property ;
  rdfs:subPropertyOf :url .
 
+:boosty-n
+ rdfs:subPropertyOf :n ;
+ rdfs:comment "Number of subscribers on Boosty" ;
+ rdf:type rdf:Property .
+
 :BourgeoisInstitution
  rdf:type owl:Class ;
- rdfs:subClassOf owl:Thing .
+ rdfs:subClassOf :Organization .
+
+:bplace
+ rdf:type rdf:Property ;
+ rdfs:subPropertyOf :place .
+
+:Bruce_Gagnon
+ rdf:type :Person .
+
+:byear
+ rdfs:subPropertyOf :bdate ;
+ rdf:type rdf:Property ;
+ rdfs:range rdfs:Literal .
+
+:channel
+ rdf:type rdf:Property ;
+ rdfs:range :YTChannel .
 
 :city
  rdfs:subPropertyOf :place ;
@@ -49,17 +85,34 @@
  rdfs:subClassOf :Place .
 
 :coauthor
- rdfs:subPropertyOf :contributor ;
- rdfs:domain :Project ;
  rdf:type rdf:Property ;
- rdfs:range :Person .
+ rdfs:subPropertyOf :author .
+
+:collaborates-with
+ rdf:type rdf:Property ;
+ rdfs:subPropertyOf :had_interaction .
 
 :Company
  rdf:type owl:Class ;
  rdfs:subClassOf :BourgeoisInstitution .
 
+:Conference
+ rdf:type owl:Class ;
+ rdfs:subClassOf owl:Thing .
+
+:contact
+ rdf:type rdf:Property ;
+ rdfs:range :Person .
+
 :contributor
- rdf:type rdf:Property .
+ rdfs:subPropertyOf :had_interaction ;
+ rdfs:domain :Project ;
+ rdf:type rdf:Property ;
+ rdfs:range :Person .
+
+:coordinator
+ rdf:type rdf:Property ;
+ rdfs:subPropertyOf :role .
 
 :country
  rdfs:domain :Place ;
@@ -69,6 +122,10 @@
 :Country
  rdf:type owl:Class ;
  rdfs:subClassOf :Object .
+
+:curator
+ rdf:type rdf:Property ;
+ rdfs:subPropertyOf :leader .
 
 :Date
  rdf:type owl:Class ;
@@ -88,13 +145,13 @@
  rdf:type rdf:Property ;
  rdfs:range rdfs:Literal .
 
+:debater
+ rdf:type rdf:Property ;
+ rdfs:subPropertyOf :role .
+
 :Decimal
  rdf:type owl:Class ;
  rdfs:subClassOf rdfs:Literal .
-
-:DecimalAbbreviated
- rdf:type owl:Class ;
- rdfs:subClassOf :Decimal .
 
 :def
  rdfs:comment "Definition" ;
@@ -105,10 +162,37 @@
  rdf:type rdf:Property ;
  rdfs:subPropertyOf :url .
 
-:edu
- rdfs:comment "Education, in what university the person made the studies and what (s)he graduated" ;
+:Dessar
+ :musician :Макс_Якоби ;
+ rdf:type :MusicBand .
+
+:discord
  rdf:type rdf:Property ;
- rdfs:range :University .
+ rdfs:subPropertyOf :voip-id .
+
+:dplace
+ rdf:type rdf:Property ;
+ rdfs:subPropertyOf :place .
+
+:editor
+ rdf:type rdf:Property ;
+ rdfs:subPropertyOf :contributor .
+
+:editor-in-chief
+ rdf:type rdf:Property ;
+ rdfs:subPropertyOf :editor .
+
+:edu
+ rdfs:comment "Education, in what university (faculty) the person made the studies and what (s)he graduated" ;
+ rdf:type rdf:Property .
+
+:EducationalClub
+ rdf:type owl:Class ;
+ rdfs:subClassOf :EducationalProject .
+
+:EducationalProject
+ rdf:type owl:Class ;
+ rdfs:subClassOf :Project .
 
 :email
  rdf:type rdf:Property ;
@@ -121,6 +205,21 @@
 :end
  rdf:type rdf:Property ;
  rdfs:range :Time .
+
+:Faculty
+ rdf:type owl:Class .
+
+:faculty-of
+ rdf:type rdf:Property ;
+ rdfs:subPropertyOf :parent .
+
+:fb
+ rdf:type rdf:Property ;
+ rdfs:subPropertyOf :url .
+
+:FBGroup
+ rdf:type owl:Class ;
+ rdfs:subClassOf :MediaProject .
 
 :Float
  rdf:type owl:Class ;
@@ -135,10 +234,21 @@
  rdfs:subPropertyOf :name .
 
 :founder
- rdfs:subPropertyOf :contributor ;
- rdfs:domain :Project ;
  rdf:type rdf:Property ;
- rdfs:range :Person .
+ rdfs:subPropertyOf :author .
+
+:Frente_Obrero
+ :president :Roberto_Vaquero ;
+ rdf:type :PoliticalParty .
+
+:from
+ rdfs:domain owl:Thing ;
+ rdf:type rdf:Property ;
+ rdfs:range owl:Thing .
+
+:general_secretary
+ rdf:type rdf:Property ;
+ rdfs:subPropertyOf :leader .
 
 :github
  rdf:type rdf:Property ;
@@ -156,9 +266,8 @@
  rdf:type rdf:Property ;
  rdfs:subPropertyOf :musician .
 
-:host
- rdf:type rdf:Property ;
- rdfs:subPropertyOf :coauthor .
+:had_interaction
+ rdf:type rdf:Property .
 
 :Id
  rdf:type owl:Class ;
@@ -171,9 +280,13 @@
  rdf:type owl:Class ;
  rdfs:subClassOf rdfs:Literal .
 
-:IntegerAbbreviated
- rdf:type owl:Class ;
- rdfs:subClassOf :Integer .
+:interviewee
+ rdf:type rdf:Property ;
+ rdfs:subPropertyOf :role, :contributor .
+
+:interviewer
+ rdf:type rdf:Property ;
+ rdfs:subPropertyOf :role, :contributor .
 
 :InterviewSite
  rdf:type owl:Class ;
@@ -183,21 +296,77 @@
  rdfs:comment "Where the person works(ed)" ;
  rdf:type rdf:Property .
 
+:JT_Chapman
+ rdf:type :Person .
+
+:KBY_1
+ :interviewee :Алексей_Сафронов ;
+ rdf:type :Video ;
+ :channel :КрасноBY .
+
+:KBY_2
+ :interviewee :Александр_Снитко ;
+ rdf:type :Video ;
+ :channel :КрасноBY ;
+ :topic "куба" ;
+ :date "2022-05-18"^^xsd:date .
+
+:KBY_3
+ :interviewee :Александр_Снитко ;
+ rdf:type :Video ;
+ :channel :КрасноBY ;
+ :topic "куба" ;
+ :date "2022-06-03"^^xsd:date .
+
+:KBY_4
+ :interviewee :Олег_Комолов ;
+ rdf:type :Video ;
+ :channel :КрасноBY .
+
+:KBY_5
+ rdf:type :Video ;
+ :channel :КрасноBY ;
+ :interviewer :Евгения_Керубини ;
+ :interviewee :Илья_Ярский .
+
+:KBY_6
+ rdf:type :Video, :VideoConference ;
+ :speaker :Константин_Агеев, :Мария_Тереза, :Дмитрий_Исаенок, :Сергей_Питерский, :Асер_Тихомиров, :Андрей_Рудой, :Евгения_Керубини ;
+ :channel :КрасноBY .
+
+:KBY_7
+ :interviewee :Алексей_Сафронов ;
+ rdf:type :Video ;
+ :channel :КрасноBY .
+
 :lat
  rdfs:domain :Place ;
  rdfs:comment "Latitude" ;
  rdf:type rdf:Property ;
  rdfs:range :Float .
 
+:leader
+ rdf:type rdf:Property ;
+ rdfs:subPropertyOf :member .
+
 :Lecture
- rdf:type owl:Class .
+ rdf:type owl:Class ;
+ rdfs:subClassOf :Product .
 
 :lecture
  rdf:type rdf:Property ;
  rdfs:range :Lecture .
 
+:lecturer
+ rdfs:subPropertyOf :speaker ;
+ rdfs:domain :Lecture ;
+ rdf:type rdf:Property ;
+ rdfs:range :Person .
+
 :Lenin_Crew
- rdf:type :Project .
+ :yt "youtube.com/@LeninCrew" ;
+ rdf:type :ProcommunistOrganization ;
+ :yt-n "6740"^^xsd:positiveInteger .
 
 :lon
  rdfs:domain :Place ;
@@ -205,9 +374,28 @@
  rdf:type rdf:Property ;
  rdfs:range :Float .
 
+:Lumen
+ rdf:type :MusicBand ;
+ :text-writer :Рустем_Булатов .
+
+:MarxistCircle
+ rdf:type owl:Class ;
+ rdfs:subClassOf :ProcommunistOrganization, :EducationalProject .
+
+:MarxistCircleNetwork
+ rdf:type owl:Class ;
+ rdfs:subClassOf :MarxistCircle .
+
+:MediaProduct
+ rdf:type owl:Class ;
+ rdfs:subClassOf :Product .
+
 :MediaProject
  rdf:type owl:Class ;
  rdfs:subClassOf :Project .
+
+:member
+ rdf:type rdf:Property .
 
 :messenger-id
  rdf:type rdf:Property ;
@@ -221,18 +409,26 @@
  rdf:type owl:Class ;
  rdfs:subClassOf :StateOrganization .
 
+:moderator
+ rdf:type rdf:Property ;
+ rdfs:subPropertyOf :role .
+
 :MusicBand
  rdf:type owl:Class ;
- rdfs:subClassOf :Project .
+ rdfs:subClassOf :MusicPerformer .
 
 :musician
  rdf:type rdf:Property ;
- rdfs:subPropertyOf :contributor .
+ rdfs:subPropertyOf :member .
+
+:MusicPerformer
+ rdf:type owl:Class ;
+ rdfs:subClassOf :Project .
 
 :n
  rdfs:comment "Number of users" ;
  rdf:type rdf:Property ;
- rdfs:range rdfs:Literal .
+ rdfs:range :PositiveInteger .
 
 :name
  rdfs:subPropertyOf rdfs:label ;
@@ -240,9 +436,30 @@
  rdf:type rdf:Property ;
  rdfs:range rdfs:Literal .
 
+:New_Deal
+ :yt "youtube.com/@NewDeal1917" ;
+ rdf:type :YTChannel ;
+ :yt-n "18400"^^xsd:positiveInteger ;
+ :founder :Даниил_Григорьев .
+
 :News
  rdf:type owl:Class ;
  rdfs:subClassOf :MediaProject .
+
+:Newspaper
+ rdf:type owl:Class ;
+ rdfs:subClassOf :MediaProduct .
+
+:note
+ rdfs:comment "Analog to skos/note" ;
+ rdf:type rdf:Property ;
+ rdfs:range rdfs:Literal .
+
+:O21
+ rdf:type :ProcommunistOrganization ;
+ :contact :Борис_Асеев ;
+ :from :РТФ ;
+ :collaborates-with :Факел .
 
 :Object
  rdf:type owl:Class ;
@@ -252,22 +469,42 @@
  rdf:type rdf:Property ;
  rdfs:subPropertyOf :defunct-url .
 
+:org
+ rdf:type rdf:Property ;
+ rdfs:range :Organization .
+
 :Organization
  rdf:type owl:Class ;
- rdfs:subClassOf :Project .
+ rdfs:subClassOf owl:Thing .
 
 owl:Thing
  rdf:type owl:Class .
 
-:participant
- rdfs:subPropertyOf :contributor ;
- rdfs:domain :Project ;
+:Oт.Каз
+ rdf:type :ProcommunistOrganization .
+
+:Pablo_Hasel
+ rdf:type :Person .
+
+:parent
+ rdfs:domain :Organization ;
  rdf:type rdf:Property ;
- rdfs:range :Person .
+ rdfs:range :Organization .
+
+:participant
+ rdf:type rdf:Property ;
+ rdfs:subPropertyOf :role, :contributor .
+
+:Partido_Marxista-Leninista
+ rdf:type :PoliticalParty ;
+ :general_secretary :Roberto_Vaquero .
 
 :patreon
  rdf:type rdf:Property ;
  rdfs:subPropertyOf :url .
+
+:Patrick_Bond
+ rdf:type :Person .
 
 :Person
  rdf:type owl:Class .
@@ -280,13 +517,76 @@ owl:Thing
  rdf:type owl:Class ;
  rdfs:subClassOf owl:Thing .
 
+:Poligraf_Red
+ :yt "youtube.com/@poligrafred" ;
+ :yt-video-n "188"^^xsd:positiveInteger ;
+ rdf:type :YTChannel ;
+ :yt-n "13000"^^xsd:positiveInteger ;
+ :founder :Дмитрий_Исаенок .
+
+:PoliticalParty
+ rdf:type owl:Class ;
+ rdfs:subClassOf :BourgeoisInstitution .
+
 :pop
  rdf:type rdf:Property ;
- rdfs:range :DecimalAbbreviated .
+ rdfs:range :Decimal .
+
+:PositiveInteger
+ rdf:type owl:Class ;
+ rdfs:subClassOf :Integer .
+
+:PR_1
+ rdf:type :Video ;
+ :speaker :Антон_Бархатков ;
+ :channel :Poligraf_Red ;
+ :topic "капитал маркса,товарный фетишизм" .
+
+:PR_2
+ rdf:type :Video ;
+ :speaker :Акаиша ;
+ :channel :Poligraf_Red ;
+ :topic "зло" .
+
+:PR_3
+ rdf:type :Video ;
+ :speaker :Евгения_Керубини, :Константин_Агеев ;
+ :channel :Poligraf_Red ;
+ :topic "starwars" ;
+ :ref :Клим_Жуков .
+
+:Presentation
+ rdf:type owl:Class ;
+ rdfs:subClassOf :Lecture .
+
+:president
+ rdf:type rdf:Property ;
+ rdfs:subPropertyOf :leader .
+
+:ProcommunistOrganization
+ rdf:type owl:Class ;
+ rdfs:subClassOf :Organization .
+
+:Product
+ rdf:type owl:Class ;
+ rdfs:subClassOf owl:Thing .
 
 :Project
  rdf:type owl:Class ;
  rdfs:subClassOf owl:Thing .
+
+:project-video
+ rdfs:subPropertyOf :video ;
+ rdfs:domain :Project ;
+ rdf:type rdf:Property ;
+ rdfs:range :ProjectVideo .
+
+:projects
+ :working-note "При составлении списка проводится 'ручная класификация' явлений, которые обычно воспринимаются как 'проект' или 'производящий продукт рабочий коллектив' (что уже является 'ручной' классификацией). В идеале такого субьективизма должно быть как можно меньше, а классификация осуществляться путем анализа характера связей сущностей. Что практически означает существование нескольких способов классификации через sparql запросы, либо через модели машинного обучения. Связи между сущностями являются отражением объективных фактов, хотя субьективисткая составляющая остается в виде 'ручной' классификации уже самих связей. Но главное, что есть диалектическое движение в сторону классовой объективности." .
+
+:ProjectVideo
+ rdf:type owl:Class ;
+ rdfs:subClassOf :Video .
 
 :Property
  rdf:type owl:Class ;
@@ -297,30 +597,96 @@ owl:Thing
  rdf:type :Company ;
  :founder :Рустам_Гусейнов .
 
+:Rapper
+ rdf:type owl:Class ;
+ rdfs:subClassOf :MusicPerformer .
+
 rdfs:label
  rdf:type rdf:Property .
 
 rdfs:Literal
  rdf:type owl:Class .
 
+:rec
+ rdfs:subPropertyOf :ref ;
+ rdfs:domain :Project ;
+ rdfs:comment "Recommendation" ;
+ rdf:type rdf:Property ;
+ rdfs:range :Project .
+
+:RecordedLecture
+ rdf:type owl:Class ;
+ rdfs:subClassOf :Video .
+
+:RedAutumnBooks
+ :yt "youtube.com/@redautumnbooks" ;
+ :yt-video-n "147"^^xsd:positiveInteger ;
+ rdf:type :YTChannel ;
+ :yt-n "109000"^^xsd:positiveInteger ;
+ :founder :Ольга_Михневич .
+
 <https://purl.org/prozion/redkgr#>
  rdf:type owl:Ontology ;
  owl:imports <http://www.w3.org/1999/02/22-rdf-syntax-ns#>, <http://www.w3.org/2000/01/rdf-schema#>, <http://www.w3.org/2002/07/owl#>, <http://www.w3.org/2001/XMLSchema#> ;
  rdfs:label "Knowledge graph on red movement" .
 
+:Redstarter
+ rdf:type :Project ;
+ :url "redstarter.ru" .
+
+:ref
+ rdfs:comment "Reference, mentions of other persons or projects" ;
+ rdf:type rdf:Property .
+
 :Remi_Meisner
  :yt "youtube.com/@RemiMeisner" ;
  :author :Реми_Майснер ;
- rdf:type :Project ;
- :yt-n "97.9K" .
+ rdf:type :YTChannel ;
+ :yt-n "97900"^^xsd:positiveInteger .
 
 :Renmin_University_of_China
  rdf:type :University ;
  :place :Пекин .
 
+:Res_Publica
+ rdf:type :TgChannel .
+
 :ResearchInstitute
  rdf:type owl:Class ;
  rdfs:subClassOf :BourgeoisInstitution .
+
+:review-of
+ rdf:type rdf:Property ;
+ rdfs:subPropertyOf :video_subject .
+
+:reviewer
+ rdf:type rdf:Property ;
+ rdfs:subPropertyOf :speaker .
+
+:Richard_Wolff
+ rdf:type :Person .
+
+:Ritartha
+ :yt "youtube.com/@Ritartha" ;
+ rdf:type :YTChannel ;
+ :yt-n "106000"^^xsd:positiveInteger ;
+ :founder :Маргарита_Ritartha, :Егор_Красный_Декор .
+
+:Roberto_Vaquero
+ rdf:type :Person .
+
+:role
+ rdf:type rdf:Property .
+
+:rt
+ rdfs:subPropertyOf :url ;
+ rdfs:comment "RuTube" ;
+ rdf:type rdf:Property .
+
+:rt-n
+ rdfs:subPropertyOf :n ;
+ rdfs:comment "Number of subscribers for RuTube channel" ;
+ rdf:type rdf:Property .
 
 :s
  rdfs:comment "Source" ;
@@ -338,6 +704,12 @@ rdfs:Literal
  rdf:type rdf:Property ;
  rdfs:range :SecondarySchool .
 
+:Second_Thought
+ :yt "youtube.com/@SecondThought" ;
+ rdf:type :YTChannel ;
+ :yt-n "1650000"^^xsd:positiveInteger ;
+ :founder :JT_Chapman .
+
 :SecondarySchool
  rdf:type owl:Class .
 
@@ -351,14 +723,22 @@ rdfs:Literal
  rdf:type rdf:Property ;
  rdfs:subPropertyOf :musician .
 
+:Sodky
+ :fb "facebook.com/sodky" ;
+ rdf:type :FBGroup ;
+ :founder :Судки_Отман .
+
 :Source
  rdf:type owl:Class ;
  rdfs:subClassOf rdfs:Literal .
 
 :speaker
- rdfs:domain :Lecture ;
  rdf:type rdf:Property ;
- rdfs:range :Person .
+ rdfs:subPropertyOf :role, :contributor .
+
+:specialist
+ rdf:type rdf:Property ;
+ rdfs:subPropertyOf :contributor .
 
 :start
  rdf:type rdf:Property ;
@@ -375,8 +755,29 @@ rdfs:Literal
 :Station_Marx
  :end "2022" ;
  :yt "youtube.com/@STATIONMARX" ;
- rdf:type :Project ;
- :yt-n "49.5K" .
+ rdf:type :YTChannel ;
+ :yt-n "49500"^^xsd:positiveInteger .
+
+:Stmt_Frente_Obrero_president_Roberto_Vaquero
+ rdf:subject :Frente_Obrero ;
+ :year "2023"^^xsd:gYear ;
+ rdf:type rdf:Statement ;
+ rdf:object :Roberto_Vaquero ;
+ rdf:predicate :president .
+
+:Stmt_O21_from_РТФ
+ rdf:subject :O21 ;
+ rdf:object :РТФ ;
+ rdf:predicate :from ;
+ :s "Vec11" ;
+ rdf:type rdf:Statement .
+
+:Stmt_Partido_Marxista-Leninista_general_secretary_Roberto_Vaquero
+ rdf:subject :Partido_Marxista-Leninista ;
+ :year "2023"^^xsd:gYear ;
+ rdf:type rdf:Statement ;
+ rdf:object :Roberto_Vaquero ;
+ rdf:predicate :general_secretary .
 
 :Stmt_Алексей_Сафронов_job_Аналитический_центр_при_Правительстве_РФ
  rdf:type rdf:Statement ;
@@ -386,23 +787,68 @@ rdfs:Literal
  rdf:subject :Алексей_Сафронов ;
  :end "2020" .
 
-:Stmt_Зеленоград_pop_262505
- rdf:subject :Зеленоград ;
- :year "2023" ;
+:Stmt_Новые_Красные_from_Союз_Марксистов
  rdf:type rdf:Statement ;
- rdf:object "262505" ;
- rdf:predicate :pop .
+ rdf:object :Союз_Марксистов ;
+ rdf:predicate :from ;
+ :s-url "lenincrew.com/oci-critique" ;
+ rdf:subject :Новые_Красные .
 
-:Stmt_Союз_марксистов_founder_Федор_Мухин
- rdf:subject :Союз_марксистов ;
+:Stmt_Простые_числа_founder_Константин_Красноперов
+ rdf:subject :Простые_числа ;
+ rdf:object :Константин_Красноперов ;
+ rdf:predicate :founder ;
+ :s "ПЧ_18" ;
+ rdf:type rdf:Statement .
+
+:Stmt_Простые_числа_founder_Олег_Комолов
+ rdf:subject :Простые_числа ;
+ rdf:type rdf:Statement ;
+ rdf:object :Олег_Комолов ;
+ rdf:predicate :founder .
+
+:Stmt_ПЧ_1_v_69K
+ rdf:subject :ПЧ_1 ;
+ rdf:type rdf:Statement ;
+ rdf:object "69000"^^xsd:positiveInteger ;
+ rdf:predicate :v ;
+ :date "2023-11-11"^^xsd:date .
+
+:Stmt_ПЧ_2_v_33K
+ rdf:subject :ПЧ_2 ;
+ rdf:type rdf:Statement ;
+ rdf:object "33000"^^xsd:positiveInteger ;
+ rdf:predicate :v ;
+ :date "2023-11-11"^^xsd:date .
+
+:Stmt_Союз_Марксистов_founder_Федор_Мухин
+ rdf:subject :Союз_Марксистов ;
  rdf:object :Федор_Мухин ;
  rdf:predicate :founder ;
  :s "youtu.be/GgQQ6Py-i_Q?t=47" ;
  rdf:type rdf:Statement .
 
+:stream-participant
+ rdf:type rdf:Property ;
+ rdfs:subPropertyOf :participant .
+
 :String
  rdf:type owl:Class ;
  rdfs:subClassOf rdfs:Literal .
+
+:teacher-of
+ rdfs:domain :Person ;
+ rdfs:comment "Master_Yoda teacher-of Luke_Skywalker" ;
+ rdf:type rdf:Property ;
+ rdfs:range :Person .
+
+:Text
+ rdf:type owl:Class ;
+ rdfs:subClassOf :Product .
+
+:text-writer
+ rdf:type rdf:Property ;
+ rdfs:subPropertyOf :musician .
 
 :tg
  rdf:type rdf:Property ;
@@ -413,6 +859,10 @@ rdfs:Literal
  rdfs:comment "Number of subscribers for Telegram channel" ;
  rdf:type rdf:Property .
 
+:TgChannel
+ rdf:type owl:Class ;
+ rdfs:subClassOf :MediaProject .
+
 :Time
  rdf:type owl:Class ;
  rdfs:subClassOf rdfs:Literal .
@@ -420,6 +870,26 @@ rdfs:Literal
 :title
  rdf:type rdf:Property ;
  rdfs:range rdfs:Literal .
+
+:topic
+ rdf:type rdf:Property ;
+ rdfs:range :String .
+
+:TradeUnion
+ rdf:type owl:Class ;
+ rdfs:subClassOf :ProcommunistOrganization .
+
+:twi
+ rdf:type rdf:Property ;
+ rdfs:subPropertyOf :url .
+
+:TwiChannel
+ rdf:type owl:Class ;
+ rdfs:subClassOf :MediaProject .
+
+:uni
+ rdf:type rdf:Property ;
+ rdfs:range :University .
 
 :University
  rdf:type owl:Class .
@@ -441,6 +911,119 @@ rdfs:Literal
  rdfs:comment "Url with prefixes removed: http://, https://, https://www. etc. to make it neater" ;
  rdf:type owl:Class .
 
+:v
+ rdfs:comment "Number of views" ;
+ rdf:type rdf:Property ;
+ rdfs:range :PositiveInteger .
+
+:Vec_1
+ :interviewee :Алексей_Гончаров ;
+ rdf:type :Video ;
+ :channel :Вектор .
+
+:Vec_10
+ rdf:type :Video ;
+ :speaker :Илья_Ярский ;
+ :channel :Вектор ;
+ :review-of :Василий_Садонин .
+
+:Vec_11
+ rdf:type :Video ;
+ :channel :Вектор ;
+ :interviewer :Илья_Ярский ;
+ :interviewee :Александр_Филипов .
+
+:Vec_12
+ rdf:type :Video ;
+ :channel :Вектор ;
+ :ref :КрасноBY ;
+ :interviewer :Илья_Ярский ;
+ :interviewee :Евгения_Керубини .
+
+:Vec_13
+ :interviewee :Иван_Поляков ;
+ rdf:type :Video ;
+ :channel :Вектор .
+
+:Vec_14
+ rdf:type :Video ;
+ :speaker :Владимир_Огородников ;
+ :channel :Вектор .
+
+:Vec_2
+ rdf:type :Video ;
+ :channel :Вектор ;
+ :author :Марьяна_Таволжанская .
+
+:Vec_3
+ :speaker :Владимир_Фридман ;
+ :channel :Вектор ;
+ rdf:type :Video ;
+ :moderator :Андрей_Шевчук .
+
+:Vec_4
+ rdf:type :Video ;
+ :channel :Вектор ;
+ :interviewer :Михаил_Балбус ;
+ :interviewee :Александр_Сегал .
+
+:Vec_5
+ rdf:type :Video ;
+ :channel :Вектор ;
+ :author :Илья_Ярский .
+
+:Vec_6
+ rdf:type :Video ;
+ :channel :Вектор ;
+ :topic "синдикализм,профсоюзы,шляпников" ;
+ :interviewer :Илья_Ярский ;
+ :interviewee :Реми_Майснер .
+
+:Vec_7
+ rdf:type :Video ;
+ :speaker :Илья_Ярский ;
+ :channel :Вектор .
+
+:Vec_8
+ rdf:type :Video ;
+ :channel :Вектор ;
+ :topic "пенитенциарная система" ;
+ :interviewer :Илья_Ярский ;
+ :interviewee :Реми_Майснер .
+
+:Vec_9
+ :interviewee :Борис_Юлин ;
+ rdf:type :Video ;
+ :channel :Вектор .
+
+:Video
+ rdf:type owl:Class ;
+ rdfs:subClassOf :MediaProduct .
+
+:video
+ rdf:type rdf:Property .
+
+:video-n
+ rdfs:comment "Number of videoes" ;
+ rdf:type rdf:Property ;
+ rdfs:range :PositiveInteger .
+
+:video_subject
+ rdf:type rdf:Property ;
+ rdfs:domain :Video .
+
+:VideoConference
+ rdf:type owl:Class ;
+ rdfs:subClassOf :Conference, :Video .
+
+:videographer
+ rdf:type rdf:Property ;
+ rdfs:subPropertyOf :specialist .
+
+:Vizzion
+ rdf:type :Person, :Rapper ;
+ :place :Дармштадт .
+
 :vk
  rdf:type rdf:Property ;
  rdfs:subPropertyOf :url .
@@ -450,6 +1033,27 @@ rdfs:Literal
  rdfs:comment "Number of subscribers for Vkontakte public or group" ;
  rdf:type rdf:Property .
 
+:VKPublic
+ rdf:type owl:Class ;
+ rdfs:subClassOf :MediaProject .
+
+:voice_actor
+ rdf:type rdf:Property ;
+ rdfs:subPropertyOf :specialist .
+
+:voip-id
+ rdf:type rdf:Property ;
+ rdfs:subPropertyOf :messenger-id .
+
+:working-note
+ rdfs:subPropertyOf :note ;
+ rdfs:comment "Analog to skos/editorialNote" ;
+ rdf:type rdf:Property .
+
+:Xabier_Arrizabalo_Montoro
+ rdf:type :Person ;
+ :place :Мадрид .
+
 :year
  rdf:type rdf:Property ;
  rdfs:range :Year .
@@ -457,6 +1061,9 @@ rdfs:Literal
 :Year
  rdf:type owl:Class ;
  rdfs:subClassOf :Time .
+
+:Yorum
+ rdf:type :MusicBand .
 
 :yt
  rdf:type rdf:Property ;
@@ -467,55 +1074,1123 @@ rdfs:Literal
  rdfs:comment "Number of subscribers for YouTube channel" ;
  rdf:type rdf:Property .
 
+:yt-rec
+ rdfs:subPropertyOf :rec ;
+ rdfs:comment "What channels are recommended by a given youtube channel" ;
+ rdf:type rdf:Property .
+
+:yt-video-n
+ rdfs:subPropertyOf :video-n ;
+ rdfs:comment "Number of videoes on the YouTube channel" ;
+ rdf:type rdf:Property .
+
+:YTChannel
+ rdf:type owl:Class ;
+ rdfs:subClassOf :MediaProject .
+
 :Yugopnik
  :yt "youtube.com/@YUGOPNIK" ;
- rdf:type :Project ;
- :yt-n "190K" .
+ rdf:type :Person, :YTChannel ;
+ :yt-n "190000"^^xsd:positiveInteger .
+
+:Абдулов_2021
+ :year "2021"^^xsd:gYear ;
+ :url "bit.ly/40Glc1Z" ;
+ :author :Рафаэль_Абдулов, :Д_Джабборов, :Олег_Комолов, :Глеб_Маслов, :Тамара_Степанова ;
+ :title "Деглобализация: кризис неолиберализма и движение к новому миропорядку" ;
+ rdf:type :Book .
+
+:АгитПроп
+ :url "agitblog.ru" ;
+ :yt "youtube.com/@Agit_Prop" ;
+ :yt-video-n "2000"^^xsd:positiveInteger ;
+ rdf:type :YTChannel, :News, :InterviewSite ;
+ :yt-n "766000"^^xsd:positiveInteger ;
+ :founder :Константин_Семин .
 
 :Адаптация_пчел
  :musician :Александр_Буслов ;
  rdf:type :MusicBand .
 
+:Айнур_Курманов
+ rdf:type :Person .
+
+:Акаиша
+ rdf:type :Person .
+
+:Александр_Арчагов
+ rdf:type :Person .
+
 :Александр_Батов
  rdf:type :Person .
 
 :Александр_Бузгалин
- :ddate "18.10.2023" ;
- rdf:type :Person .
+ :ddate "2023-10-18"^^xsd:date ;
+ rdf:type :Person ;
+ :bdate "1954-07-19"^^xsd:date .
 
 :Александр_Буслов
  rdf:type :Person ;
  :place :Нижний_Новгород .
 
+:Александр_Васьковский
+ rdf:type :Person .
+
+:Александр_Евдокимов
+ rdf:type :Person .
+
+:Александр_Иванов
+ rdf:type :Person .
+
+:Александр_Киященко
+ rdf:type :Person .
+
+:Александр_Колпакиди
+ rdf:type :Person .
+
 :Александр_Кубалов
  rdf:type :Person .
 
+:Александр_Рыбин
+ rdf:type :Person .
+
+:Александр_Сегал
+ rdf:type :Person .
+
+:Александр_Снитко
+ rdf:type :Person .
+
+:Александр_Соловьев
+ rdf:type :Person .
+
+:Александр_Усенко
+ rdf:type :Person ;
+ :place :Минск ;
+ :org :КрасноBY .
+
+:Александр_Филипов
+ rdf:type :Person ;
+ :org :O21 .
+
+:Александр_Харламенко
+ rdf:type :Person .
+
+:Александр_Чачия
+ rdf:type :Person .
+
+:Александр_Штефанов
+ rdf:type :Person .
+
 :Александра_Арабаджян
+ rdf:type :Person ;
+ :place :Гавана .
+
+:Александра_Запольская
+ rdf:type :Person .
+
+:Александра_Элбакян
+ rdf:type :Person .
+
+:Алексей_Водовозов
+ rdf:type :Person .
+
+:Алексей_Гончаров
+ rdf:type :Person .
+
+:Алексей_Дзермант
+ rdf:type :Person .
+
+:Алексей_Комов
+ rdf:type :Person .
+
+:Алексей_Кравецкий
+ rdf:type :Person .
+
+:Алексей_Марков
+ rdf:type :Person .
+
+:Алексей_Румянцев
  rdf:type :Person .
 
 :Алексей_Сафронов
- :bdate "04.03.1987" ;
+ :bdate "1987-03-04"^^xsd:date ;
  :job :Аналитический_центр_при_Правительстве_РФ ;
  :vk "vk.com/id32200" ;
  :edu :МГУУ_Правительства_Москвы, :Renmin_University_of_China ;
  rdf:type :Person ;
  :sec-edu :Школа_1528 .
 
+:Алексей_Сахнин
+ rdf:type :Person ;
+ :org :Левый_Фронт .
+
 :Алерта
  :musician :Александр_Кубалов ;
  rdf:type :MusicBand .
 
+:Алибек_Тасыбеков
+ rdf:type :Person .
+
+:Алина_Браздейкене
+ rdf:type :Person .
+
+:Алла_Бут
+ rdf:type :Person .
+
 :Аналитический_центр_при_Правительстве_РФ
  rdf:type :StateInstitute .
+
+:Андрей_Замай
+ rdf:type :MusicBand .
+
+:Андрей_Колганов
+ rdf:type :Person ;
+ :job :Экономический_факультет_МГУ .
 
 :Андрей_Комолов
  rdf:type :Person .
 
-:Андрей_Рудой
+:Андрей_Лошак
  rdf:type :Person .
+
+:Андрей_Рудой
+ rdf:type :Person ;
+ :org :Вестник_Бури ;
+ :place :Дзержинск ;
+ :bdate "1990-07-24"^^xsd:date .
+
+:Андрей_Чирук
+ rdf:type :Person .
+
+:Андрей_Шевчук
+ rdf:type :Person .
+
+:Андрей_Шигин
+ rdf:type :Person .
+
+:Анжелика_Глазкова
+ rdf:type :Person .
+
+:Анима_Схема
+ :yt "youtube.com/@Anima_Shema" ;
+ rdf:type :YTChannel ;
+ :yt-n "18400"^^xsd:positiveInteger ;
+ :founder :Григорий_Нонкон .
+
+:Анна_Ворфоломеева
+ rdf:type :Person .
+
+:Анна_Очкина
+ rdf:type :Person .
+
+:Анна_Филинн
+ rdf:type :Person .
+
+:Антон_Бархатков
+ rdf:type :Person .
+
+:Антон_Орлов
+ rdf:type :Person .
+
+:Антон_Просекин
+ rdf:type :Person .
+
+:АП_1
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Борис_Папазян .
+
+:АП_10
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Дмитрий_Солодин .
+
+:АП_100
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :topic "центризм,архипелаг гулаг,навальный" ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Виктория_Гарсия-Берналь .
+
+:АП_101
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Александр_Батов .
+
+:АП_102
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Bruce_Gagnon .
+
+:АП_103
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :topic "зубатовщина" ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Ольга_Кононова .
+
+:АП_104
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Эльмар_Рустамов .
+
+:АП_106
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :topic "греция" ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Димитриос_Пателис .
+
+:АП_107
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Александр_Колпакиди .
+
+:АП_108
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Красный_Циник .
+
+:АП_109
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Егор_Иванов .
+
+:АП_11
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Клим_Жуков .
+
+:АП_110
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Виктор_Викторов .
+
+:АП_111
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Александр_Иванов .
+
+:АП_112
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Андрей_Рудой .
+
+:АП_113
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Борис_Юлин .
+
+:АП_114
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Рубен_Казарьян .
+
+:АП_115
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Евгений_Анищенко .
+
+:АП_116
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Марина_Бурик .
+
+:АП_117
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Евгений_Спицын .
+
+:АП_118
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Егор_Яковлев .
+
+:АП_119
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Евгений_Баженов .
+
+:АП_12
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :topic "куба" ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Хулио_Гармендия .
+
+:АП_120
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Михаил_Попов .
+
+:АП_121
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Дмитрий_Пучков .
+
+:АП_122
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Андрей_Шигин .
+
+:АП_123
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :date "2018-04-26"^^xsd:date ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Димитриос_Пателис .
+
+:АП_124
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Людмила_Булавка-Бузгалина .
+
+:АП_125
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Николай_Губенко .
+
+:АП_126
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Александр_Бузгалин .
+
+:АП_127
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Руслан_Дзарасов .
+
+:АП_128
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Эдуард_Лимонов .
+
+:АП_129
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Александр_Евдокимов .
+
+:АП_13
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Елена_Янчук .
+
+:АП_130
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Евгений_Федоров .
+
+:АП_131
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Олег_Двуреченский .
+
+:АП_132
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Александр_Батов .
+
+:АП_133
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Александр_Соловьев .
+
+:АП_134
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Борис_Юлин .
+
+:АП_135
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Александра_Элбакян .
+
+:АП_14
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Олег_Ясинский .
+
+:АП_15
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :topic "польша" ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Михаил_Новитский .
+
+:АП_16
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :topic "польша" ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Михаил_Новитский .
+
+:АП_17
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :topic "испания" ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Xabier_Arrizabalo_Montoro .
+
+:АП_18
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Иван_Поляков .
+
+:АП_19
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Елена_Янчук .
+
+:АП_2
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Марина_Бурик .
+
+:АП_20
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Жанна_Болотова .
+
+:АП_21
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Николай_Бондаренко .
+
+:АП_22
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :topic "сирия,черкесы" ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Судки_Отман .
+
+:АП_23
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :topic "бродский,солженицын" ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Клим_Жуков .
+
+:АП_24
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :topic "англия,профсоюз" ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Alex_Gordon .
+
+:АП_25
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Борис_Б, :Григорий_Нонкон .
+
+:АП_26
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :topic "германия,гдр" ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Vizzion .
+
+:АП_27
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Алексей_Водовозов .
+
+:АП_28
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :topic "сша" ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Richard_Wolff .
+
+:АП_29
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :topic "сша" ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Richard_Wolff .
+
+:АП_3
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Данила_Курадовец .
+
+:АП_30
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Александр_Васьковский .
+
+:АП_31
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Василий_Еремеев .
+
+:АП_32
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :topic "юар" ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Patrick_Bond .
+
+:АП_33
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Станислав_Коренюгин .
+
+:АП_34
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Елена_Янчук .
+
+:АП_35
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Дмитрий_Карбышев .
+
+:АП_36
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Владимир_Грубник .
+
+:АП_37
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Николас_Микеа .
+
+:АП_38
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Егор_Яковлев .
+
+:АП_39
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Елена_Янчук .
+
+:АП_4
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :topic "югославия,сербия" ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Yugopnik .
+
+:АП_40
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Ариадна_Рокоссовская .
+
+:АП_41
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Даниэль_Жованас .
+
+:АП_42
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Василий_Еремеев .
+
+:АП_43
+ :interviewer :Константин_Семин ;
+ :channel :АгитПроп ;
+ :topic "диамат,диалектика" ;
+ :debater :Алексей_Кравецкий, :Владимир_Фридман ;
+ rdf:type :Video ;
+ :moderator :Константин_Семин .
+
+:АП_44
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Татьяна_Крихтова .
+
+:АП_45
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Yorum .
+
+:АП_46
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Клим_Жуков .
+
+:АП_47
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Сергей_Шубенков .
+
+:АП_48
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Даниил_Ковалев .
+
+:АП_49
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Рафи_Джабар .
+
+:АП_5
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :JT_Chapman .
+
+:АП_51
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Маргарита_Ritartha, :Егор_Красный_Декор .
+
+:АП_52
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Василий_Гриненко, :Виктория_Минюкова .
+
+:АП_53
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Анна_Ворфоломеева .
+
+:АП_54
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Лев_Данилкин .
+
+:АП_55
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Владимир_Фридман .
+
+:АП_56
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Олег_Assa .
+
+:АП_57
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Дмитрий_Кожнев .
+
+:АП_58
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Вася_Ложкин .
+
+:АП_59
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Дмитрий_Дед_Архимед .
+
+:АП_6
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Максим_Дессар .
+
+:АП_60
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Максим_Рыков .
+
+:АП_61
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :topic "гонконг,китай,мао,островский" ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Юань_Яо .
+
+:АП_62
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Петр_Петровский .
+
+:АП_63
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Ибрагим_Магомедов .
+
+:АП_64
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Реми_Майснер .
+
+:АП_65
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :topic "кружок,кургинян,суть времени,красно-коричневые" ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Елена_Васильева .
+
+:АП_66
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Владимир_Меньшов .
+
+:АП_67
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Олег_Кэп .
+
+:АП_68
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Александр_Чачия .
+
+:АП_69
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Евгений_Спицын .
+
+:АП_7
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Roberto_Vaquero .
+
+:АП_70
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Жанна_Болотова .
+
+:АП_71
+ :interviewer :Константин_Семин ;
+ :channel :АгитПроп ;
+ :topic "кпрф" ;
+ :debater :Андрей_Рудой, :Павел_Тарасов ;
+ rdf:type :Video ;
+ :moderator :Константин_Семин .
+
+:АП_72
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Дмитрий_Пучков .
+
+:АП_73
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Олег_Комолов .
+
+:АП_74
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Елена_Янчук .
+
+:АП_75
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Олег_Смолин .
+
+:АП_76
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :topic "таджикистан,гастарбайтеры,ливия,средняя азия" ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Шерафган_Бобоев .
+
+:АП_77
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :topic "либертарианство,школьники,школа" ;
+ :ref :Вестник_Бури ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Борис_Морозов .
+
+:АП_78
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :topic "либертарианство" ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Михаил_Светов .
+
+:АП_79
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :topic "нтс,власов,белое дело,охранитель,украина" ;
+ :date "2019-04-25"^^xsd:date ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Армен_Гаспарян .
+
+:АП_8
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Олег_Комолов .
+
+:АП_80
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :topic "гранж,рэп" ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Алексей_Румянцев .
+
+:АП_81
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :topic "кпрф,грудинин,навальный,желтые жилеты,венесуэла" ;
+ :date "2019-04-11"^^xsd:date ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Николай_Бондаренко .
+
+:АП_82
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :topic "венесуэла,мадуро" ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Александр_Батов .
+
+:АП_83
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Борис_Кагарлицкий .
+
+:АП_84
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :topic "охранитель,нод,донбасс,суть времени,венесуэла" ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Борис_Юлин .
+
+:АП_85
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :topic "электроника,промышленное производство,алферов" ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Владимир_Бетелин .
+
+:АП_86
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Pablo_Hasel .
+
+:АП_87
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Алла_Бут .
+
+:АП_88
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Тимур_Хидиров .
+
+:АП_89
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :topic "венесуэла" ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Александр_Харламенко .
+
+:АП_9
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Хосе_Гонсалес_Лопес .
+
+:АП_90
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :topic "beauty-блоггинг,производственный роман,стругацкие,станислав лем,мао цзэдун" ;
+ :ref :Марина_Бурик ;
+ :date "2019-02-21"^^xsd:date ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Ольга_Михневич .
+
+:АП_91
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Алексей_Дзермант .
+
+:АП_92
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Алексей_Комов .
+
+:АП_93
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Алексей_Сафронов .
+
+:АП_94
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Рауф_Фаткуллин .
+
+:АП_95
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Андрей_Колганов .
+
+:АП_96
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Василий_Садонин .
+
+:АП_97
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Татьяна_Гартман .
+
+:АП_98
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Рустем_Булатов .
+
+:АП_99
+ rdf:type :Video ;
+ :channel :АгитПроп ;
+ :interviewer :Константин_Семин ;
+ :interviewee :Клим_Жуков .
+
+:Ариадна_Рокоссовская
+ rdf:type :Person .
+
+:Арина_Стасевич
+ rdf:type :Person .
+
+:Армен_Гаспарян
+ rdf:type :Person ;
+ :place :Москва .
+
+:Артем_Кирпиченок
+ rdf:type :Person .
+
+:Артем_Попов
+ rdf:type :Person ;
+ :job :Финансовый_университет_при_Правительстве_РФ .
+
+:Артем_Пылин
+ rdf:type :Person ;
+ :job :Институт_экономики_РАН .
+
+:Асер_Тихомиров
+ rdf:type :Person ;
+ :org :Oт.Каз .
+
+:Баир_Иринчеев
+ rdf:type :Person .
+
+:Беларусь
+ rdf:type :Country .
+
+:Борис_Асеев
+ rdf:type :Person ;
+ :tg "t.me/Boris_Aseev" ;
+ :org :O21 .
+
+:Борис_Б
+ rdf:type :Person ;
+ :place :Санкт-Петербург .
 
 :Борис_Кагарлицкий
  rdf:type :Person .
+
+:Борис_Морозов
+ :yt "youtube.com/@boris_morozov" ;
+ rdf:type :Person, :YTChannel ;
+ :yt-n "10700"^^xsd:positiveInteger ;
+ :place :Москва ;
+ :byear "2006" .
+
+:Борис_Надеждин
+ rdf:type :Person .
+
+:Борис_Папазян
+ rdf:type :Person ;
+ :place :Краснодар .
+
+:Борис_Т
+ rdf:type :Person ;
+ :org :Красная_Юрта .
 
 :Борис_Юлин
  rdf:type :Person .
@@ -523,11 +2198,27 @@ rdfs:Literal
 :Вадим_Винник
  rdf:type :Person .
 
+:Вадим_Дамье
+ rdf:type :Person .
+
 :Ванино
- :pop "15314" ;
+ :pop "15314"^^xsd:decimal ;
  rdf:type :Place ;
- :lat "49.089722" ;
- :lon "140.255278" .
+ :lat "49.089722"^^xsd:float ;
+ :lon "140.255278"^^xsd:float .
+
+:Варшава
+ rdf:type :Place .
+
+:Василий_Гриненко
+ rdf:type :Person .
+
+:Василий_Еремеев
+ rdf:type :Person ;
+ :place :Нью-Йорк .
+
+:Василий_Мельников
+ rdf:type :Person .
 
 :Василий_Садонин
  rdf:type :Person ;
@@ -535,146 +2226,974 @@ rdfs:Literal
  :place :Воронеж ;
  :bplace :Ванино .
 
+:Вася_Ложкин
+ rdf:type :Person .
+
+:ВБ_1
+ rdf:type :Video ;
+ :channel :Вестник_Бури ;
+ :interviewer :Андрей_Рудой ;
+ :interviewee :Олег_Комолов .
+
+:ВБ_10
+ rdf:type :Video ;
+ :channel :Вестник_Бури ;
+ :ref :Кирилл_Украинцев ;
+ :interviewer :Андрей_Рудой ;
+ :interviewee :Таисия .
+
+:ВБ_11
+ rdf:type :Video ;
+ :channel :Вестник_Бури ;
+ :interviewer :Андрей_Рудой ;
+ :interviewee :Александр_Штефанов .
+
+:ВБ_12
+ rdf:type :Video ;
+ :channel :Вестник_Бури ;
+ :interviewer :Андрей_Рудой ;
+ :interviewee :Василий_Садонин, :Макс_Якоби .
+
+:ВБ_13
+ rdf:type :Video ;
+ :channel :Вестник_Бури ;
+ :interviewer :Андрей_Рудой ;
+ :interviewee :Артем_Кирпиченок .
+
+:ВБ_14
+ rdf:type :Video ;
+ :channel :Вестник_Бури ;
+ :interviewer :Андрей_Рудой ;
+ :interviewee :Дмитрий_Козлов .
+
+:ВБ_15
+ rdf:type :Video ;
+ :channel :Вестник_Бури ;
+ :stream-participant :Алексей_Сахнин, :Лиза_Смирнова ;
+ :interviewer :Андрей_Рудой ;
+ :interviewee :Максим_Лебский .
+
+:ВБ_16
+ rdf:type :Video ;
+ :channel :Вестник_Бури ;
+ :interviewer :Андрей_Рудой ;
+ :interviewee :Дмитрий, :Михаил, :Кирилл_Украинцев .
+
+:ВБ_17
+ rdf:type :Video ;
+ :channel :Вестник_Бури ;
+ :review-of :Борис_Юлин ;
+ :interviewer :Андрей_Рудой ;
+ :interviewee :Айнур_Курманов, :Алибек_Тасыбеков, :Борис_Т .
+
+:ВБ_18
+ rdf:type :Video ;
+ :channel :Вестник_Бури ;
+ :interviewer :Андрей_Рудой ;
+ :interviewee :Николай_Росов, :Кирилл_Украинцев, :Даниил_Григорьев, :Василий_Садонин, :Константин_Семин .
+
+:ВБ_19
+ rdf:type :Video ;
+ :channel :Вестник_Бури ;
+ :interviewer :Андрей_Рудой ;
+ :interviewee :Михаил_Лобанов, :Элмар_Рустамов, :Василий_Еремеев, :Василий_Мельников .
+
+:ВБ_2
+ rdf:type :Video ;
+ :channel :Вестник_Бури ;
+ :interviewer :Андрей_Рудой ;
+ :interviewee :Макс_Якоби .
+
+:ВБ_20
+ rdf:type :Video ;
+ :channel :Вестник_Бури ;
+ :interviewer :Андрей_Рудой ;
+ :interviewee :Кирилл, :Константин_Агеев .
+
+:ВБ_21
+ rdf:type :Video ;
+ :channel :Вестник_Бури ;
+ :interviewer :Андрей_Рудой ;
+ :interviewee :Павел_Бадыров .
+
+:ВБ_22
+ rdf:type :Video ;
+ :channel :Вестник_Бури ;
+ :interviewer :Андрей_Рудой ;
+ :interviewee :Александр_Киященко .
+
+:ВБ_23
+ rdf:type :Video ;
+ :channel :Вестник_Бури ;
+ :topic "забастовка,крановщики" ;
+ :ref :МПРА ;
+ :interviewer :Андрей_Рудой ;
+ :interviewee :Табриз .
+
+:ВБ_24
+ rdf:type :Video ;
+ :channel :Вестник_Бури ;
+ :interviewer :Андрей_Рудой ;
+ :interviewee :Михаил_Погорелов .
+
+:ВБ_25
+ rdf:type :Video ;
+ :channel :Вестник_Бури ;
+ :interviewer :Андрей_Рудой ;
+ :interviewee :Дмитрий_Кожнев .
+
+:ВБ_3
+ rdf:type :Video ;
+ :channel :Вестник_Бури ;
+ :interviewer :Андрей_Рудой ;
+ :interviewee :Алексей_Сафронов .
+
+:ВБ_4
+ :interviewer :Андрей_Рудой ;
+ rdf:type :Video ;
+ :speaker :Василий_Садонин ;
+ :channel :Вестник_Бури .
+
+:ВБ_5
+ rdf:type :Video ;
+ :channel :Вестник_Бури ;
+ :topic "швеция" ;
+ :interviewer :Андрей_Рудой ;
+ :interviewee :Алексей_Сахнин .
+
+:ВБ_6
+ rdf:type :Video ;
+ :channel :Вестник_Бури ;
+ :topic "робототехника,ffa,триз,альтшуллер,макаренко" ;
+ :ref :Дмитрий_Пучков, :Егор_Яковлев, :Баир_Иринчеев ;
+ :interviewer :Андрей_Рудой ;
+ :interviewee :Николай_Пак .
+
+:ВБ_7
+ rdf:type :Video ;
+ :channel :Вестник_Бури ;
+ :interviewer :Андрей_Рудой ;
+ :interviewee :Дмитрий_Перевозов, :Давид .
+
+:ВБ_8
+ rdf:type :Video ;
+ :channel :Вестник_Бури ;
+ :interviewer :Андрей_Рудой ;
+ :interviewee :Николай_Бондаренко .
+
+:ВБ_9
+ rdf:type :Video ;
+ :channel :Вестник_Бури ;
+ :interviewer :Андрей_Рудой ;
+ :interviewee :Андрей_Замай .
+
 :Вектор
- rdf:type :Project ;
+ :start "17.04.2021" ;
+ rdf:type :ProcommunistOrganization, :YTChannel ;
  :founder :Илья_Ярский .
 
 :Вестник_Бури
  :yt "youtube.com/@Vestnik_Buri" ;
- rdf:type :Project ;
- :yt-n "320K" ;
+ rdf:type :YTChannel ;
+ :yt-n "320000"^^xsd:positiveInteger ;
  :founder :Андрей_Рудой .
 
+:Виктор_Анпилов
+ :ddate "2018-01-15"^^xsd:date ;
+ rdf:type :Person ;
+ :bdate "1945-10-02"^^xsd:date .
+
+:Виктор_Вахштайн
+ rdf:type :Person .
+
+:Виктор_Викторов
+ rdf:type :Person .
+
+:Виктория_Гарсия-Берналь
+ rdf:type :Person .
+
+:Виктория_Минюкова
+ rdf:type :Person .
+
+:Владимир_Бетелин
+ rdf:type :Person .
+
+:Владимир_Воронин
+ rdf:type :Person .
+
+:Владимир_Грубник
+ rdf:type :Person .
+
+:Владимир_Зайцев
+ rdf:type :Person .
+
+:Владимир_Лесик
+ rdf:type :Person .
+
+:Владимир_Меньшов
+ rdf:type :Person .
+
+:Владимир_Огородников
+ rdf:type :Person .
+
+:Владимир_Фридман
+ rdf:type :Person .
+
+:Владислав_Жуковский
+ rdf:type :Person .
+
+:Владлен_Невский
+ rdf:type :Person .
+
 :Воронеж
- :pop "1054111" ;
+ :pop "1054111"^^xsd:decimal ;
  rdf:type :Place ;
- :lat "51.661667" ;
- :lon "39.200278" .
+ :lat "51.661667"^^xsd:float ;
+ :lon "39.200278"^^xsd:float .
+
+:Все_работы_хороши
+ :yt "youtube.com/@vse_raboty_horoshi" ;
+ :yt-video-n "62"^^xsd:positiveInteger ;
+ rdf:type :YTChannel ;
+ :yt-n "1200000"^^xsd:positiveInteger ;
+ :founder :Олег_Assa .
 
 :Выход_есть
  :yt "youtube.com/@Vasiliy_Sadonin" ;
+ :yt-rec :Клим_Жуков, :Думай_сам_Думай_сейчас, :Вестник_Бури ;
  rdfs:label "Выход есть!" ;
- rdf:type :Project ;
- :yt-n "106K" ;
+ rdf:type :YTChannel ;
+ :yt-n "106000"^^xsd:positiveInteger ;
  :founder :Василий_Садонин .
 
 :Гавана
  rdf:type :Place .
 
-:Глеб_Маслов
- rdf:type :Person ;
- :job :Институт_экономики_РАН .
-
-:Гонсалес_Лопес
+:Гектор_Шпрее
  rdf:type :Person .
 
+:Германия
+ rdf:type :Country .
+
+:Глеб_Маслов
+ rdf:type :Person ;
+ :job :Институт_экономики_РАН, :Центр_современных_марксистских_исследований_МГУ .
+
+:Глеб_Таргонский
+ rdf:type :Person .
+
+:Греция
+ rdf:type :Country .
+
+:Григорий_Копанев
+ rdf:type :Person .
+
+:Григорий_Нонкон
+ rdf:type :Person ;
+ :place :Новосибирск ;
+ :bdate "1987-12-03"^^xsd:date .
+
+:Григорий_Юдин
+ rdf:type :Person .
+
+:Д_Джабборов
+ rdf:type :Person .
+
+:Давид
+ rdf:type :Person ;
+ :org :Lenin_Crew .
+
+:Дамаск
+ rdf:type :Place .
+
+:Даниил_Григорьев
+ rdf:type :Person .
+
+:Даниил_Ковалев
+ rdf:type :Person .
+
+:Данила_Курадовец
+ rdf:type :Person .
+
+:Даниэль_Жованас
+ rdf:type :Person .
+
+:Дармштадт
+ rdf:type :Place .
+
+:Держать_курс
+ :vk-n "8480"^^xsd:positiveInteger ;
+ :yt "youtube.com/@keepkurs" ;
+ :vk "vk.com/keepkurs1" ;
+ rdf:type :YTChannel ;
+ :yt-n "164000"^^xsd:positiveInteger ;
+ :founder :Борис_Б .
+
 :Джанни_Родари
- :musician :Константин_Семин ;
+ :musician :Константин_Семин, :Хосе_Гонсалес_Лопес ;
  rdf:type :MusicBand .
 
 :Дзержинск
- :pop "231797" ;
+ :pop "231797"^^xsd:decimal ;
  rdf:type :Place ;
- :lat "56.238333" ;
- :lon "43.461667" .
+ :lat "56.238333"^^xsd:float ;
+ :lon "43.461667"^^xsd:float .
+
+:Димитриос_Пателис
+ rdf:type :Person ;
+ :job :Университет_Крита .
+
+:Дмитрий
+ rdf:type :Person ;
+ :org :Рабочий_фронт_Украины .
+
+:Дмитрий_Данилов
+ rdf:type :Person .
+
+:Дмитрий_Дед_Архимед
+ rdf:type :Person ;
+ :place :Иваново ;
+ :bdate "1977-04-10"^^xsd:date .
+
+:Дмитрий_Исаенок
+ rdf:type :Person .
+
+:Дмитрий_Карбышев
+ rdf:type :Person .
+
+:Дмитрий_Кожнев
+ rdf:type :Person .
+
+:Дмитрий_Козлов
+ rdf:type :Person ;
+ :org :Правда_сотрудников .
+
+:Дмитрий_Перевозов
+ rdf:type :Person ;
+ :org :Lenin_Crew .
+
+:Дмитрий_Пучков
+ rdf:type :Person ;
+ :place :Санкт-Петербург .
+
+:Дмитрий_Солодин
+ :yt "youtube.com/@uptrader" ;
+ rdf:type :YTChannel ;
+ :yt-n "141000"^^xsd:positiveInteger ;
+ :founder :Дмитрий_Солодин .
+
+:Дмитрий_Соседов
+ rdf:type :Person .
+
+:Дневник_депутата
+ :yt "youtube.com/@bondarenko_blog" ;
+ :yt-video-n "1300"^^xsd:positiveInteger ;
+ rdf:type :YTChannel ;
+ :yt-n "1820000"^^xsd:positiveInteger ;
+ :founder :Николай_Бондаренко .
 
 :Думай_сам_Думай_сейчас
  :boosty "boosty.to/yhinkyourself" ;
  :yt "youtube.com/@ThinkYourSelf_ThinkNow" ;
- rdf:type :Project ;
- :yt-n "189K" ;
+ rdf:type :YTChannel ;
+ :yt-n "189000"^^xsd:positiveInteger ;
  :founder :Святослав_Варнашов .
 
+:Евгений_Анищенко
+ rdf:type :Person .
+
+:Евгений_Баженов
+ rdf:type :Person .
+
+:Евгений_Казначеев
+ rdf:type :Person .
+
+:Евгений_Спицын
+ rdf:type :Person .
+
+:Евгений_Ступин
+ rdf:type :Person ;
+ :org :КПРФ .
+
+:Евгений_Федоров
+ rdf:type :Person .
+
+:Евгения_Керубини
+ rdf:type :Person ;
+ :org :КрасноBY .
+
+:Евгения_Родионова
+ rdf:type :Person .
+
+:Егор_Иванов
+ rdf:type :Person .
+
+:Егор_Красный_Декор
+ :country :Новая_Зеландия ;
+ rdf:type :Person ;
+ :bplace :Норильск .
+
+:Егор_Яковлев
+ rdf:type :Person .
+
+:Екатерина_Сосунова
+ rdf:type :Person ;
+ :place :Екатеринбург .
+
+:Екатеринбург
+ rdf:type :Place .
+
+:Елена_Васильева
+ rdf:type :Person ;
+ :place :Новосибирск .
+
+:Елена_Янчук
+ rdf:type :Person .
+
+:Жанна_Болотова
+ rdf:type :Person .
+
 :Зеленоград
- :pop "262505" ;
+ :pop "262505"^^xsd:decimal ;
  rdf:type :Place ;
- :lat "55.991893" ;
- :lon "37.214382" .
+ :lat "55.991893"^^xsd:float ;
+ :lon "37.214382"^^xsd:float .
+
+:Ибрагим_Магомедов
+ rdf:type :Person ;
+ :place :Махачкала .
+
+:Иван_Балагуров
+ rdf:type :Person .
 
 :Иван_Поляков
+ rdf:type :Person ;
+ :place :Воронеж ;
+ :byear "1998" .
+
+:Иваново
+ rdf:type :Place .
+
+:Игорь_Стрелков
+ rdf:type :Person .
+
+:Ижевск
+ :pop "648944"^^xsd:decimal ;
+ rdf:type :Place ;
+ :lat "56.849722"^^xsd:float ;
+ :lon "53.207222"^^xsd:float .
+
+:Илья_Будрайтскис
  rdf:type :Person .
 
 :Илья_Ярский
  rdf:type :Person .
 
+:Индия
+ rdf:type :Country .
+
 :Институт_экономики_РАН
  rdf:type :ResearchInstitute .
 
+:Ираклион
+ rdf:type :Country .
+
+:Ирина_Штерк
+ rdf:type :Person .
+
+:Испания
+ rdf:type :Country .
+
+:Казань
+ rdf:type :Place .
+
+:Кали_Новская
+ rdf:type :Person .
+
+:Катерина_Кирбирева
+ rdf:type :Person ;
+ :job :РЭУ_Плеханова .
+
+:КЖ_1
+ rdf:type :Video ;
+ :channel :Клим_Жуков ;
+ :topic "коттеджкор" ;
+ :interviewer :Клим_Жуков ;
+ :interviewee :Анна_Филинн .
+
+:КЖ_2
+ rdf:type :Video ;
+ :channel :Клим_Жуков ;
+ :topic "сталин" ;
+ :interviewer :Клим_Жуков ;
+ :interviewee :Владимир_Зайцев .
+
+:КЖ_3
+ rdf:type :Video ;
+ :channel :Клим_Жуков ;
+ :interviewer :Клим_Жуков ;
+ :interviewee :Реми_Майснер .
+
+:КЖ_4
+ rdf:type :Video ;
+ :channel :Клим_Жуков ;
+ :interviewer :Клим_Жуков ;
+ :interviewee :Олег_Двуреченский .
+
+:КЖ_5
+ rdf:type :Video ;
+ :channel :Клим_Жуков ;
+ :interviewer :Клим_Жуков ;
+ :interviewee :Глеб_Таргонский .
+
+:Кирилл
+ rdf:type :Person ;
+ :org :КрасноBY .
+
+:Кирилл_Украинцев
+ rdf:type :Person .
+
 :Китай
- rdf:type :country .
+ rdf:type :Country .
 
 :Клим_Жуков
- :participant :Олег_Двуреченский ;
  :yt "youtube.com/@uzhukoffa" ;
- rdf:type :Person, :Project, :InterviewSite ;
- :yt-n "748K" .
+ rdf:type :Person, :YTChannel, :InterviewSite ;
+ :yt-n "748000"^^xsd:positiveInteger ;
+ :founder :Клим_Жуков .
+
+:Константин_Агеев
+ rdf:type :Person ;
+ :org :КрасноBY .
+
+:Константин_Гаазе
+ rdf:type :Person .
+
+:Константин_Красноперов
+ rdf:type :Person .
+
+:Константин_Кузнецов
+ rdf:type :Person ;
+ :org :Политпросвет .
 
 :Константин_Семин
- :participant :Yugopnik ;
- :yt "youtube.com/@Agit_Prop" ;
- rdf:type :Person, :Project, :News, :InterviewSite ;
- :yt-n "766K" .
+ rdf:type :Person ;
+ :bdate "1980-03-16"^^xsd:date ;
+ :bplace :Екатеринбург .
+
+:КП_1
+ rdf:type :Video ;
+ :speaker :Олег_Мецлер, :Роман_Осин, :Сергей_Крупенько, :Сергей_Новиков ;
+ :channel :Красный_поворот .
+
+:КП_2
+ rdf:type :Video ;
+ :speaker :Олег_Мецлер, :Сергей_Крупенько ;
+ :channel :Красный_поворот ;
+ :ref :Красное_Радио .
+
+:КПРФ
+ rdf:type :PoliticalParty .
+
+:КР_1
+ rdf:type :Video ;
+ :speaker :Анжелика_Глазкова ;
+ :channel :Красное_Радио .
+
+:Красная_Юрта
+ :yt "youtube.com/@Red_Yurt" ;
+ rdf:type :ProcommunistOrganization ;
+ :yt-n "28300"^^xsd:positiveInteger .
 
 :КрасноBY
+ :place :Минск ;
  :yt "youtube.com/@krasnoby" ;
- :lecture :Почему_нужно_мыслить_диалектически ;
- rdf:type :Project ;
- :yt-n "48.1K" .
+ :yt-rec :Poligraf_Red, :Простые_числа, :Красная_Юрта, :Вектор, :Рабочий_фронт_Украины, :РТФ, :Res_Publica ;
+ rdf:type :ProcommunistOrganization, :MarxistCircle, :YTChannel ;
+ :yt-n "48100"^^xsd:positiveInteger .
+
+:Краснодар
+ rdf:type :Place .
+
+:Красное_Радио
+ :yt "youtube.com/@KrasnoeRadio" ;
+ rdf:type :YTChannel ;
+ :yt-n "516000"^^xsd:positiveInteger .
 
 :Красное_ТВ
- :yt "outube.com/@krasnoetv24" ;
- rdf:type :Project ;
- :yt-n "79K" ;
+ :yt "youtube.com/@krasnoetv24" ;
+ rdf:type :YTChannel ;
+ :yt-n "79000"^^xsd:positiveInteger ;
  :founder :Олег_Двуреченский .
 
 :Красный_поворот
  :yt "youtube.com/@red_turn" ;
- rdf:type :Project ;
- :yt-n "16.7K" .
+ rdf:type :YTChannel ;
+ :yt-n "16700"^^xsd:positiveInteger ;
+ :founder :Сергей_Крупенько .
+
+:Красный_Циник
+ :yt "youtube.com/@redcynicrus" ;
+ :yt-video-n "129"^^xsd:positiveInteger ;
+ rdf:type :YTChannel ;
+ :yt-n "269000"^^xsd:positiveInteger .
+
+:Ксения_Собчак
+ rdf:type :Person .
+
+:КТВ_1
+ rdf:type :Video ;
+ :speaker :Глеб_Таргонский, :Владимир_Зайцев ;
+ :channel :Красное_ТВ ;
+ :topic "махно,анархизм" .
 
 :Куба
- rdf:type :country .
+ rdf:type :Country .
+
+:Курьер
+ rdf:type :TradeUnion ;
+ :tg "t.me/courier_fight" .
+
+:Лебский_2021
+ :year "2021"^^xsd:gYear ;
+ :author :Максим_Лебский ;
+ :title "Рабочий класс в СССР: жизнь в условиях промышленного патернализма" ;
+ rdf:type :Book .
+
+:Лев_Данилкин
+ rdf:type :Person .
+
+:Левый_Фронт
+ rdf:type :ProcommunistOrganization .
+
+:Лига_Роботов
+ :url "ligarobotov.ru" ;
+ rdf:type :ProcommunistOrganization ;
+ :founder :Николай_Пак .
+
+:Лиза_Лазерсон
+ rdf:type :Person .
+
+:Лиза_Смирнова
+ rdf:type :Person .
+
+:Людмила_Булавка-Бузгалина
+ rdf:type :Person ;
+ :job :Центр_современных_марксистских_исследований_МГУ .
+
+:Мадрид
+ rdf:type :Place .
+
+:Майкоп
+ rdf:type :Place .
+
+:Макс_Якоби
+ rdf:type :Person .
+
+:Максим_Дессар
+ rdf:type :Person .
+
+:Максим_Лебский
+ rdf:type :Person ;
+ :edu :СПбГУ .
+
+:Максим_Рыков
+ rdf:type :Person .
+
+:Максим_Шевченко
+ rdf:type :Person ;
+ :org :РПСС .
+
+:Маргарита_Ritartha
+ :country :Новая_Зеландия ;
+ rdf:type :Person ;
+ :bplace :Норильск .
+
+:Марина_Бурик
+ rdf:type :Person .
+
+:Марина_Перова
+ rdf:type :Person .
 
 :Мария_Тереза
+ rdf:type :Person ;
+ :org :Station_Marx .
+
+:Марксистская_Тенденция
+ rdf:type :ProcommunistOrganization .
+
+:Марьяна_Таволжанская
  rdf:type :Person .
+
+:Махачкала
+ rdf:type :Place .
+
+:МГУ
+ rdf:type :University, :Faculty ;
+ :place :Москва ;
+ :faculty-of :universities, :faculties .
 
 :МГУУ_Правительства_Москвы
  rdf:type :University ;
  :place :Москва .
 
+:Мехмат_НГУ
+ rdf:type :Faculty ;
+ :faculty-of :НГУ .
+
+:Минск
+ rdf:type :Place .
+
+:Михаил
+ rdf:type :Person ;
+ :org :Рабочий_фронт_Украины .
+
+:Михаил_Балбус
+ rdf:type :Person .
+
+:Михаил_Викулин
+ rdf:type :Person .
+
+:Михаил_Лобанов
+ rdf:type :Person .
+
+:Михаил_Магид
+ rdf:type :Person .
+
+:Михаил_Новитский
+ rdf:type :Person ;
+ :place :Варшава .
+
+:Михаил_Погорелов
+ rdf:type :Person .
+
+:Михаил_Попов
+ rdf:type :Person .
+
+:Михаил_Светов
+ rdf:type :Person .
+
+:Михаил_Тимонов
+ rdf:type :Person .
+
+:МК_Молот
+ rdf:type :ProcommunistOrganization ;
+ :place :Тюмень ;
+ :vk-n "6750"^^xsd:positiveInteger ;
+ :vk "vk.com/mkmolot" .
+
+:МК_Энгельс
+ rdf:type :ProcommunistOrganization ;
+ :curator :Елена_Васильева ;
+ :vk-n "13000"^^xsd:positiveInteger ;
+ :vk "vk.com/derengels" .
+
+:МНДР
+ :vk-n "25000"^^xsd:positiveInteger ;
+ :vk "vk.com/mempdr" ;
+ rdf:type :VKPublic ;
+ :founder :Василий_Мельников, :Михаил_Викулин .
+
 :Москва
- :pop "11801572" ;
+ :pop "11801572"^^xsd:decimal ;
  rdf:type :Place ;
- :lat "55.753889" ;
- :lon "37.620278" .
+ :lat "55.753889"^^xsd:float ;
+ :lon "37.620278"^^xsd:float .
+
+:МПРА
+ rdf:type :TradeUnion .
+
+:Мутный
+ rdf:type :MusicBand .
+
+:Мятежник_Джек
+ rdf:type :YTChannel ;
+ :founder :Александр_Киященко .
+
+:Наталья_Бармина
+ rdf:type :Person ;
+ :job :УдмГУ .
+
+:Наталья_Ощемкова
+ rdf:type :Person .
+
+:Наталья_Яковлева
+ rdf:type :Person ;
+ :job :Центр_современных_марксистских_исследований_МГУ .
+
+:НГУ
+ rdf:type :University, :Faculty ;
+ :place :Новосибирск ;
+ :faculty-of :universities, :faculties .
 
 :Нижний_Новгород
- :pop "1276560" ;
+ :pop "1276560"^^xsd:decimal ;
  rdf:type :Place ;
- :lat "56.326944" ;
- :lon "44.006111" .
+ :lat "56.326944"^^xsd:float ;
+ :lon "44.006111"^^xsd:float .
+
+:Николай_Бондаренко
+ rdf:type :Person .
+
+:Николай_Губенко
+ rdf:type :Person .
+
+:Николай_Пак
+ rdf:type :Person ;
+ :place :Новосибирск ;
+ :edu :Мехмат_НГУ .
+
+:Николай_Платошкин
+ rdf:type :Person .
+
+:Николай_Росов
+ rdf:type :Person .
+
+:Николас_Микеа
+ rdf:type :MusicBand .
+
+:Ноам_Хомский
+ rdf:type :Person .
+
+:Новая_Зеландия
+ rdf:type :Country .
+
+:Новосибирск
+ rdf:type :Place .
+
+:Новые_Красные
+ rdf:type :ProcommunistOrganization ;
+ :from :Союз_Марксистов .
+
+:Норильск
+ rdf:type :Place .
+
+:Нью-Дели
+ rdf:type :Country .
+
+:Нью-Йорк
+ rdf:type :Place .
+
+:Олег_Assa
+ rdf:type :Person ;
+ :place :Москва ;
+ :bplace :Пермь ;
+ :byear "1987" .
 
 :Олег_Двуреченский
  rdf:type :Person .
 
+:Олег_Калачев
+ rdf:type :Person .
+
+:Олег_Кашин
+ rdf:type :Person .
+
+:Олег_Комолов
+ rdf:type :Person .
+
+:Олег_Кэп
+ rdf:type :Person .
+
+:Олег_Мецлер
+ rdf:type :Person .
+
+:Олег_Михайлов
+ rdf:type :Person .
+
+:Олег_Смолин
+ rdf:type :Person .
+
 :Олег_Ткач
  :yt "youtube.com/@OlegTka4" ;
- rdf:type :Person, :Project ;
- :yt-n "7.8K" .
+ rdf:type :Person, :YTChannel ;
+ :yt-n "7800"^^xsd:positiveInteger .
+
+:Олег_Ясинский
+ rdf:type :Person ;
+ :place :Сантьяго .
+
+:Ольга_Кононова
+ rdf:type :Person .
+
+:Ольга_Михневич
+ rdf:type :Person .
+
+:Организация_коммунистов-интернационалистов
+ rdf:type :ProcommunistOrganization ;
+ :from :Новые_Красные, :Марксистская_Тенденция ;
+ :tg "t.me/okintern" .
+
+:Павел_Бадыров
+ rdf:type :Person .
+
+:Павел_Грудинин
+ rdf:type :Person .
+
+:Павел_Тарасов
+ rdf:type :Person .
 
 :Пекин
  rdf:type :Place .
 
-:Почему_нужно_мыслить_диалектически
- rdf:type :Lecture ;
- :speaker :Вадим_Винник ;
- rdfs:label "Почему нужно мыслить диалектически?" .
+:Пермь
+ rdf:type :Place .
+
+:Петр_Петровский
+ rdf:type :Person .
+
+:Пионерлагерь_Пыльная_Радуга
+ :musician :Алексей_Румянцев ;
+ rdf:type :MusicBand .
+
+:Плохой_сигнал
+ :boosty-n "6052"^^xsd:positiveInteger ;
+ :boosty "boosty.to/badsignal" ;
+ :yt "youtube.com/@bad_signal" ;
+ rdf:type :YTChannel ;
+ :yt-n "289000"^^xsd:positiveInteger ;
+ :founder :Егор_Иванов .
+
+:Победитель
+ :boosty-n "11"^^xsd:positiveInteger ;
+ :url "pbd.su" ;
+ :boosty "boosty.to/pbdsu" ;
+ rdf:type :YTChannel ;
+ :yt-n "24900"^^xsd:positiveInteger ;
+ :yt "youtube.com/@PBD_SU" ;
+ :editor-in-chief :Василий_Еремеев .
+
+:Политпросвет
+ :vk-n "4000"^^xsd:positiveInteger ;
+ :email "politprosvet@rotfront.org" ;
+ :vk "vk.com/mk_politprosvet" ;
+ :start "2011" ;
+ rdf:type :ProcommunistOrganization, :EducationalClub ;
+ :yt-n "2130"^^xsd:positiveInteger ;
+ :yt "youtube.com/@club.politprosvet" ;
+ :discord "discord.gg/qpkKxJTRkE", "discord.gg/4M5678xVpT" .
+
+:Польская_рабочая_партия
+ rdf:type :PoliticalParty ;
+ :member :Михаил_Новитский .
+
+:Польша
+ rdf:type :Country .
+
+:Посольство_Республики_Куба_в_РФ
+ rdf:type :StateOrganization ;
+ :place :Москва .
+
+:Правда_сотрудников
+ rdf:type :TradeUnion ;
+ :tg "t.me/wb_pravda_sotrudnikov" ;
+ :start "2020" .
 
 :Призыв_к_разуму
- :yt "youtube.com/channel/UCLTIJiUaJklC1OuG92mBXLA" ;
- :author :Иван_Поляков ;
- rdf:type :Project ;
- :yt-n "47.3K" .
+ :yt "youtube.com/@appeal_to" ;
+ rdf:type :YTChannel ;
+ :yt-n "47300"^^xsd:positiveInteger ;
+ :founder :Иван_Поляков .
 
 :Производственная_кооперация_radcop.online
  :url "radcop.online" ;
@@ -682,55 +3201,941 @@ rdfs:Literal
  rdf:type :Project ;
  :founder :Рустам_Гусейнов .
 
+:Прорывист
+ rdf:type :YTChannel ;
+ :url "prorivists.org" ;
+ :editor :Роман_Огиенко .
+
 :Простые_числа
- :participant :Константин_Семин, :Рустам_Гусейнов, :Рафаэль_Абдулов, :Александр_Буслов, :Святослав_Варнашов, :Роман_Осин, :Александр_Кубалов, :Иван_Поляков, :Александр_Батов, :Александра_Арабаджян, :Гонсалес_Лопес, :Глеб_Маслов, :Александр_Бузгалин ;
+ :voice_actor :Ирина_Штерк ;
+ :videographer :Константин_Красноперов ;
+ :speaker :Олег_Комолов, :Алексей_Сафронов, :Рафаэль_Абдулов, :Александр_Батов, :Марина_Перова, :Евгения_Родионова ;
+ :reviewer :Алина_Браздейкене ;
+ :boosty "boosty.to/primenumbers" ;
  :yt "youtube.com/@PN_chanel" ;
- rdf:type :Project ;
- :yt-n "409K" .
+ :yt-rec :Плохой_сигнал, :Вестник_Бури, :Думай_сам_Думай_сейчас, :Выход_есть, :Держать_курс, :РТФ ;
+ rdf:type :YTChannel ;
+ :yt-n "409000"^^xsd:positiveInteger ;
+ :founder :Олег_Комолов, :Константин_Красноперов .
+
+:ПрофКон
+ rdf:type :ProcommunistOrganization .
+
+:ПЧ_1
+ :channel :Простые_числа ;
+ :ref :МК_Молот ;
+ :date "2023-10-27"^^xsd:date ;
+ :interviewer :Олег_Комолов ;
+ :interviewee :Святослав_Варнашов ;
+ :v "69000"^^xsd:positiveInteger ;
+ rdf:type :Video .
+
+:ПЧ_10
+ rdf:type :Video ;
+ :channel :Простые_числа ;
+ :interviewer :Олег_Комолов ;
+ :interviewee :Глеб_Маслов .
+
+:ПЧ_12
+ rdf:type :Video ;
+ :channel :Простые_числа ;
+ :interviewer :Олег_Комолов ;
+ :interviewee :Артем_Попов .
+
+:ПЧ_13
+ rdf:type :Video ;
+ :channel :Простые_числа ;
+ :interviewer :Олег_Комолов ;
+ :interviewee :Александр_Бузгалин .
+
+:ПЧ_14
+ rdf:type :Video ;
+ :channel :Простые_числа ;
+ :interviewer :Олег_Комолов ;
+ :interviewee :Ирина_Штерк .
+
+:ПЧ_15
+ rdf:type :Video ;
+ :channel :Простые_числа ;
+ :interviewer :Александр_Батов ;
+ :interviewee :Сергей_Шереметьев .
+
+:ПЧ_16
+ rdf:type :Video ;
+ :channel :Простые_числа ;
+ :interviewer :Олег_Комолов ;
+ :interviewee :Катерина_Кирбирева .
+
+:ПЧ_17
+ rdf:type :Video ;
+ :channel :Простые_числа ;
+ :interviewer :Олег_Комолов ;
+ :interviewee :Сергей_Новиков .
+
+:ПЧ_18
+ rdf:type :Video ;
+ :channel :Простые_числа ;
+ :interviewer :Олег_Комолов ;
+ :interviewee :Константин_Красноперов .
+
+:ПЧ_19
+ rdf:type :Video ;
+ :channel :Простые_числа ;
+ :interviewer :Олег_Комолов ;
+ :interviewee :Рафаэль_Абдулов .
+
+:ПЧ_2
+ :channel :Простые_числа ;
+ :interviewer :Олег_Комолов ;
+ :interviewee :Рустам_Гусейнов ;
+ :v "33000"^^xsd:positiveInteger ;
+ rdf:type :Video .
+
+:ПЧ_20
+ rdf:type :Video ;
+ :channel :Простые_числа ;
+ :interviewer :Олег_Комолов ;
+ :interviewee :Роман_Осин .
+
+:ПЧ_21
+ rdf:type :Video ;
+ :channel :Простые_числа ;
+ :interviewer :Олег_Комолов ;
+ :interviewee :Руслан_Дзарасов .
+
+:ПЧ_22
+ rdf:type :Video ;
+ :channel :Простые_числа ;
+ :interviewer :Олег_Комолов ;
+ :interviewee :Тамара_Степанова .
+
+:ПЧ_23
+ rdf:type :Video ;
+ :channel :Простые_числа ;
+ :interviewer :Олег_Комолов ;
+ :interviewee :Елена_Янчук .
+
+:ПЧ_24
+ rdf:type :Video ;
+ :channel :Простые_числа ;
+ :interviewer :Олег_Комолов ;
+ :interviewee :Рафаэль_Абдулов .
+
+:ПЧ_25
+ rdf:type :Video ;
+ :channel :Простые_числа ;
+ :interviewer :Олег_Комолов ;
+ :interviewee :Владислав_Жуковский .
+
+:ПЧ_26
+ rdf:type :Video ;
+ :channel :Простые_числа ;
+ :interviewer :Олег_Комолов ;
+ :interviewee :Евгений_Баженов .
+
+:ПЧ_27
+ rdf:type :Video ;
+ :channel :Простые_числа ;
+ :interviewer :Олег_Комолов ;
+ :interviewee :Владимир_Воронин .
+
+:ПЧ_28
+ rdf:type :Video ;
+ :channel :Простые_числа ;
+ :interviewer :Олег_Комолов ;
+ :interviewee :Станислав_Рузанов .
+
+:ПЧ_29
+ rdf:type :Video ;
+ :channel :Простые_числа ;
+ :interviewer :Олег_Комолов ;
+ :interviewee :Стас_Васильев .
+
+:ПЧ_3
+ rdf:type :Video ;
+ :channel :Простые_числа ;
+ :interviewer :Олег_Комолов ;
+ :interviewee :Александр_Буслов .
+
+:ПЧ_30
+ rdf:type :Video ;
+ :channel :Простые_числа ;
+ :interviewer :Олег_Комолов ;
+ :interviewee :Роман_Осин .
+
+:ПЧ_31
+ rdf:type :Video ;
+ :channel :Простые_числа ;
+ :interviewer :Олег_Комолов ;
+ :interviewee :Марина_Бурик .
+
+:ПЧ_32
+ rdf:type :Video ;
+ :channel :Простые_числа ;
+ :interviewer :Олег_Комолов ;
+ :interviewee :Александр_Батов .
+
+:ПЧ_33
+ rdf:type :Video ;
+ :channel :Простые_числа ;
+ :topic "куба" ;
+ :interviewer :Олег_Комолов, :Рафаэль_Абдулов ;
+ :interviewee :Александра_Арабаджян .
+
+:ПЧ_34
+ rdf:type :Video ;
+ :channel :Простые_числа ;
+ :interviewer :Олег_Комолов ;
+ :interviewee :Виктория_Гарсия-Берналь .
+
+:ПЧ_35
+ rdf:type :Video ;
+ :channel :Простые_числа ;
+ :topic "куба" ;
+ :date "2021-08-20"^^xsd:date ;
+ :interviewer :Олег_Комолов, :Рафаэль_Абдулов ;
+ :interviewee :Александра_Арабаджян .
+
+:ПЧ_36
+ rdf:type :Video ;
+ :channel :Простые_числа ;
+ :interviewer :Олег_Комолов ;
+ :interviewee :Сергей_Толкачев .
+
+:ПЧ_37
+ rdf:type :Video ;
+ :channel :Простые_числа ;
+ :interviewer :Олег_Комолов ;
+ :interviewee :Наталья_Бармина .
+
+:ПЧ_38
+ rdf:type :Video ;
+ :channel :Простые_числа ;
+ :interviewer :Олег_Комолов ;
+ :interviewee :Наталья_Яковлева .
+
+:ПЧ_39
+ rdf:type :Video ;
+ :channel :Простые_числа ;
+ :interviewer :Олег_Комолов ;
+ :interviewee :Артем_Пылин .
+
+:ПЧ_4
+ rdf:type :Video ;
+ :channel :Простые_числа ;
+ :interviewer :Олег_Комолов ;
+ :interviewee :Александр_Кубалов .
+
+:ПЧ_40
+ rdf:type :Video ;
+ :channel :Простые_числа ;
+ :interviewer :Олег_Комолов ;
+ :interviewee :Глеб_Маслов .
+
+:ПЧ_41
+ rdf:type :Video ;
+ :channel :Простые_числа ;
+ :interviewer :Олег_Комолов ;
+ :interviewee :Андрей_Колганов .
+
+:ПЧ_42
+ rdf:type :Video ;
+ :channel :Простые_числа ;
+ :interviewer :Олег_Комолов ;
+ :interviewee :Даниил_Григорьев .
+
+:ПЧ_43
+ rdf:type :Video ;
+ :channel :Простые_числа ;
+ :interviewer :Олег_Комолов ;
+ :interviewee :Александр_Бузгалин .
+
+:ПЧ_44
+ rdf:type :Video ;
+ :channel :Простые_числа ;
+ :interviewer :Олег_Комолов ;
+ :interviewee :Александр_Бузгалин .
+
+:ПЧ_5
+ rdf:type :Video ;
+ :channel :Простые_числа ;
+ :interviewer :Алексей_Сафронов ;
+ :interviewee :Григорий_Копанев .
+
+:ПЧ_6
+ rdf:type :Video ;
+ :channel :Простые_числа ;
+ :interviewer :Олег_Комолов ;
+ :interviewee :Александр_Усенко .
+
+:ПЧ_7
+ rdf:type :Video ;
+ :channel :Простые_числа ;
+ :interviewer :Олег_Комолов ;
+ :interviewee :Иван_Поляков .
+
+:ПЧ_8
+ rdf:type :Video ;
+ :channel :Простые_числа ;
+ :interviewer :Олег_Комолов ;
+ :interviewee :Александра_Арабаджян .
+
+:ПЧ_9
+ rdf:type :Video ;
+ :channel :Простые_числа ;
+ :interviewer :Олег_Комолов ;
+ :interviewee :Хосе_Гонсалес_Лопес .
+
+:Рабкор
+ :yt "youtube.com/@rabkor" ;
+ :yt-video-n "1700"^^xsd:positiveInteger ;
+ rdf:type :YTChannel ;
+ :yt-n "120000"^^xsd:positiveInteger ;
+ :founder :Борис_Кагарлицкий .
+
+:Рабкор_1
+ rdf:type :Video ;
+ :channel :Рабкор ;
+ :interviewer :Евгения_Родионова ;
+ :interviewee :Александр_Штефанов .
+
+:Рабкор_10
+ rdf:type :Video ;
+ :speaker :Екатерина_Сосунова ;
+ :channel :Рабкор .
+
+:Рабкор_11
+ rdf:type :Video ;
+ :speaker :Борис_Кагарлицкий ;
+ :channel :Рабкор .
+
+:Рабкор_12
+ rdf:type :Video ;
+ :speaker :Сергей_Ерохов ;
+ :channel :Рабкор .
+
+:Рабкор_13
+ rdf:type :Video ;
+ :channel :Рабкор ;
+ :interviewer :Олег_Калачев ;
+ :interviewee :Евгений_Ступин .
+
+:Рабкор_14
+ :channel :Рабкор ;
+ :participant :Виктория_Гарсия-Берналь, :Андрей_Чирук, :Иван_Балагуров, :Андрей_Рудой, :Вадим_Дамье, :Янита_Гора, :Александр_Батов, :Евгений_Казначеев ;
+ :topic "профсоюзы" ;
+ :date "2022-05-14"^^xsd:date ;
+ rdf:type :Video ;
+ :moderator :Гектор_Шпрее .
+
+:Рабкор_15
+ :interviewee :Ноам_Хомский ;
+ rdf:type :Video ;
+ :channel :Рабкор .
+
+:Рабкор_16
+ :channel :Рабкор ;
+ :participant :Сергей_Левченко, :Петр_Петровский, :Борис_Кагарлицкий, :Владлен_Невский ;
+ rdf:type :Video ;
+ :moderator :Дмитрий_Данилов, :Антон_Просекин .
+
+:Рабкор_17
+ :interviewee :Николай_Бондаренко ;
+ rdf:type :Video ;
+ :channel :Рабкор .
+
+:Рабкор_18
+ rdf:type :Video ;
+ :speaker :Сергей_Левченко ;
+ :channel :Рабкор .
+
+:Рабкор_19
+ :interviewee :Павел_Грудинин ;
+ rdf:type :Video ;
+ :channel :Рабкор .
+
+:Рабкор_2
+ rdf:type :Video ;
+ :channel :Рабкор ;
+ :interviewer :Евгения_Родионова ;
+ :interviewee :Олег_Комолов .
+
+:Рабкор_20
+ rdf:type :Video ;
+ :speaker :Борис_Кагарлицкий ;
+ :channel :Рабкор ;
+ :ref :РПСС .
+
+:Рабкор_21
+ rdf:type :Video ;
+ :speaker :Борис_Кагарлицкий ;
+ :channel :Рабкор ;
+ :ref :Константин_Семин, :Дмитрий_Пучков .
+
+:Рабкор_22
+ rdf:type :Video ;
+ :speaker :Сергей_Ребров ;
+ :channel :Рабкор .
+
+:Рабкор_23
+ rdf:type :Video ;
+ :speaker :Даниил_Григорьев ;
+ :channel :Рабкор .
+
+:Рабкор_24
+ rdf:type :Video ;
+ :channel :Рабкор ;
+ :interviewer :Евгения_Родионова ;
+ :interviewee :Константин_Семин .
+
+:Рабкор_25
+ :interviewer :Евгения_Родионова ;
+ rdf:type :Video ;
+ :channel :Рабкор ;
+ :participant :Григорий_Юдин, :Лиза_Лазерсон, :Евгений_Ступин, :Александр_Штефанов, :Алексей_Сахнин, :Михаил_Светов, :Максим_Шевченко, :Михаил_Лобанов, :Андрей_Рудой, :Илья_Будрайтскис .
+
+:Рабкор_26
+ rdf:type :Video ;
+ :channel :Рабкор ;
+ :interviewer :Борис_Кагарлицкий ;
+ :interviewee :Григорий_Юдин .
+
+:Рабкор_27
+ rdf:type :Video ;
+ :channel :Рабкор ;
+ :interviewer :Евгения_Родионова ;
+ :interviewee :Владимир_Фридман .
+
+:Рабкор_28
+ rdf:type :Video ;
+ :channel :Рабкор ;
+ :interviewer :Борис_Кагарлицкий ;
+ :interviewee :Дмитрий_Дед_Архимед .
+
+:Рабкор_29
+ rdf:type :Video ;
+ :channel :Рабкор ;
+ :participant :Михаил_Лобанов, :Евгения_Родионова, :Борис_Кагарлицкий, :Андрей_Рудой, :Александр_Арчагов, :Евгений_Ступин .
+
+:Рабкор_3
+ rdf:type :Video ;
+ :channel :Рабкор ;
+ :participant :Ксения_Собчак, :Василий_Садонин, :Евгений_Баженов, :Олег_Михайлов, :Алексей_Сафронов, :Виктор_Вахштайн, :Анна_Очкина .
+
+:Рабкор_30
+ rdf:type :Video ;
+ :channel :Рабкор ;
+ :interviewer :Борис_Кагарлицкий ;
+ :interviewee :Рафаэль_Абдулов .
+
+:Рабкор_31
+ rdf:type :Video ;
+ :channel :Рабкор ;
+ :interviewer :Евгения_Родионова ;
+ :interviewee :Алексей_Сафронов .
+
+:Рабкор_32
+ rdf:type :Video ;
+ :channel :Рабкор ;
+ :interviewer :Борис_Кагарлицкий ;
+ :interviewee :Алексей_Марков .
+
+:Рабкор_33
+ rdf:type :Video ;
+ :channel :Рабкор ;
+ :interviewer :Борис_Кагарлицкий ;
+ :interviewee :Евгений_Баженов .
+
+:Рабкор_34
+ rdf:type :Video ;
+ :channel :Рабкор ;
+ :interviewer :Евгения_Родионова ;
+ :interviewee :Александр_Батов .
+
+:Рабкор_35
+ rdf:type :Video ;
+ :channel :Рабкор ;
+ :topic "иран" ;
+ :interviewer :Борис_Кагарлицкий ;
+ :interviewee :Александр_Рыбин .
+
+:Рабкор_36
+ rdf:type :Video ;
+ :channel :Рабкор ;
+ :interviewer :Борис_Кагарлицкий ;
+ :interviewee :Андрей_Рудой .
+
+:Рабкор_37
+ rdf:type :Video ;
+ :channel :Рабкор ;
+ :interviewer :Борис_Кагарлицкий ;
+ :interviewee :Александр_Штефанов .
+
+:Рабкор_38
+ rdf:type :Video ;
+ :channel :Рабкор ;
+ :participant :Евгения_Родионова, :Лиза_Лазерсон, :Кали_Новская, :Арина_Стасевич, :Наталья_Ощемкова .
+
+:Рабкор_39
+ rdf:type :Video ;
+ :channel :Рабкор ;
+ :interviewer :Борис_Кагарлицкий ;
+ :interviewee :Борис_Надеждин .
+
+:Рабкор_4
+ rdf:type :Video ;
+ :channel :Рабкор ;
+ :interviewer :Евгения_Родионова ;
+ :interviewee :Анна_Очкина .
+
+:Рабкор_40
+ rdf:type :Video ;
+ :channel :Рабкор ;
+ :interviewer :Борис_Кагарлицкий ;
+ :interviewee :Михаил_Светов .
+
+:Рабкор_41
+ rdf:type :Video ;
+ :channel :Рабкор ;
+ :interviewer :Борис_Кагарлицкий ;
+ :interviewee :Клим_Жуков .
+
+:Рабкор_42
+ rdf:type :Video ;
+ :channel :Рабкор ;
+ :interviewer :Борис_Кагарлицкий ;
+ :interviewee :Михаил_Тимонов .
+
+:Рабкор_43
+ rdf:type :Video ;
+ :channel :Рабкор ;
+ :interviewer :Борис_Кагарлицкий ;
+ :interviewee :Михаил_Лобанов, :Александра_Запольская .
+
+:Рабкор_44
+ rdf:type :Video ;
+ :channel :Рабкор ;
+ :topic "анархизм" ;
+ :interviewer :Борис_Кагарлицкий ;
+ :interviewee :Вадим_Дамье .
+
+:Рабкор_45
+ rdf:type :Video ;
+ :channel :Рабкор ;
+ :interviewer :Борис_Кагарлицкий ;
+ :interviewee :Олег_Кашин .
+
+:Рабкор_46
+ rdf:type :Video ;
+ :channel :Рабкор ;
+ :participant :Борис_Кагарлицкий, :Евгения_Родионова, :Александр_Арчагов .
+
+:Рабкор_47
+ rdf:type :Video ;
+ :channel :Рабкор ;
+ :interviewer :Борис_Кагарлицкий ;
+ :interviewee :Максим_Шевченко .
+
+:Рабкор_48
+ rdf:type :Video ;
+ :channel :Рабкор ;
+ :interviewer :Борис_Кагарлицкий ;
+ :interviewee :Реми_Майснер .
+
+:Рабкор_49
+ rdf:type :Video ;
+ :channel :Рабкор ;
+ :topic "китай" ;
+ :interviewer :Евгения_Родионова ;
+ :interviewee :Дмитрий_Соседов .
+
+:Рабкор_5
+ rdf:type :Video ;
+ :speaker :Кали_Новская ;
+ :channel :Рабкор ;
+ :topic "open source,ии,колониализм данных" .
+
+:Рабкор_50
+ rdf:type :Video ;
+ :channel :Рабкор ;
+ :interviewer :Борис_Кагарлицкий ;
+ :interviewee :Константин_Гаазе .
+
+:Рабкор_51
+ rdf:type :Video ;
+ :channel :Рабкор ;
+ :interviewer :Борис_Кагарлицкий ;
+ :interviewee :Станислав_Дробышевский .
+
+:Рабкор_52
+ rdf:type :Video ;
+ :channel :Рабкор ;
+ :interviewer :Борис_Кагарлицкий ;
+ :interviewee :Станислав_Васильев .
+
+:Рабкор_53
+ rdf:type :Video ;
+ :channel :Рабкор ;
+ :interviewer :Борис_Кагарлицкий ;
+ :interviewee :Николай_Платошкин .
+
+:Рабкор_54
+ rdf:type :Video ;
+ :channel :Рабкор ;
+ :interviewer :Александр_Рыбин ;
+ :interviewee :Игорь_Стрелков .
+
+:Рабкор_55
+ rdf:type :Video ;
+ :channel :Рабкор ;
+ :interviewer :Борис_Кагарлицкий ;
+ :interviewee :Сергей_Удальцов .
+
+:Рабкор_56
+ rdf:type :Video ;
+ :channel :Рабкор ;
+ :interviewer :Борис_Кагарлицкий ;
+ :interviewee :Эдуард_Лимонов .
+
+:Рабкор_6
+ rdf:type :Video ;
+ :channel :Рабкор ;
+ :topic "иран,рабочие советы,квартальные советы,басидж,аятолла,ксир" ;
+ :interviewer :Евгения_Родионова ;
+ :interviewee :Михаил_Магид .
+
+:Рабкор_7
+ rdf:type :Video ;
+ :channel :Рабкор ;
+ :interviewer :Евгения_Родионова ;
+ :interviewee :Андрей_Лошак .
+
+:Рабкор_8
+ rdf:type :Video ;
+ :speaker :Анна_Очкина ;
+ :channel :Рабкор .
+
+:Рабкор_9
+ :channel :Рабкор ;
+ :debater :Борис_Юлин, :Борис_Кагарлицкий ;
+ rdf:type :Video ;
+ :moderator :Товарищ_Майор .
 
 :Рабочая_парадигма
  owl:sameAs :Наука_марксизм ;
- rdf:type :Project .
+ :yt "youtube.com/@marxist_science" ;
+ rdf:type :ProcommunistOrganization, :MarxistCircleNetwork ;
+ :yt-n "599"^^xsd:positiveInteger .
+
+:Рабочий_фронт_Украины
+ owl:sameAs :Робiтничий_Фронт_Украiны ;
+ :yt "youtube.com/@rfu_media" ;
+ rdf:type :ProcommunistOrganization ;
+ :yt-n "6190"^^xsd:positiveInteger .
+
+:Рауф_Фаткуллин
+ rdf:type :Person .
 
 :Рафаэль_Абдулов
+ rdf:type :Person .
+
+:Рафи_Джабар
  rdf:type :Person .
 
 :Реми_Майснер
  rdf:type :Person .
 
-:Роман_Осин
+:РКРП
+ rdf:type :ProcommunistOrganization .
+
+:Роман_Огиенко
  rdf:type :Person .
 
+:Роман_Осин
+ rdf:type :Person ;
+ :org :Политпросвет .
+
 :Россия
- rdf:type :country .
+ rdf:type :Country .
+
+:РПСС
+ rdf:type :PoliticalParty .
+
+:РТФ
+ owl:sameAs :Рот_Фронт, :Российский_Трудовой_Фронт ;
+ :yt "youtube.com/@ROTFRONT_RTF" ;
+ rdf:type :ProcommunistOrganization ;
+ :yt-n "40400"^^xsd:positiveInteger ;
+ :from :РКРП ;
+ :member :Александр_Батов .
+
+:Рубен_Казарьян
+ rdf:type :Person .
+
+:Руслан_Дзарасов
+ rdf:type :Person ;
+ :teacher-of :Андрей_Комолов .
 
 :Рустам_Гусейнов
  rdf:type :Person .
 
+:Рустем_Булатов
+ rdf:type :Person .
+
+:РЭУ_Плеханова
+ rdf:type :University ;
+ :place :Москва .
+
 :Санкт-Петербург
- :pop "5750134" ;
+ :pop "5750134"^^xsd:decimal ;
  rdf:type :Place ;
- :lat "59.939167" ;
- :lon "30.315833" .
+ :lat "59.939167"^^xsd:float ;
+ :lon "30.315833"^^xsd:float .
+
+:Сантьяго
+ rdf:type :Place .
 
 :Святослав_Варнашов
  rdf:type :Person .
 
-:Союз_марксистов
- rdf:type :Project ;
+:Сергей_Ерохов
+ rdf:type :Person .
+
+:Сергей_Крупенько
+ rdf:type :Person .
+
+:Сергей_Левченко
+ rdf:type :Person .
+
+:Сергей_Новиков
+ rdf:type :Person ;
+ :org :Политпросвет .
+
+:Сергей_Питерский
+ rdf:type :Person ;
+ :org :Союз_Марксистов .
+
+:Сергей_Ребров
+ rdf:type :Person .
+
+:Сергей_Толкачев
+ rdf:type :Person ;
+ :job :Финансовый_университет_при_Правительстве_РФ .
+
+:Сергей_Удальцов
+ rdf:type :Person ;
+ :org :Левый_Фронт, :КПРФ .
+
+:Сергей_Шереметьев
+ rdf:type :Person .
+
+:Сергей_Шубенков
+ rdf:type :Person .
+
+:Сирия
+ rdf:type :Country .
+
+:Союз_Марксистов
+ rdf:type :ProcommunistOrganization ;
  :founder :Федор_Мухин .
 
+:СПбГУ
+ rdf:type :University ;
+ :place :Санкт-Петербург .
+
 :Сталь_и_слезы
- :place :Гавана ;
- rdf:type :Project ;
+ rdf:type :YTChannel ;
  :founder :Александра_Арабаджян ;
  :tg "t.me/templando_acero" ;
- :tg-n "2.7K" .
+ :tg-n "2700"^^xsd:positiveInteger .
+
+:Станислав_Васильев
+ rdf:type :Person .
+
+:Станислав_Дробышевский
+ rdf:type :Person .
+
+:Станислав_Коренюгин
+ rdf:type :Person .
+
+:Станислав_Рузанов
+ rdf:type :Person ;
+ :job :РЭУ_Плеханова .
+
+:Стас_ай_как_просто
+ :rt "rutube.ru/channel/21014334" ;
+ rdf:type :YTChannel ;
+ :founder :Станислав_Васильев ;
+ :rt-n "190000"^^xsd:positiveInteger .
+
+:Стас_Васильев
+ rdf:type :Person .
+
+:Степан_Кошкарев
+ rdf:type :Person .
+
+:Страйк
+ :url "strikeit.ru" ;
+ :yt "youtube.com/@VI4KA_GB" ;
+ rdf:type :Project ;
+ :yt-n "145000"^^xsd:positiveInteger ;
+ :founder :Виктория_Гарсия-Берналь .
+
+:Стрела-ТВ
+ :yt "youtube.com/c/СтрелаТВ" ;
+ :lecturer :Наталья_Бармина ;
+ rdf:type :YTChannel ;
+ :yt-n "43700"^^xsd:positiveInteger .
+
+:Судки_Отман
+ rdf:type :Person ;
+ :place :Майкоп ;
+ :bplace :Дамаск ;
+ :byear "1999" .
+
+:США
+ rdf:type :Country .
+
+:Табриз
+ rdf:type :Person ;
+ :place :Казань .
+
+:Таганай
+ :yt "youtube.com/@TaganayTV" ;
+ rdf:type :YTChannel ;
+ :yt-n "495000"^^xsd:positiveInteger ;
+ :founder :Даниил_Ковалев .
+
+:Таисия
+ rdf:type :Person ;
+ :org :Курьер .
+
+:Тамара_Степанова
+ rdf:type :Person ;
+ :job :Институт_экономики_РАН .
+
+:Татьяна_Гартман
+ rdf:type :Person .
+
+:Татьяна_Крихтова
+ rdf:type :Person .
+
+:Тимур_Хидиров
+ rdf:type :Person .
+
+:Товарищ_Майор
+ rdf:type :Person .
+
+:Трудовая_Россия
+ :leader :Виктор_Анпилов ;
+ :yt "youtube.com/@user-jn6uv3vk3c" ;
+ :yt-rec :Вестник_Бури, :Station_Marx ;
+ :coordinator :Эльмар_Рустамов ;
+ :yt-video-n "2600"^^xsd:positiveInteger ;
+ rdf:type :ProcommunistOrganization ;
+ :yt-n "68300"^^xsd:positiveInteger .
+
+:Тупичок_Гоблина
+ :url "oper.ru/video" ;
+ rdf:type :MediaProject ;
+ :founder :Дмитрий_Пучков .
+
+:Тюмень
+ rdf:type :Place .
+
+:Убежище_оппозиции
+ :yt "youtube.com/@user-jh1cs5wj4o" ;
+ rdf:type :YTChannel ;
+ :yt-n "362000"^^xsd:positiveInteger ;
+ :founder :Николай_Бондаренко .
+
+:УдмГУ
+ rdf:type :University ;
+ :place :Ижевск .
+
+:Университет_Крита
+ rdf:type :University ;
+ :place :Ираклион .
+
+:Учитель
+ rdf:type :TradeUnion .
+
+:Ф_1
+ :interviewee :Владимир_Лесик ;
+ rdf:type :Video ;
+ :channel :Факел .
+
+:Ф_2
+ rdf:type :Video ;
+ :speaker :Степан_Кошкарев ;
+ :channel :Факел ;
+ :ref :ПрофКон .
+
+:Факел
+ :vk-n "4463"^^xsd:positiveInteger ;
+ :yt "youtube.com/@fakel_mrg" ;
+ :vk "vk.com/fakel_mrg" ;
+ :yt-video-n "135"^^xsd:positiveInteger ;
+ rdf:type :YTChannel, :Newspaper ;
+ :yt-n "2600"^^xsd:positiveInteger .
 
 :Федор_Мухин
+ rdf:type :Person .
+
+:Финансовый_университет_при_Правительстве_РФ
+ rdf:type :University ;
+ :place :Москва .
+
+:Хосе_Гонсалес_Лопес
+ rdf:type :Person .
+
+:Хулио_Гармендия
+ rdf:type :Person ;
+ :job :Посольство_Республики_Куба_в_РФ ;
+ rdfs:label "Julio Antonio Garmendía Peña" .
+
+:Центр_современных_марксистских_исследований_МГУ
+ rdf:type :ResearchInstitute ;
+ :url "philos.msu.ru/node/2768" ;
+ :vk "vk.com/marxistcenter" ;
+ :parent :МГУ .
+
+:Цифровая_история
+ :speaker :Егор_Яковлев ;
+ :yt "youtube.com/@dhistory" ;
+ rdf:type :YTChannel ;
+ :yt-n "520000"^^xsd:positiveInteger .
+
+:Чили
+ rdf:type :Country .
+
+:Шерафган_Бобоев
  rdf:type :Person .
 
 :Школа_1528
  rdf:type :SecondarySchool ;
  :place :Зеленоград .
+
+:Эдуард_Лимонов
+ :ddate "2020-03-17"^^xsd:date ;
+ rdf:type :Person ;
+ :bdate "1943-02-22"^^xsd:date ;
+ :bplace :Дзержинск .
+
+:Экономический_факультет_МГУ
+ rdf:type :Faculty ;
+ :faculty-of :МГУ .
+
+:Элмар_Рустамов
+ rdf:type :Person .
+
+:Эльмар_Рустамов
+ rdf:type :Person .
+
+:Юань_Яо
+ rdf:type :Person ;
+ :org :КрасноBY .
+
+:Янита_Гора
+ rdf:type :Person .
 

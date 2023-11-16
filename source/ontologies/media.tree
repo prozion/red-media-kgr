@@ -1,0 +1,46 @@
+classes +a:owl/Class +hi-inv-rel:subclass-of
+	owl/Thing
+		Conference
+			VideoMeeting
+				ZoomVideoMeeting
+		Chat
+			IRCChannel
+			TelegramChat
+			WhatsappChat
+		MediaGenre
+			Debates
+			Lecture
+			News
+			Podcast
+			VideoStream
+		MediaOutlet
+			FacebookGroup
+			Instagram
+			TelegramChannel
+			TiktokChannel
+			Twitter
+			VkontaktePublic
+			WebForum
+			YoutubeChannel
+properties +a:rdf/Property +hi-inv-rel:subproperty-of
+	role
+		media-role
+			debater
+			interviewer
+			interviewee
+			moderator
+			participant
+			speaker
+				lecturer domain:Lecture
+	channel range:MediaOutlet
+		yt-channel range:YoutubeChannel
+	lecture range:Lecture
+	ref d:"Reference, mentions of other persons or projects"
+		rec d:"Recommendation" domain:Project range:Project
+			yt-rec d:"What channels are recommended by a given youtube channel"
+	video
+		project-video domain:Project range:ProjectVideo
+	video_object domain:Video
+		media-role
+		review-of
+	topic range:String

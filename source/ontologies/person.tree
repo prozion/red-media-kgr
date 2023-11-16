@@ -1,9 +1,20 @@
 classes +a:owl/Class +hi-inv-rel:subclass-of
 	Person
 properties +a:rdf/Property +hi-inv-rel:subproperty-of
-	date
+	date range:Date
 		bdate d:"Date of birth"
+			byear range:rdfs/Literal
 		ddate d:"Date of death"
-	edu range:University d:"Education, in what university the person made the studies and what (s)he graduated"
+	edu d:"Education, in what university (faculty) the person made the studies and what (s)he graduated"
 		sec-edu range:SecondarySchool d:"Secondary education - school"
 	job d:"Where the person works(ed)"
+	place
+		bplace
+		dplace
+	has_relation
+		has_influence
+			teacher-of domain:Person range:Person d:"Master_Yoda teacher-of Luke_Skywalker"
+			boss-of
+		friend
+		opponent
+		

@@ -1,0 +1,16 @@
+classes +a:owl/Class +hi-inv-rel:subclass-of
+	owl/Thing
+		Project
+			OrganizationProject d:"Проект, нацеленный на создание организации. Т.е. сущности, перманетно производящей потребляемый продукт"
+			ProductProject d:"Проект, нацеленный на создание партии того или иного продукта"
+		PrimarySource subclass-of:Source d:"Первичный источник информации - сервис, доступный онлайн, собирающий информацию о проектах в зоне своих интересов и специализации"
+properties +a:rdf/Property +hi-inv-rel:subproperty-of
+	announce-date domain:Project range:Date d:"Дата, когда информация о проекте была опубликована на первичном источнике"
+	budget domain:Project
+		accumulated-budget d:"Бюджет проекта на указанный (через реификацию) момент времени"
+		planned-budget d:"Бюджет необходимый для успешного осуществления проекта согласно плану"
+	product domain:Project range:Product d:"Какие продукты будут получены/произведены в результате выполнения проекта"
+	project range:Project
+	project-author domain:Project range:Person
+	s
+		s-project d:"Первичный источник информации о проекте"

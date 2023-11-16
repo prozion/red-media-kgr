@@ -1,0 +1,18 @@
+prefix : <https://purl.org/prozion/redkgr#>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix afn: <http://jena.apache.org/ARQ/function#>
+
+select ?project
+       (count(distinct ?person) as ?referals)
+       (max(?yt) as ?url)
+where {
+  ?n (:|!:){1,2} ?project .
+  ?n ?p ?person .
+  ?project :yt ?yt .
+  ?person a :Person .
+  ?project a ?class .
+  ?class rdfs:subClassOf* :Project .
+}
+group by ?project
+having (?referals > 2)
+order by desc(?referals)

@@ -1,5 +1,10 @@
 properties +a:rdf/Property +hi-inv-rel:subproperty-of
-	n range:rdfs/Literal d:"Number of users"
+	n range:PositiveInteger d:"Number of users"
+		boosty-n d:"Number of subscribers on Boosty"
 		yt-n d:"Number of subscribers for YouTube channel"
 		vk-n d:"Number of subscribers for Vkontakte public or group"
 		tg-n d:"Number of subscribers for Telegram channel"
+		rt-n d:"Number of subscribers for RuTube channel"
+	v range:PositiveInteger d:"Number of views"
+	video-n d:"Number of videoes" range:PositiveInteger
+		yt-video-n d:"Number of videoes on the YouTube channel"

@@ -1,6 +1,9 @@
 classes +a:owl/Class +hi-inv-rel:subclass-of
-	Source subclass-of:rdfs/Literal
+	owl/Thing
+		Source
+	UrlCore
+		SourceUrl
 properties +a:rdf/Property +hi-inv-rel:subproperty-of
 	s range:Source d:"Source"
-	s-url subproperty-of:s,url range:UrlCore
+	s-url subproperty-of:s,url range:SourceUrl
 	self-def domain:Source range:rdfs/Literal d:"Self-definition by the source"

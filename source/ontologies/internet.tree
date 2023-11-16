@@ -7,11 +7,17 @@ classes +a:owl/Class +hi-inv-rel:subclass-of
 properties +a:rdf/Property +hi-inv-rel:subproperty-of
 	email range:Email
 	messenger-id range:MessengerId
+		voip-id
+			discord
 		tg
 	url range:UrlCore
 		boosty
+		fb
 		github
+		insta
 		patreon
+		rt d:"RuTube"
+		twi
 		vk
 		yt
 	url

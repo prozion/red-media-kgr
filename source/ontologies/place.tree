@@ -5,7 +5,7 @@ classes +a:owl/Class +hi-inv-rel:subclass-of
 		City
 properties +a:rdf/Property +hi-inv-rel:subproperty-of
 	country domain:Place range:Country
-	pop range:DecimalAbbreviated
+	pop range:Decimal
 	place range:Place
 		city range:City
 	lat domain:Place range:Float d:"Latitude"

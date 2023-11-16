@@ -1,5 +1,18 @@
 secondary_school +a:SecondarySchool
 	Школа_1528 place:Зеленоград
 universities +a:University
+	МГУ place:Москва
 	МГУУ_Правительства_Москвы place:Москва
+	НГУ place:Новосибирск
+	СПбГУ place:Санкт-Петербург
+	РЭУ_Плеханова place:Москва
+	Университет_Крита place:Ираклион
+	УдмГУ place:Ижевск
+	Финансовый_университет_при_Правительстве_РФ place:Москва
 	Renmin_University_of_China place:Пекин
+faculties +a:Faculty +hi-inv-rel:faculty-of
+	МГУ
+		Экономический_факультет_МГУ
+	НГУ
+		Мехмат_НГУ
+	
