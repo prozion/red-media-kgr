@@ -5,7 +5,7 @@ prefix xsd: <http://www.w3.org/2001/XMLSchema#>
 
 select distinct ?person ?project ?yt ?n where {
   ?person a :Person .
-  ?project a :YTChannel .
+  ?project a :YoutubeChannel .
   ?project :founder ?person .
   optional {
     ?project :yt ?yt .

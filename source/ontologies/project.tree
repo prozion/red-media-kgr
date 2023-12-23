@@ -12,5 +12,13 @@ properties +a:rdf/Property +hi-inv-rel:subproperty-of
 	product domain:Project range:Product d:"Какие продукты будут получены/произведены в результате выполнения проекта"
 	project range:Project
 	project-author domain:Project range:Person
+	project-participant domain:Project range:Person
+	qualification domain:Person range:rdfs/Literal
+		existing-qualification
+		required-qualification
 	s
 		s-project d:"Первичный источник информации о проекте"
+	start-date domain:Project range:Date
+		planned-start-date
+	finish-date domain:Project range:Date
+		planned-finish-date

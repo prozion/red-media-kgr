@@ -1,7 +1,7 @@
 classes +a:owl/Class +hi-inv-rel:subclass-of
 	owl/Thing
 		Organization subclass-of:Product d:"Группа людей, которая с помощью средств производства, перманентно выпускает продукт или оказывает услугу"
-			BourgeoisInstitution
+			BourgeoisInstitution d:"Задачи: Извлекать прибыль, защищать интересы буржуазии"
 				Company
 					ClassicCooperative
 					Corporation
@@ -20,11 +20,12 @@ classes +a:owl/Class +hi-inv-rel:subclass-of
 						StateResearchInstitute subclass-of:ResearchInstitute
 					Ministry
 				TealOrganization
-			ProcommunistOrganization
+			ProcommunistOrganization d:"Задачи: Осуществлять производство по социалистическим принципам, защищать интересы пролетариата, повышать сознательность пролетариата"
 				RedCooperative
 				MarxistEducationalOrganization
 					EducationalClub
 					MarxistCircle
+						MarxistCircleNetwork
 				RealTradeUnion
 		Organization
 			EducationalOrganization
@@ -33,6 +34,7 @@ classes +a:owl/Class +hi-inv-rel:subclass-of
 				StateEducationalOrganization
 		Organization
 			Network
+				MarxistCircleNetwork
 		Organization
 			Cooperative
 				ClassicalCooperative

@@ -16,6 +16,8 @@ classes +a:owl/Class +hi-inv-rel:subclass-of
 		MediaOutlet
 			FacebookGroup
 			Instagram
+			InterviewSite
+			OnlineJournal
 			TelegramChannel
 			TiktokChannel
 			Twitter

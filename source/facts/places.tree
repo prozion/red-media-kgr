@@ -1,4 +1,6 @@
 places +a:Country
+	Азербайджан
+		Баку
 	Беларусь +a:Place
 		Минск
 	Германия +a:Place

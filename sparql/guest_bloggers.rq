@@ -8,18 +8,18 @@ select
   (afn:localname(max(?person)) as ?founder)
   (afn:localname(?project) as ?host_channel)
   (count (distinct ?video) as ?founder_filmed_n)
-  (group_concat(distinct afn:localname(?ytchannel)) as ?guest_channels)
+  (group_concat(distinct afn:localname(?YoutubeChannel)) as ?guest_channels)
 where {
   ?project :founder ?person .
   ?video ?r ?person .
   ?r rdfs:subPropertyOf* :contributor .
-  ?video :channel ?ytchannel .
+  ?video :channel ?YoutubeChannel .
   ?c rdfs:subPropertyOf* :contributor .
   ?project a ?project_class .
   ?project_class rdfs:subClassOf* :MediaProject .
   ?person a :Person .
   ?video a :Video .
-  filter(?ytchannel != ?project)
+  filter(?YoutubeChannel != ?project)
 }
 group by ?project
 # having(?founder_filmed_n > 1)

@@ -19,10 +19,10 @@ redkgr a:owl/Ontology ns:https://purl.org/prozion/redkgr# rdfs/label:"Knowledge 
 	[ontologies/source.tree]
 	[ontologies/time.tree]
 	individuals
+		[facts/media.tree]
 		[facts/organizations.tree]
 		[facts/people.tree]
 		[facts/places.tree]
-		[facts/projects.tree]
 		[facts/texts.tree]
 		[facts/universities.tree]
 		[facts/videoes.tree]

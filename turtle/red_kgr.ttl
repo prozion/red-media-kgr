@@ -10,12 +10,19 @@
  rdf:type rdf:Property ;
  rdfs:range rdfs:Literal .
 
-:actor
- rdf:type rdf:Property ;
- rdfs:subPropertyOf :video_subject .
+:accumulated-budget
+ rdfs:subPropertyOf :budget ;
+ rdfs:comment "Бюджет проекта на указанный (через реификацию) момент времени" ;
+ rdf:type rdf:Property .
 
 :Alex_Gordon
  rdf:type :Person .
+
+:announce-date
+ rdfs:domain :Project ;
+ rdfs:comment "Дата, когда информация о проекте была опубликована на первичном источнике" ;
+ rdf:type rdf:Property ;
+ rdfs:range :Date .
 
 :Area
  rdf:type owl:Class ;
@@ -27,13 +34,13 @@
 
 :author
  rdfs:subPropertyOf :contributor ;
- rdfs:domain :Project ;
+ rdfs:domain :Product ;
  rdf:type rdf:Property ;
  rdfs:range :Person .
 
 :Bad_Comedian
  :yt "youtube.com/@TheBadComedian" ;
- rdf:type :YTChannel ;
+ rdf:type :YoutubeChannel ;
  :yt-n "5910000"^^xsd:positiveInteger ;
  :founder :Евгений_Баженов .
 
@@ -44,7 +51,7 @@
 
 :Book
  rdf:type owl:Class ;
- rdfs:subClassOf :Text, :Project .
+ rdfs:subClassOf :Text .
 
 :boosty
  rdf:type rdf:Property ;
@@ -55,9 +62,14 @@
  rdfs:comment "Number of subscribers on Boosty" ;
  rdf:type rdf:Property .
 
+:boss-of
+ rdf:type rdf:Property ;
+ rdfs:subPropertyOf :has_influence .
+
 :BourgeoisInstitution
- rdf:type owl:Class ;
- rdfs:subClassOf :Organization .
+ rdfs:subClassOf :Organization ;
+ rdfs:comment "Задачи: Извлекать прибыль, защищать интересы буржуазии" ;
+ rdf:type owl:Class .
 
 :bplace
  rdf:type rdf:Property ;
@@ -66,6 +78,10 @@
 :Bruce_Gagnon
  rdf:type :Person .
 
+:budget
+ rdf:type rdf:Property ;
+ rdfs:domain :Project .
+
 :byear
  rdfs:subPropertyOf :bdate ;
  rdf:type rdf:Property ;
@@ -73,7 +89,11 @@
 
 :channel
  rdf:type rdf:Property ;
- rdfs:range :YTChannel .
+ rdfs:range :MediaOutlet .
+
+:Chat
+ rdf:type owl:Class ;
+ rdfs:subClassOf owl:Thing .
 
 :city
  rdfs:subPropertyOf :place ;
@@ -84,13 +104,24 @@
  rdf:type owl:Class ;
  rdfs:subClassOf :Place .
 
+:ClassicalCooperative
+ rdf:type owl:Class ;
+ rdfs:subClassOf :Cooperative .
+
+:ClassicCooperative
+ rdf:type owl:Class ;
+ rdfs:subClassOf :Company .
+
 :coauthor
  rdf:type rdf:Property ;
  rdfs:subPropertyOf :author .
 
 :collaborates-with
  rdf:type rdf:Property ;
- rdfs:subPropertyOf :had_interaction .
+ rdfs:subPropertyOf :has_interaction .
+
+:companies
+ rdf:type :Organization .
 
 :Company
  rdf:type owl:Class ;
@@ -100,19 +131,28 @@
  rdf:type owl:Class ;
  rdfs:subClassOf owl:Thing .
 
-:contact
+:contact-person
+ rdfs:subPropertyOf :organizational-role ;
  rdf:type rdf:Property ;
  rdfs:range :Person .
 
 :contributor
- rdfs:subPropertyOf :had_interaction ;
+ rdfs:subPropertyOf :has_interaction ;
  rdfs:domain :Project ;
  rdf:type rdf:Property ;
  rdfs:range :Person .
 
+:Cooperative
+ rdf:type owl:Class ;
+ rdfs:subClassOf :Organization .
+
 :coordinator
  rdf:type rdf:Property ;
- rdfs:subPropertyOf :role .
+ rdfs:subPropertyOf :organizational-role .
+
+:Corporation
+ rdf:type owl:Class ;
+ rdfs:subClassOf :Company .
 
 :country
  rdfs:domain :Place ;
@@ -147,7 +187,11 @@
 
 :debater
  rdf:type rdf:Property ;
- rdfs:subPropertyOf :role .
+ rdfs:subPropertyOf :media-role .
+
+:Debates
+ rdf:type owl:Class ;
+ rdfs:subClassOf :MediaGenre .
 
 :Decimal
  rdf:type owl:Class ;
@@ -188,11 +232,11 @@
 
 :EducationalClub
  rdf:type owl:Class ;
- rdfs:subClassOf :EducationalProject .
+ rdfs:subClassOf :MarxistEducationalOrganization .
 
-:EducationalProject
+:EducationalOrganization
  rdf:type owl:Class ;
- rdfs:subClassOf :Project .
+ rdfs:subClassOf :Organization .
 
 :email
  rdf:type rdf:Property ;
@@ -206,8 +250,17 @@
  rdf:type rdf:Property ;
  rdfs:range :Time .
 
+:existing-qualification
+ rdf:type rdf:Property ;
+ rdfs:subPropertyOf :qualification .
+
+:FacebookGroup
+ rdf:type owl:Class ;
+ rdfs:subClassOf :MediaOutlet .
+
 :Faculty
- rdf:type owl:Class .
+ rdf:type owl:Class ;
+ :part-of :University .
 
 :faculty-of
  rdf:type rdf:Property ;
@@ -217,9 +270,10 @@
  rdf:type rdf:Property ;
  rdfs:subPropertyOf :url .
 
-:FBGroup
- rdf:type owl:Class ;
- rdfs:subClassOf :MediaProject .
+:finish-date
+ rdfs:domain :Project ;
+ rdf:type rdf:Property ;
+ rdfs:range :Date .
 
 :Float
  rdf:type owl:Class ;
@@ -233,13 +287,13 @@
  rdf:type rdf:Property ;
  rdfs:subPropertyOf :name .
 
-:founder
- rdf:type rdf:Property ;
- rdfs:subPropertyOf :author .
-
 :Frente_Obrero
  :president :Roberto_Vaquero ;
  rdf:type :PoliticalParty .
+
+:friend
+ rdf:type rdf:Property ;
+ rdfs:subPropertyOf :has_relation .
 
 :from
  rdfs:domain owl:Thing ;
@@ -264,9 +318,16 @@
 
 :guitarist
  rdf:type rdf:Property ;
- rdfs:subPropertyOf :musician .
+ rdfs:subPropertyOf :musician, :specialist .
 
-:had_interaction
+:has_influence
+ rdf:type rdf:Property ;
+ rdfs:subPropertyOf :has_relation .
+
+:has_interaction
+ rdf:type rdf:Property .
+
+:has_relation
  rdf:type rdf:Property .
 
 :Id
@@ -276,21 +337,37 @@
 :id
  rdf:type rdf:Property .
 
+:insta
+ rdf:type rdf:Property ;
+ rdfs:subPropertyOf :url .
+
+:Instagram
+ rdf:type owl:Class ;
+ rdfs:subClassOf :MediaOutlet .
+
 :Integer
  rdf:type owl:Class ;
  rdfs:subClassOf rdfs:Literal .
 
+:InternetChannel
+ rdf:type owl:Class ;
+ rdfs:subClassOf :MediaOrganization .
+
 :interviewee
  rdf:type rdf:Property ;
- rdfs:subPropertyOf :role, :contributor .
+ rdfs:subPropertyOf :media-role, :contributor .
 
 :interviewer
  rdf:type rdf:Property ;
- rdfs:subPropertyOf :role, :contributor .
+ rdfs:subPropertyOf :media-role, :contributor .
 
 :InterviewSite
  rdf:type owl:Class ;
- rdfs:subClassOf :MediaProject .
+ rdfs:subClassOf :MediaOutlet .
+
+:IRCChannel
+ rdf:type owl:Class ;
+ rdfs:subClassOf :Chat .
 
 :job
  rdfs:comment "Where the person works(ed)" ;
@@ -351,21 +428,20 @@
 
 :Lecture
  rdf:type owl:Class ;
- rdfs:subClassOf :Product .
+ rdfs:subClassOf :MediaGenre, :Product .
 
 :lecture
  rdf:type rdf:Property ;
  rdfs:range :Lecture .
 
 :lecturer
- rdfs:subPropertyOf :speaker ;
- rdfs:domain :Lecture ;
  rdf:type rdf:Property ;
- rdfs:range :Person .
+ rdfs:subPropertyOf :speaker ;
+ rdfs:domain :Lecture .
 
 :Lenin_Crew
  :yt "youtube.com/@LeninCrew" ;
- rdf:type :ProcommunistOrganization ;
+ rdf:type :StateOrganization ;
  :yt-n "6740"^^xsd:positiveInteger .
 
 :lon
@@ -380,19 +456,35 @@
 
 :MarxistCircle
  rdf:type owl:Class ;
- rdfs:subClassOf :ProcommunistOrganization, :EducationalProject .
+ rdfs:subClassOf :MarxistEducationalOrganization .
 
 :MarxistCircleNetwork
  rdf:type owl:Class ;
- rdfs:subClassOf :MarxistCircle .
+ rdfs:subClassOf :MarxistCircle, :Network .
+
+:MarxistEducationalOrganization
+ rdf:type owl:Class ;
+ rdfs:subClassOf :ProcommunistOrganization, :EducationalOrganization .
+
+:media-role
+ rdf:type rdf:Property ;
+ rdfs:subPropertyOf :role, :video_object .
+
+:MediaGenre
+ rdf:type owl:Class ;
+ rdfs:subClassOf owl:Thing .
+
+:MediaOrganization
+ rdf:type owl:Class ;
+ rdfs:subClassOf :Organization .
+
+:MediaOutlet
+ rdf:type owl:Class ;
+ rdfs:subClassOf owl:Thing .
 
 :MediaProduct
  rdf:type owl:Class ;
  rdfs:subClassOf :Product .
-
-:MediaProject
- rdf:type owl:Class ;
- rdfs:subClassOf :Project .
 
 :member
  rdf:type rdf:Property .
@@ -411,7 +503,22 @@
 
 :moderator
  rdf:type rdf:Property ;
- rdfs:subPropertyOf :role .
+ rdfs:subPropertyOf :media-role .
+
+:Music
+ rdf:type owl:Class ;
+ rdfs:subClassOf :Product .
+
+:music-text-writer
+ rdf:type rdf:Property ;
+ rdfs:subPropertyOf :musician, :text-writer .
+
+:music_bands
+ rdf:type :Organization .
+
+:MusicAlbum
+ rdf:type owl:Class ;
+ rdfs:subClassOf :Music .
 
 :MusicBand
  rdf:type owl:Class ;
@@ -423,7 +530,7 @@
 
 :MusicPerformer
  rdf:type owl:Class ;
- rdfs:subClassOf :Project .
+ rdfs:subClassOf :Organization .
 
 :n
  rdfs:comment "Number of users" ;
@@ -436,19 +543,23 @@
  rdf:type rdf:Property ;
  rdfs:range rdfs:Literal .
 
+:Network
+ rdf:type owl:Class ;
+ rdfs:subClassOf :Organization .
+
 :New_Deal
  :yt "youtube.com/@NewDeal1917" ;
- rdf:type :YTChannel ;
+ rdf:type :YoutubeChannel ;
  :yt-n "18400"^^xsd:positiveInteger ;
  :founder :Даниил_Григорьев .
 
 :News
  rdf:type owl:Class ;
- rdfs:subClassOf :MediaProject .
+ rdfs:subClassOf :MediaGenre .
 
 :Newspaper
  rdf:type owl:Class ;
- rdfs:subClassOf :MediaProduct .
+ rdfs:subClassOf :MediaOrganization, :MediaProduct .
 
 :note
  rdfs:comment "Analog to skos/note" ;
@@ -456,7 +567,7 @@
  rdfs:range rdfs:Literal .
 
 :O21
- rdf:type :ProcommunistOrganization ;
+ rdf:type :StateOrganization ;
  :contact :Борис_Асеев ;
  :from :РТФ ;
  :collaborates-with :Факел .
@@ -465,23 +576,52 @@
  rdf:type owl:Class ;
  rdfs:subClassOf owl:Thing .
 
+:OfficialTradeUnion
+ rdf:type owl:Class ;
+ rdfs:subClassOf :BourgeoisInstitution, :TradeUnion .
+
 :old-url
  rdf:type rdf:Property ;
  rdfs:subPropertyOf :defunct-url .
+
+:online_journal
+ rdf:type :MediaOutlet .
+
+:OnlineJournal
+ rdf:type owl:Class ;
+ rdfs:subClassOf :MediaOutlet .
+
+:OnlineNewspaper
+ rdf:type owl:Class ;
+ rdfs:subClassOf :Newspaper .
+
+:opponent
+ rdf:type rdf:Property ;
+ rdfs:subPropertyOf :has_relation .
 
 :org
  rdf:type rdf:Property ;
  rdfs:range :Organization .
 
 :Organization
- rdf:type owl:Class ;
- rdfs:subClassOf owl:Thing .
+ rdfs:subClassOf :Product, owl:Thing ;
+ rdfs:comment "Группа людей, которая с помощью средств производства, перманентно выпускает продукт или оказывает услугу" ;
+ rdf:type owl:Class .
+
+:organizational-role
+ rdf:type rdf:Property ;
+ rdfs:subPropertyOf :role .
+
+:OrganizationProject
+ rdfs:subClassOf :Project ;
+ rdfs:comment "Проект, нацеленный на создание организации. Т.е. сущности, перманетно производящей потребляемый продукт" ;
+ rdf:type owl:Class .
 
 owl:Thing
  rdf:type owl:Class .
 
 :Oт.Каз
- rdf:type :ProcommunistOrganization .
+ rdf:type :StateOrganization .
 
 :Pablo_Hasel
  rdf:type :Person .
@@ -491,13 +631,21 @@ owl:Thing
  rdf:type rdf:Property ;
  rdfs:range :Organization .
 
+:part-of
+ rdfs:domain :Object ;
+ rdf:type rdf:Property ;
+ rdfs:range :Object .
+
 :participant
  rdf:type rdf:Property ;
- rdfs:subPropertyOf :role, :contributor .
+ rdfs:subPropertyOf :media-role, :contributor .
 
 :Partido_Marxista-Leninista
  rdf:type :PoliticalParty ;
  :general_secretary :Roberto_Vaquero .
+
+:parties
+ rdf:type :Organization .
 
 :patreon
  rdf:type rdf:Property ;
@@ -517,10 +665,27 @@ owl:Thing
  rdf:type owl:Class ;
  rdfs:subClassOf owl:Thing .
 
+:planned-budget
+ rdfs:subPropertyOf :budget ;
+ rdfs:comment "Бюджет необходимый для успешного осуществления проекта согласно плану" ;
+ rdf:type rdf:Property .
+
+:planned-finish-date
+ rdf:type rdf:Property ;
+ rdfs:subPropertyOf :finish-date .
+
+:planned-start-date
+ rdf:type rdf:Property ;
+ rdfs:subPropertyOf :start-date .
+
+:Podcast
+ rdf:type owl:Class ;
+ rdfs:subClassOf :MediaGenre .
+
 :Poligraf_Red
  :yt "youtube.com/@poligrafred" ;
  :yt-video-n "188"^^xsd:positiveInteger ;
- rdf:type :YTChannel ;
+ rdf:type :YoutubeChannel ;
  :yt-n "13000"^^xsd:positiveInteger ;
  :founder :Дмитрий_Исаенок .
 
@@ -563,26 +728,69 @@ owl:Thing
  rdf:type rdf:Property ;
  rdfs:subPropertyOf :leader .
 
-:ProcommunistOrganization
+:price
+ rdf:type rdf:Property .
+
+:PrimarySource
+ rdfs:subClassOf :Source, owl:Thing ;
+ rdfs:comment "Первичный источник информации - сервис, доступный онлайн, собирающий информацию о проектах в зоне своих интересов и специализации" ;
+ rdf:type owl:Class .
+
+:PrintedNewspaper
  rdf:type owl:Class ;
- rdfs:subClassOf :Organization .
+ rdfs:subClassOf :Newspaper .
+
+:PrivateEducationalOrganization
+ rdf:type owl:Class ;
+ rdfs:subClassOf :EducationalOrganization .
+
+:PrivateEducationalOrgtanization
+ rdf:type owl:Class ;
+ rdfs:subClassOf :BourgeoisInstitution .
+
+:ProcommunistOrganization
+ rdfs:subClassOf :Organization ;
+ rdfs:comment "Задачи: Осуществлять производство по социалистическим принципам, защищать интересы пролетариата, повышать сознательность пролетариата" ;
+ rdf:type owl:Class .
+
+:product
+ rdfs:domain :Project ;
+ rdfs:comment "Какие продукты будут получены/произведены в результате выполнения проекта" ;
+ rdf:type rdf:Property ;
+ rdfs:range :Product .
 
 :Product
  rdf:type owl:Class ;
  rdfs:subClassOf owl:Thing .
 
+:ProductProject
+ rdfs:subClassOf :Project ;
+ rdfs:comment "Проект, нацеленный на создание партии того или иного продукта" ;
+ rdf:type owl:Class .
+
+:project
+ rdf:type rdf:Property ;
+ rdfs:range :Project .
+
 :Project
  rdf:type owl:Class ;
  rdfs:subClassOf owl:Thing .
+
+:project-author
+ rdfs:domain :Project ;
+ rdf:type rdf:Property ;
+ rdfs:range :Person .
+
+:project-participant
+ rdfs:domain :Project ;
+ rdf:type rdf:Property ;
+ rdfs:range :Person .
 
 :project-video
  rdfs:subPropertyOf :video ;
  rdfs:domain :Project ;
  rdf:type rdf:Property ;
  rdfs:range :ProjectVideo .
-
-:projects
- :working-note "При составлении списка проводится 'ручная класификация' явлений, которые обычно воспринимаются как 'проект' или 'производящий продукт рабочий коллектив' (что уже является 'ручной' классификацией). В идеале такого субьективизма должно быть как можно меньше, а классификация осуществляться путем анализа характера связей сущностей. Что практически означает существование нескольких способов классификации через sparql запросы, либо через модели машинного обучения. Связи между сущностями являются отражением объективных фактов, хотя субьективисткая составляющая остается в виде 'ручной' классификации уже самих связей. Но главное, что есть диалектическое движение в сторону классовой объективности." .
 
 :ProjectVideo
  rdf:type owl:Class ;
@@ -592,20 +800,40 @@ owl:Thing
  rdf:type owl:Class ;
  rdfs:subClassOf :Object .
 
+:qualification
+ rdfs:domain :Person ;
+ rdf:type rdf:Property ;
+ rdfs:range rdfs:Literal .
+
 :Rad_Cop
  :url "radcop.online" ;
+ :boosty "boosty.to/surmatmgs" ;
  rdf:type :Company ;
  :founder :Рустам_Гусейнов .
+
+:Radio
+ rdf:type owl:Class ;
+ rdfs:subClassOf :MediaOrganization .
 
 :Rapper
  rdf:type owl:Class ;
  rdfs:subClassOf :MusicPerformer .
+
+:raw-material
+ rdfs:domain :Product ;
+ rdfs:comment "Сырье, детали, полуфабрикаты, необходимые для изготовления продукта" ;
+ rdf:type rdf:Property ;
+ rdfs:range rdfs:Literal .
 
 rdfs:label
  rdf:type rdf:Property .
 
 rdfs:Literal
  rdf:type owl:Class .
+
+:RealTradeUnion
+ rdf:type owl:Class ;
+ rdfs:subClassOf :ProcommunistOrganization, :TradeUnion .
 
 :rec
  rdfs:subPropertyOf :ref ;
@@ -621,9 +849,13 @@ rdfs:Literal
 :RedAutumnBooks
  :yt "youtube.com/@redautumnbooks" ;
  :yt-video-n "147"^^xsd:positiveInteger ;
- rdf:type :YTChannel ;
+ rdf:type :YoutubeChannel ;
  :yt-n "109000"^^xsd:positiveInteger ;
  :founder :Ольга_Михневич .
+
+:RedCooperative
+ rdf:type owl:Class ;
+ rdfs:subClassOf :ProcommunistOrganization, :Cooperative .
 
 <https://purl.org/prozion/redkgr#>
  rdf:type owl:Ontology ;
@@ -631,25 +863,36 @@ rdfs:Literal
  rdfs:label "Knowledge graph on red movement" .
 
 :Redstarter
- rdf:type :Project ;
+ rdf:type :OnlineJournal ;
  :url "redstarter.ru" .
 
 :ref
  rdfs:comment "Reference, mentions of other persons or projects" ;
  rdf:type rdf:Property .
 
+:ReligiousOrganization
+ rdf:type owl:Class ;
+ rdfs:subClassOf :BourgeoisInstitution .
+
 :Remi_Meisner
  :yt "youtube.com/@RemiMeisner" ;
  :author :Реми_Майснер ;
- rdf:type :YTChannel ;
+ rdf:type :YoutubeChannel ;
  :yt-n "97900"^^xsd:positiveInteger .
 
 :Renmin_University_of_China
  rdf:type :University ;
  :place :Пекин .
 
+:required-qualification
+ rdf:type rdf:Property ;
+ rdfs:subPropertyOf :qualification .
+
 :Res_Publica
- rdf:type :TgChannel .
+ rdf:type :TelegramChannel .
+
+:research_centers
+ rdf:type :Organization .
 
 :ResearchInstitute
  rdf:type owl:Class ;
@@ -657,7 +900,7 @@ rdfs:Literal
 
 :review-of
  rdf:type rdf:Property ;
- rdfs:subPropertyOf :video_subject .
+ rdfs:subPropertyOf :video_object .
 
 :reviewer
  rdf:type rdf:Property ;
@@ -668,7 +911,7 @@ rdfs:Literal
 
 :Ritartha
  :yt "youtube.com/@Ritartha" ;
- rdf:type :YTChannel ;
+ rdf:type :YoutubeChannel ;
  :yt-n "106000"^^xsd:positiveInteger ;
  :founder :Маргарита_Ritartha, :Егор_Красный_Декор .
 
@@ -693,10 +936,15 @@ rdfs:Literal
  rdf:type rdf:Property ;
  rdfs:range :Source .
 
+:s-project
+ rdfs:subPropertyOf :s ;
+ rdfs:comment "Первичный источник информации о проекте" ;
+ rdf:type rdf:Property .
+
 :s-url
  rdfs:subPropertyOf :s, :url ;
  rdf:type rdf:Property ;
- rdfs:range :UrlCore .
+ rdfs:range :SourceUrl .
 
 :sec-edu
  rdfs:subPropertyOf :edu ;
@@ -706,12 +954,17 @@ rdfs:Literal
 
 :Second_Thought
  :yt "youtube.com/@SecondThought" ;
- rdf:type :YTChannel ;
+ rdf:type :YoutubeChannel ;
  :yt-n "1650000"^^xsd:positiveInteger ;
  :founder :JT_Chapman .
 
 :SecondarySchool
- rdf:type owl:Class .
+ rdf:type owl:Class ;
+ rdfs:subClassOf :StateEducationalOrganization .
+
+:Sect
+ rdf:type owl:Class ;
+ rdfs:subClassOf :ReligiousOrganization .
 
 :self-def
  rdfs:domain :Source ;
@@ -721,20 +974,28 @@ rdfs:Literal
 
 :singer
  rdf:type rdf:Property ;
- rdfs:subPropertyOf :musician .
+ rdfs:subPropertyOf :musician, :specialist .
 
 :Sodky
  :fb "facebook.com/sodky" ;
- rdf:type :FBGroup ;
+ rdf:type :FacebookGroup ;
  :founder :Судки_Отман .
+
+:Song
+ rdf:type owl:Class ;
+ rdfs:subClassOf :Music .
 
 :Source
  rdf:type owl:Class ;
- rdfs:subClassOf rdfs:Literal .
+ rdfs:subClassOf owl:Thing .
+
+:SourceUrl
+ rdf:type owl:Class ;
+ rdfs:subClassOf :UrlCore .
 
 :speaker
  rdf:type rdf:Property ;
- rdfs:subPropertyOf :role, :contributor .
+ rdfs:subPropertyOf :media-role, :contributor .
 
 :specialist
  rdf:type rdf:Property ;
@@ -744,6 +1005,22 @@ rdfs:Literal
  rdf:type rdf:Property ;
  rdfs:range :Time .
 
+:start-date
+ rdfs:domain :Project ;
+ rdf:type rdf:Property ;
+ rdfs:range :Date .
+
+:Startup
+ rdf:type owl:Class ;
+ rdfs:subClassOf :Company .
+
+:state_organizations
+ rdf:type :Organization .
+
+:StateEducationalOrganization
+ rdf:type owl:Class ;
+ rdfs:subClassOf :StateOrganization, :EducationalOrganization .
+
 :StateInstitute
  rdf:type owl:Class ;
  rdfs:subClassOf :StateOrganization .
@@ -752,10 +1029,14 @@ rdfs:Literal
  rdf:type owl:Class ;
  rdfs:subClassOf :BourgeoisInstitution .
 
+:StateResearchInstitute
+ rdf:type owl:Class ;
+ rdfs:subClassOf :ResearchInstitute, :StateInstitute .
+
 :Station_Marx
  :end "2022" ;
  :yt "youtube.com/@STATIONMARX" ;
- rdf:type :YTChannel ;
+ rdf:type :YoutubeChannel ;
  :yt-n "49500"^^xsd:positiveInteger .
 
 :Stmt_Frente_Obrero_president_Roberto_Vaquero
@@ -769,7 +1050,7 @@ rdfs:Literal
  rdf:subject :O21 ;
  rdf:object :РТФ ;
  rdf:predicate :from ;
- :s "Vec11" ;
+ :s :Vec_11 ;
  rdf:type rdf:Statement .
 
 :Stmt_Partido_Marxista-Leninista_general_secretary_Roberto_Vaquero
@@ -798,7 +1079,7 @@ rdfs:Literal
  rdf:subject :Простые_числа ;
  rdf:object :Константин_Красноперов ;
  rdf:predicate :founder ;
- :s "ПЧ_18" ;
+ :s :ПЧ_18 ;
  rdf:type rdf:Statement .
 
 :Stmt_Простые_числа_founder_Олег_Комолов
@@ -825,7 +1106,7 @@ rdfs:Literal
  rdf:subject :Союз_Марксистов ;
  rdf:object :Федор_Мухин ;
  rdf:predicate :founder ;
- :s "youtu.be/GgQQ6Py-i_Q?t=47" ;
+ :s youtu.be:GgQQ6Py-i_Q?t=47 ;
  rdf:type rdf:Statement .
 
 :stream-participant
@@ -837,10 +1118,23 @@ rdfs:Literal
  rdfs:subClassOf rdfs:Literal .
 
 :teacher-of
+ rdfs:subPropertyOf :has_influence ;
  rdfs:domain :Person ;
  rdfs:comment "Master_Yoda teacher-of Luke_Skywalker" ;
  rdf:type rdf:Property ;
  rdfs:range :Person .
+
+:TealOrganization
+ rdf:type owl:Class ;
+ rdfs:subClassOf :BourgeoisInstitution .
+
+:TelegramChannel
+ rdf:type owl:Class ;
+ rdfs:subClassOf :MediaOutlet .
+
+:TelegramChat
+ rdf:type owl:Class ;
+ rdfs:subClassOf :Chat .
 
 :Text
  rdf:type owl:Class ;
@@ -848,7 +1142,7 @@ rdfs:Literal
 
 :text-writer
  rdf:type rdf:Property ;
- rdfs:subPropertyOf :musician .
+ rdfs:subPropertyOf :specialist .
 
 :tg
  rdf:type rdf:Property ;
@@ -859,9 +1153,9 @@ rdfs:Literal
  rdfs:comment "Number of subscribers for Telegram channel" ;
  rdf:type rdf:Property .
 
-:TgChannel
+:TiktokChannel
  rdf:type owl:Class ;
- rdfs:subClassOf :MediaProject .
+ rdfs:subClassOf :MediaOutlet .
 
 :Time
  rdf:type owl:Class ;
@@ -875,24 +1169,28 @@ rdfs:Literal
  rdf:type rdf:Property ;
  rdfs:range :String .
 
+:trade_unions
+ rdf:type :Organization .
+
 :TradeUnion
  rdf:type owl:Class ;
- rdfs:subClassOf :ProcommunistOrganization .
+ rdfs:subClassOf owl:Thing .
 
 :twi
  rdf:type rdf:Property ;
  rdfs:subPropertyOf :url .
 
-:TwiChannel
+:Twitter
  rdf:type owl:Class ;
- rdfs:subClassOf :MediaProject .
+ rdfs:subClassOf :MediaOutlet .
 
 :uni
  rdf:type rdf:Property ;
  rdfs:range :University .
 
 :University
- rdf:type owl:Class .
+ rdf:type owl:Class ;
+ rdfs:subClassOf :StateEducationalOrganization, owl:Thing .
 
 :Uri
  rdf:type owl:Class ;
@@ -996,6 +1294,10 @@ rdfs:Literal
  rdf:type :Video ;
  :channel :Вектор .
 
+:Verse
+ rdf:type owl:Class ;
+ rdfs:subClassOf :Text .
+
 :Video
  rdf:type owl:Class ;
  rdfs:subClassOf :MediaProduct .
@@ -1008,20 +1310,28 @@ rdfs:Literal
  rdf:type rdf:Property ;
  rdfs:range :PositiveInteger .
 
-:video_subject
+:video_object
  rdf:type rdf:Property ;
  rdfs:domain :Video .
 
 :VideoConference
  rdf:type owl:Class ;
- rdfs:subClassOf :Conference, :Video .
+ rdfs:subClassOf :Video .
 
 :videographer
  rdf:type rdf:Property ;
  rdfs:subPropertyOf :specialist .
 
+:VideoMeeting
+ rdf:type owl:Class ;
+ rdfs:subClassOf :Conference .
+
+:VideoStream
+ rdf:type owl:Class ;
+ rdfs:subClassOf :MediaGenre .
+
 :Vizzion
- rdf:type :Person, :Rapper ;
+ rdf:type :Rapper, :Person ;
  :place :Дармштадт .
 
 :vk
@@ -1033,9 +1343,9 @@ rdfs:Literal
  rdfs:comment "Number of subscribers for Vkontakte public or group" ;
  rdf:type rdf:Property .
 
-:VKPublic
+:VkontaktePublic
  rdf:type owl:Class ;
- rdfs:subClassOf :MediaProject .
+ rdfs:subClassOf :MediaOutlet .
 
 :voice_actor
  rdf:type rdf:Property ;
@@ -1044,6 +1354,14 @@ rdfs:Literal
 :voip-id
  rdf:type rdf:Property ;
  rdfs:subPropertyOf :messenger-id .
+
+:WebForum
+ rdf:type owl:Class ;
+ rdfs:subClassOf :MediaOutlet .
+
+:WhatsappChat
+ rdf:type owl:Class ;
+ rdfs:subClassOf :Chat .
 
 :working-note
  rdfs:subPropertyOf :note ;
@@ -1065,9 +1383,21 @@ rdfs:Literal
 :Yorum
  rdf:type :MusicBand .
 
+:youtube_channel
+ rdf:type :MediaOutlet .
+
+:YoutubeChannel
+ rdf:type owl:Class ;
+ rdfs:subClassOf :MediaOutlet .
+
 :yt
  rdf:type rdf:Property ;
  rdfs:subPropertyOf :url .
+
+:yt-channel
+ rdfs:subPropertyOf :channel ;
+ rdf:type rdf:Property ;
+ rdfs:range :YoutubeChannel .
 
 :yt-n
  rdfs:subPropertyOf :n ;
@@ -1084,14 +1414,14 @@ rdfs:Literal
  rdfs:comment "Number of videoes on the YouTube channel" ;
  rdf:type rdf:Property .
 
-:YTChannel
- rdf:type owl:Class ;
- rdfs:subClassOf :MediaProject .
-
 :Yugopnik
  :yt "youtube.com/@YUGOPNIK" ;
- rdf:type :Person, :YTChannel ;
+ rdf:type :YoutubeChannel, :Person ;
  :yt-n "190000"^^xsd:positiveInteger .
+
+:ZoomVideoMeeting
+ rdf:type owl:Class ;
+ rdfs:subClassOf :VideoMeeting .
 
 :Абдулов_2021
  :year "2021"^^xsd:gYear ;
@@ -1104,13 +1434,16 @@ rdfs:Literal
  :url "agitblog.ru" ;
  :yt "youtube.com/@Agit_Prop" ;
  :yt-video-n "2000"^^xsd:positiveInteger ;
- rdf:type :YTChannel, :News, :InterviewSite ;
+ rdf:type :YoutubeChannel, :News, :InterviewSite ;
  :yt-n "766000"^^xsd:positiveInteger ;
  :founder :Константин_Семин .
 
 :Адаптация_пчел
  :musician :Александр_Буслов ;
  rdf:type :MusicBand .
+
+:Азербайджан
+ rdf:type :Country .
 
 :Айнур_Курманов
  rdf:type :Person .
@@ -1273,7 +1606,7 @@ rdfs:Literal
 
 :Анима_Схема
  :yt "youtube.com/@Anima_Shema" ;
- rdf:type :YTChannel ;
+ rdf:type :YoutubeChannel ;
  :yt-n "18400"^^xsd:positiveInteger ;
  :founder :Григорий_Нонкон .
 
@@ -2159,6 +2492,9 @@ rdfs:Literal
 :Баир_Иринчеев
  rdf:type :Person .
 
+:Баку
+ rdf:type :Country .
+
 :Беларусь
  rdf:type :Country .
 
@@ -2176,7 +2512,7 @@ rdfs:Literal
 
 :Борис_Морозов
  :yt "youtube.com/@boris_morozov" ;
- rdf:type :Person, :YTChannel ;
+ rdf:type :YoutubeChannel, :Person ;
  :yt-n "10700"^^xsd:positiveInteger ;
  :place :Москва ;
  :byear "2006" .
@@ -2387,14 +2723,20 @@ rdfs:Literal
  :interviewer :Андрей_Рудой ;
  :interviewee :Андрей_Замай .
 
+:ВЕ_1
+ rdf:type :Video ;
+ :speaker :Василий_Садонин ;
+ :channel :Выход_есть ;
+ :topic "жак фреско,проект венера" .
+
 :Вектор
  :start "17.04.2021" ;
- rdf:type :ProcommunistOrganization, :YTChannel ;
+ rdf:type :StateOrganization, :YoutubeChannel ;
  :founder :Илья_Ярский .
 
 :Вестник_Бури
  :yt "youtube.com/@Vestnik_Buri" ;
- rdf:type :YTChannel ;
+ rdf:type :YoutubeChannel ;
  :yt-n "320000"^^xsd:positiveInteger ;
  :founder :Андрей_Рудой .
 
@@ -2454,7 +2796,7 @@ rdfs:Literal
 :Все_работы_хороши
  :yt "youtube.com/@vse_raboty_horoshi" ;
  :yt-video-n "62"^^xsd:positiveInteger ;
- rdf:type :YTChannel ;
+ rdf:type :YoutubeChannel ;
  :yt-n "1200000"^^xsd:positiveInteger ;
  :founder :Олег_Assa .
 
@@ -2462,12 +2804,16 @@ rdfs:Literal
  :yt "youtube.com/@Vasiliy_Sadonin" ;
  :yt-rec :Клим_Жуков, :Думай_сам_Думай_сейчас, :Вестник_Бури ;
  rdfs:label "Выход есть!" ;
- rdf:type :YTChannel ;
+ rdf:type :YoutubeChannel ;
  :yt-n "106000"^^xsd:positiveInteger ;
  :founder :Василий_Садонин .
 
 :Гавана
  rdf:type :Place .
+
+:Галина_Канакова
+ rdf:type :Person ;
+ :org :РПРиУ .
 
 :Гектор_Шпрее
  rdf:type :Person .
@@ -2525,7 +2871,7 @@ rdfs:Literal
  :vk-n "8480"^^xsd:positiveInteger ;
  :yt "youtube.com/@keepkurs" ;
  :vk "vk.com/keepkurs1" ;
- rdf:type :YTChannel ;
+ rdf:type :YoutubeChannel ;
  :yt-n "164000"^^xsd:positiveInteger ;
  :founder :Борис_Б .
 
@@ -2578,7 +2924,7 @@ rdfs:Literal
 
 :Дмитрий_Солодин
  :yt "youtube.com/@uptrader" ;
- rdf:type :YTChannel ;
+ rdf:type :YoutubeChannel ;
  :yt-n "141000"^^xsd:positiveInteger ;
  :founder :Дмитрий_Солодин .
 
@@ -2588,14 +2934,14 @@ rdfs:Literal
 :Дневник_депутата
  :yt "youtube.com/@bondarenko_blog" ;
  :yt-video-n "1300"^^xsd:positiveInteger ;
- rdf:type :YTChannel ;
+ rdf:type :YoutubeChannel ;
  :yt-n "1820000"^^xsd:positiveInteger ;
  :founder :Николай_Бондаренко .
 
 :Думай_сам_Думай_сейчас
  :boosty "boosty.to/yhinkyourself" ;
  :yt "youtube.com/@ThinkYourSelf_ThinkNow" ;
- rdf:type :YTChannel ;
+ rdf:type :YoutubeChannel ;
  :yt-n "189000"^^xsd:positiveInteger ;
  :founder :Святослав_Варнашов .
 
@@ -2758,7 +3104,7 @@ rdfs:Literal
 
 :Клим_Жуков
  :yt "youtube.com/@uzhukoffa" ;
- rdf:type :Person, :YTChannel, :InterviewSite ;
+ rdf:type :YoutubeChannel, :InterviewSite, :Person ;
  :yt-n "748000"^^xsd:positiveInteger ;
  :founder :Клим_Жуков .
 
@@ -2792,6 +3138,18 @@ rdfs:Literal
  :channel :Красный_поворот ;
  :ref :Красное_Радио .
 
+:КП_3
+ rdf:type :Video ;
+ :speaker :Сергей_Крупенько ;
+ :channel :Красный_поворот ;
+ :ref :Николай_Платошкин, :Евгений_Спицын, :Александр_Колпакиди .
+
+:КП_4
+ :interviewee :Галина_Канакова ;
+ rdf:type :Video ;
+ :speaker :Сергей_Крупенько ;
+ :channel :Красный_поворот .
+
 :КПРФ
  rdf:type :PoliticalParty .
 
@@ -2802,14 +3160,14 @@ rdfs:Literal
 
 :Красная_Юрта
  :yt "youtube.com/@Red_Yurt" ;
- rdf:type :ProcommunistOrganization ;
+ rdf:type :StateOrganization ;
  :yt-n "28300"^^xsd:positiveInteger .
 
 :КрасноBY
  :place :Минск ;
  :yt "youtube.com/@krasnoby" ;
  :yt-rec :Poligraf_Red, :Простые_числа, :Красная_Юрта, :Вектор, :Рабочий_фронт_Украины, :РТФ, :Res_Publica ;
- rdf:type :ProcommunistOrganization, :MarxistCircle, :YTChannel ;
+ rdf:type :StateOrganization, :MarxistCircle, :YoutubeChannel ;
  :yt-n "48100"^^xsd:positiveInteger .
 
 :Краснодар
@@ -2817,25 +3175,25 @@ rdfs:Literal
 
 :Красное_Радио
  :yt "youtube.com/@KrasnoeRadio" ;
- rdf:type :YTChannel ;
+ rdf:type :YoutubeChannel ;
  :yt-n "516000"^^xsd:positiveInteger .
 
 :Красное_ТВ
  :yt "youtube.com/@krasnoetv24" ;
- rdf:type :YTChannel ;
+ rdf:type :YoutubeChannel ;
  :yt-n "79000"^^xsd:positiveInteger ;
  :founder :Олег_Двуреченский .
 
 :Красный_поворот
  :yt "youtube.com/@red_turn" ;
- rdf:type :YTChannel ;
+ rdf:type :YoutubeChannel ;
  :yt-n "16700"^^xsd:positiveInteger ;
  :founder :Сергей_Крупенько .
 
 :Красный_Циник
  :yt "youtube.com/@redcynicrus" ;
  :yt-video-n "129"^^xsd:positiveInteger ;
- rdf:type :YTChannel ;
+ rdf:type :YoutubeChannel ;
  :yt-n "269000"^^xsd:positiveInteger .
 
 :Ксения_Собчак
@@ -2864,11 +3222,11 @@ rdfs:Literal
  rdf:type :Person .
 
 :Левый_Фронт
- rdf:type :ProcommunistOrganization .
+ rdf:type :StateOrganization .
 
 :Лига_Роботов
  :url "ligarobotov.ru" ;
- rdf:type :ProcommunistOrganization ;
+ rdf:type :StateOrganization ;
  :founder :Николай_Пак .
 
 :Лиза_Лазерсон
@@ -2920,7 +3278,7 @@ rdfs:Literal
  :org :Station_Marx .
 
 :Марксистская_Тенденция
- rdf:type :ProcommunistOrganization .
+ rdf:type :StateOrganization .
 
 :Марьяна_Таволжанская
  rdf:type :Person .
@@ -2977,13 +3335,13 @@ rdfs:Literal
  rdf:type :Person .
 
 :МК_Молот
- rdf:type :ProcommunistOrganization ;
+ rdf:type :StateOrganization ;
  :place :Тюмень ;
  :vk-n "6750"^^xsd:positiveInteger ;
  :vk "vk.com/mkmolot" .
 
 :МК_Энгельс
- rdf:type :ProcommunistOrganization ;
+ rdf:type :StateOrganization ;
  :curator :Елена_Васильева ;
  :vk-n "13000"^^xsd:positiveInteger ;
  :vk "vk.com/derengels" .
@@ -2991,7 +3349,7 @@ rdfs:Literal
 :МНДР
  :vk-n "25000"^^xsd:positiveInteger ;
  :vk "vk.com/mempdr" ;
- rdf:type :VKPublic ;
+ rdf:type :VkontaktePublic ;
  :founder :Василий_Мельников, :Михаил_Викулин .
 
 :Москва
@@ -3007,7 +3365,7 @@ rdfs:Literal
  rdf:type :MusicBand .
 
 :Мятежник_Джек
- rdf:type :YTChannel ;
+ rdf:type :YoutubeChannel ;
  :founder :Александр_Киященко .
 
 :Наталья_Бармина
@@ -3062,7 +3420,7 @@ rdfs:Literal
  rdf:type :Place .
 
 :Новые_Красные
- rdf:type :ProcommunistOrganization ;
+ rdf:type :StateOrganization ;
  :from :Союз_Марксистов .
 
 :Норильск
@@ -3081,7 +3439,9 @@ rdfs:Literal
  :byear "1987" .
 
 :Олег_Двуреченский
- rdf:type :Person .
+ rdf:type :Person ;
+ :bdate "1970-09-29"^^xsd:date ;
+ :bplace :Баку .
 
 :Олег_Калачев
  rdf:type :Person .
@@ -3106,7 +3466,7 @@ rdfs:Literal
 
 :Олег_Ткач
  :yt "youtube.com/@OlegTka4" ;
- rdf:type :Person, :YTChannel ;
+ rdf:type :YoutubeChannel, :Person ;
  :yt-n "7800"^^xsd:positiveInteger .
 
 :Олег_Ясинский
@@ -3120,7 +3480,7 @@ rdfs:Literal
  rdf:type :Person .
 
 :Организация_коммунистов-интернационалистов
- rdf:type :ProcommunistOrganization ;
+ rdf:type :StateOrganization ;
  :from :Новые_Красные, :Марксистская_Тенденция ;
  :tg "t.me/okintern" .
 
@@ -3150,7 +3510,7 @@ rdfs:Literal
  :boosty-n "6052"^^xsd:positiveInteger ;
  :boosty "boosty.to/badsignal" ;
  :yt "youtube.com/@bad_signal" ;
- rdf:type :YTChannel ;
+ rdf:type :YoutubeChannel ;
  :yt-n "289000"^^xsd:positiveInteger ;
  :founder :Егор_Иванов .
 
@@ -3158,7 +3518,7 @@ rdfs:Literal
  :boosty-n "11"^^xsd:positiveInteger ;
  :url "pbd.su" ;
  :boosty "boosty.to/pbdsu" ;
- rdf:type :YTChannel ;
+ rdf:type :YoutubeChannel ;
  :yt-n "24900"^^xsd:positiveInteger ;
  :yt "youtube.com/@PBD_SU" ;
  :editor-in-chief :Василий_Еремеев .
@@ -3168,7 +3528,7 @@ rdfs:Literal
  :email "politprosvet@rotfront.org" ;
  :vk "vk.com/mk_politprosvet" ;
  :start "2011" ;
- rdf:type :ProcommunistOrganization, :EducationalClub ;
+ rdf:type :StateOrganization, :EducationalClub ;
  :yt-n "2130"^^xsd:positiveInteger ;
  :yt "youtube.com/@club.politprosvet" ;
  :discord "discord.gg/qpkKxJTRkE", "discord.gg/4M5678xVpT" .
@@ -3191,18 +3551,12 @@ rdfs:Literal
 
 :Призыв_к_разуму
  :yt "youtube.com/@appeal_to" ;
- rdf:type :YTChannel ;
+ rdf:type :YoutubeChannel ;
  :yt-n "47300"^^xsd:positiveInteger ;
  :founder :Иван_Поляков .
 
-:Производственная_кооперация_radcop.online
- :url "radcop.online" ;
- :boosty "boosty.to/surmatmgs" ;
- rdf:type :Project ;
- :founder :Рустам_Гусейнов .
-
 :Прорывист
- rdf:type :YTChannel ;
+ rdf:type :YoutubeChannel ;
  :url "prorivists.org" ;
  :editor :Роман_Огиенко .
 
@@ -3214,12 +3568,12 @@ rdfs:Literal
  :boosty "boosty.to/primenumbers" ;
  :yt "youtube.com/@PN_chanel" ;
  :yt-rec :Плохой_сигнал, :Вестник_Бури, :Думай_сам_Думай_сейчас, :Выход_есть, :Держать_курс, :РТФ ;
- rdf:type :YTChannel ;
+ rdf:type :YoutubeChannel ;
  :yt-n "409000"^^xsd:positiveInteger ;
  :founder :Олег_Комолов, :Константин_Красноперов .
 
 :ПрофКон
- rdf:type :ProcommunistOrganization .
+ rdf:type :StateOrganization .
 
 :ПЧ_1
  :channel :Простые_числа ;
@@ -3489,7 +3843,7 @@ rdfs:Literal
 :Рабкор
  :yt "youtube.com/@rabkor" ;
  :yt-video-n "1700"^^xsd:positiveInteger ;
- rdf:type :YTChannel ;
+ rdf:type :YoutubeChannel ;
  :yt-n "120000"^^xsd:positiveInteger ;
  :founder :Борис_Кагарлицкий .
 
@@ -3824,13 +4178,13 @@ rdfs:Literal
 :Рабочая_парадигма
  owl:sameAs :Наука_марксизм ;
  :yt "youtube.com/@marxist_science" ;
- rdf:type :ProcommunistOrganization, :MarxistCircleNetwork ;
+ rdf:type :StateOrganization, :MarxistCircleNetwork ;
  :yt-n "599"^^xsd:positiveInteger .
 
 :Рабочий_фронт_Украины
  owl:sameAs :Робiтничий_Фронт_Украiны ;
  :yt "youtube.com/@rfu_media" ;
- rdf:type :ProcommunistOrganization ;
+ rdf:type :StateOrganization ;
  :yt-n "6190"^^xsd:positiveInteger .
 
 :Рауф_Фаткуллин
@@ -3846,7 +4200,7 @@ rdfs:Literal
  rdf:type :Person .
 
 :РКРП
- rdf:type :ProcommunistOrganization .
+ rdf:type :StateOrganization .
 
 :Роман_Огиенко
  rdf:type :Person .
@@ -3858,13 +4212,16 @@ rdfs:Literal
 :Россия
  rdf:type :Country .
 
+:РПРиУ
+ rdf:type :TradeUnion .
+
 :РПСС
  rdf:type :PoliticalParty .
 
 :РТФ
  owl:sameAs :Рот_Фронт, :Российский_Трудовой_Фронт ;
  :yt "youtube.com/@ROTFRONT_RTF" ;
- rdf:type :ProcommunistOrganization ;
+ rdf:type :StateOrganization ;
  :yt-n "40400"^^xsd:positiveInteger ;
  :from :РКРП ;
  :member :Александр_Батов .
@@ -3896,7 +4253,9 @@ rdfs:Literal
  rdf:type :Place .
 
 :Святослав_Варнашов
- rdf:type :Person .
+ rdf:type :Person ;
+ :place :Тюмень ;
+ :bdate "1989-12-28"^^xsd:date .
 
 :Сергей_Ерохов
  rdf:type :Person .
@@ -3936,7 +4295,7 @@ rdfs:Literal
  rdf:type :Country .
 
 :Союз_Марксистов
- rdf:type :ProcommunistOrganization ;
+ rdf:type :StateOrganization ;
  :founder :Федор_Мухин .
 
 :СПбГУ
@@ -3944,7 +4303,7 @@ rdfs:Literal
  :place :Санкт-Петербург .
 
 :Сталь_и_слезы
- rdf:type :YTChannel ;
+ rdf:type :YoutubeChannel ;
  :founder :Александра_Арабаджян ;
  :tg "t.me/templando_acero" ;
  :tg-n "2700"^^xsd:positiveInteger .
@@ -3964,7 +4323,7 @@ rdfs:Literal
 
 :Стас_ай_как_просто
  :rt "rutube.ru/channel/21014334" ;
- rdf:type :YTChannel ;
+ rdf:type :YoutubeChannel ;
  :founder :Станислав_Васильев ;
  :rt-n "190000"^^xsd:positiveInteger .
 
@@ -3977,14 +4336,14 @@ rdfs:Literal
 :Страйк
  :url "strikeit.ru" ;
  :yt "youtube.com/@VI4KA_GB" ;
- rdf:type :Project ;
+ rdf:type :TradeUnion ;
  :yt-n "145000"^^xsd:positiveInteger ;
  :founder :Виктория_Гарсия-Берналь .
 
 :Стрела-ТВ
  :yt "youtube.com/c/СтрелаТВ" ;
  :lecturer :Наталья_Бармина ;
- rdf:type :YTChannel ;
+ rdf:type :YoutubeChannel ;
  :yt-n "43700"^^xsd:positiveInteger .
 
 :Судки_Отман
@@ -4002,7 +4361,7 @@ rdfs:Literal
 
 :Таганай
  :yt "youtube.com/@TaganayTV" ;
- rdf:type :YTChannel ;
+ rdf:type :YoutubeChannel ;
  :yt-n "495000"^^xsd:positiveInteger ;
  :founder :Даниил_Ковалев .
 
@@ -4032,12 +4391,12 @@ rdfs:Literal
  :yt-rec :Вестник_Бури, :Station_Marx ;
  :coordinator :Эльмар_Рустамов ;
  :yt-video-n "2600"^^xsd:positiveInteger ;
- rdf:type :ProcommunistOrganization ;
+ rdf:type :StateOrganization ;
  :yt-n "68300"^^xsd:positiveInteger .
 
 :Тупичок_Гоблина
  :url "oper.ru/video" ;
- rdf:type :MediaProject ;
+ rdf:type :MediaOutlet ;
  :founder :Дмитрий_Пучков .
 
 :Тюмень
@@ -4045,7 +4404,7 @@ rdfs:Literal
 
 :Убежище_оппозиции
  :yt "youtube.com/@user-jh1cs5wj4o" ;
- rdf:type :YTChannel ;
+ rdf:type :YoutubeChannel ;
  :yt-n "362000"^^xsd:positiveInteger ;
  :founder :Николай_Бондаренко .
 
@@ -4058,7 +4417,8 @@ rdfs:Literal
  :place :Ираклион .
 
 :Учитель
- rdf:type :TradeUnion .
+ rdf:type :TradeUnion ;
+ :url "pedagog-prof.org" .
 
 :Ф_1
  :interviewee :Владимир_Лесик ;
@@ -4076,7 +4436,7 @@ rdfs:Literal
  :yt "youtube.com/@fakel_mrg" ;
  :vk "vk.com/fakel_mrg" ;
  :yt-video-n "135"^^xsd:positiveInteger ;
- rdf:type :YTChannel, :Newspaper ;
+ rdf:type :YoutubeChannel, :Newspaper ;
  :yt-n "2600"^^xsd:positiveInteger .
 
 :Федор_Мухин
@@ -4103,7 +4463,7 @@ rdfs:Literal
 :Цифровая_история
  :speaker :Егор_Яковлев ;
  :yt "youtube.com/@dhistory" ;
- rdf:type :YTChannel ;
+ rdf:type :YoutubeChannel ;
  :yt-n "520000"^^xsd:positiveInteger .
 
 :Чили

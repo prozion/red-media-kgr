@@ -1,12 +1,55 @@
-companies +a:Company
-	Rad_Cop founder:Рустам_Гусейнов url:radcop.online
-research_centers +a:ResearchInstitute
-	Аналитический_центр_при_Правительстве_РФ *a:StateInstitute
-	Институт_экономики_РАН
-	Центр_современных_марксистских_исследований_МГУ parent:МГУ url:philos.msu.ru/node/2768 vk:vk.com/marxistcenter
-parties +a:PoliticalParty
-	Польская_рабочая_партия member:Михаил_Новитский
-	Frente_Obrero president:Roberto_Vaquero^year:2023
-	Partido_Marxista-Leninista general_secretary:Roberto_Vaquero^year:2023
-state_organizations +a:StateOrganization
-	Посольство_Республики_Куба_в_РФ place:Москва
+organizations +a:Organization
+	companies +a:Company
+		Rad_Cop founder:Рустам_Гусейнов url:radcop.online boosty:boosty.to/surmatmgs
+	music_bands +a:MusicBand
+		Адаптация_пчел musician:Александр_Буслов
+		Алерта musician:Александр_Кубалов
+		Андрей_Замай
+		Джанни_Родари musician:Константин_Семин,Хосе_Гонсалес_Лопес
+		Мутный
+		Николас_Микеа
+		Пионерлагерь_Пыльная_Радуга musician:Алексей_Румянцев
+		Dessar musician:Макс_Якоби
+		Lumen text-writer:Рустем_Булатов
+		Vizzion *a:Rapper
+		Yorum
+	parties +a:PoliticalParty
+		КПРФ
+		Польская_рабочая_партия member:Михаил_Новитский
+		РПСС
+		Frente_Obrero president:Roberto_Vaquero^year:2023
+		Partido_Marxista-Leninista general_secretary:Roberto_Vaquero^year:2023
+	research_centers +a:ResearchInstitute
+		Аналитический_центр_при_Правительстве_РФ *a:StateInstitute
+		Центр_современных_марксистских_исследований_МГУ parent:МГУ url:philos.msu.ru/node/2768 vk:vk.com/marxistcenter
+		Институт_экономики_РАН
+	state_organizations +a:StateOrganization
+		Посольство_Республики_Куба_в_РФ place:Москва
+		Вектор founder:Илья_Ярский start:17.04.2021
+		Красная_Юрта yt:youtube.com/@Red_Yurt yt-n:28.3K
+		КрасноBY a:MarxistCircle place:Минск yt:youtube.com/@krasnoby yt-n:48.1K yt-rec:Poligraf_Red,Простые_числа,Красная_Юрта,Вектор,Рабочий_фронт_Украины,РТФ,Res_Publica
+		Левый_Фронт
+		Лига_Роботов founder:Николай_Пак url:ligarobotov.ru
+		Марксистская_Тенденция
+		МК_Молот place:Тюмень vk:vk.com/mkmolot vk-n:6750
+		МК_Энгельс curator:Елена_Васильева vk:vk.com/derengels vk-n:13K
+		Новые_Красные from:Союз_Марксистов^s-url:lenincrew.com/oci-critique
+		Организация_коммунистов-интернационалистов tg:t.me/okintern from:Новые_Красные,Марксистская_Тенденция
+		Политпросвет a:EducationalClub start:2011 email:politprosvet@rotfront.org discord:discord.gg/qpkKxJTRkE,discord.gg/4M5678xVpT yt:youtube.com/@club.politprosvet yt-n:2.13K vk:vk.com/mk_politprosvet vk-n:4K
+		ПрофКон
+		Рабочая_парадигма alt:Наука_марксизм a:MarxistCircleNetwork yt:youtube.com/@marxist_science yt-n:599
+		Рабочий_фронт_Украины alt:Робiтничий_Фронт_Украiны yt:youtube.com/@rfu_media yt-n:6.19K
+		РКРП
+		РТФ alt:Рот_Фронт,Российский_Трудовой_Фронт member:Александр_Батов yt:youtube.com/@ROTFRONT_RTF yt-n:40.4K from:РКРП
+		Союз_Марксистов founder:Федор_Мухин^s:youtu.be/GgQQ6Py-i_Q?t=47
+		Трудовая_Россия leader:Виктор_Анпилов coordinator:Эльмар_Рустамов yt:youtube.com/@user-jn6uv3vk3c yt-video-n:2.6K yt-n:68.3K yt-rec:Вестник_Бури,Station_Marx
+		Lenin_Crew yt:youtube.com/@LeninCrew yt-n:6.74K
+		Oт.Каз
+		O21 contact:Борис_Асеев from:РТФ^s:Vec_11 collaborates-with:Факел
+	trade_unions +a:TradeUnion
+		Курьер tg:t.me/courier_fight
+		МПРА
+		Правда_сотрудников start:2020 tg:t.me/wb_pravda_sotrudnikov
+		РПРиУ
+		Страйк founder:Виктория_Гарсия-Берналь url:strikeit.ru yt:youtube.com/@VI4KA_GB yt-n:145K
+		Учитель url:pedagog-prof.org

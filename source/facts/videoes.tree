@@ -1,5 +1,5 @@
 videoes +a:Video
-	АгитПроп *a:YTChannel +hi-inv-rel:channel +interviewer:Константин_Семин
+	АгитПроп *a:YoutubeChannel +hi-inv-rel:channel +interviewer:Константин_Семин
 		АП_1 yt:youtube.com/watch?v=Bp7qioNguhg interviewee:Борис_Папазян
 		АП_2 yt:youtube.com/watch?v=wp6FJ0CBe3s interviewee:Марина_Бурик
 		АП_3 yt:youtube.com/watch?v=wdr7P0mTLes interviewee:Данила_Курадовец
@@ -133,28 +133,7 @@ videoes +a:Video
 		АП_133 yt:youtube.com/watch?v=Qbn3d6G9JdM interviewee:Александр_Соловьев
 		АП_134 yt:youtube.com/watch?v=q54tNOghWWo interviewee:Борис_Юлин
 		АП_135 yt:youtube.com/watch?v=IO1zZoPPBh8 interviewee:Александра_Элбакян
-	Клим_Жуков *a:YTChannel +hi-inv-rel:channel +interviewer:Клим_Жуков
-		КЖ_1 yt:youtube.com/watch?v=IhNR70_8PY0 interviewee:Анна_Филинн topic:"коттеджкор"
-		КЖ_2 yt:youtube.com/watch?v=yQv1pgRbP-A interviewee:Владимир_Зайцев topic:"сталин"
-		КЖ_3 yt:youtube.com/watch?v=YjJ9aDv3Rx0 interviewee:Реми_Майснер
-		КЖ_4 yt:youtube.com/watch?v=iy_tvxvg5lo interviewee:Олег_Двуреченский
-		КЖ_5 yt:youtube.com/watch?v=Hm92LBUqYHM interviewee:Глеб_Таргонский
-	Красное_Радио *a:YTChannel +hi-inv-rel:channel
-		КР_1 yt:youtube.com/watch?v=f1zayis8xDo speaker:Анжелика_Глазкова
-	Красное_ТВ *a:YTChannel +hi-inv-rel:channel
-		КТВ_1 yt:youtube.com/watch?v=gCefKV1vijw speaker:Глеб_Таргонский,Владимир_Зайцев topic:"махно,анархизм"
-	Красный_поворот *a:YTChannel +hi-inv-rel:channel
-		КП_1 yt:youtube.com/watch?v=M9tVnoVa9no speaker:Олег_Мецлер,Роман_Осин,Сергей_Крупенько,Сергей_Новиков
-		КП_2 yt:youtube.com/watch?v=UdPDjooICT4 speaker:Олег_Мецлер,Сергей_Крупенько ref:Красное_Радио
-	КрасноBY *a:YTChannel +hi-inv-rel:channel
-		KBY_1 yt:youtube.com/watch?v=stiOd6GpEzQ interviewee:Алексей_Сафронов
-		KBY_2 yt:youtube.com/watch?v=qkpYPLFrX5c date:18.05.2022 interviewee:Александр_Снитко topic:"куба"
-		KBY_3 yt:youtube.com/watch?v=cCkQBckTxFc date:03.06.2022 interviewee:Александр_Снитко topic:"куба"
-		KBY_4 yt:youtube.com/watch?v=lsQC7pRiBCg interviewee:Олег_Комолов
-		KBY_5 yt:youtube.com/watch?v=3OJygo35Rgs interviewee:Илья_Ярский interviewer:Евгения_Керубини
-		KBY_6 a:VideoConference yt:youtube.com/watch?v=Ed-gP0iC6vU speaker:Константин_Агеев,Мария_Тереза,Дмитрий_Исаенок,Сергей_Питерский,Асер_Тихомиров,Андрей_Рудой,Евгения_Керубини
-		KBY_7 yt:youtube.com/watch?v=2uAvuuOPJgA interviewee:Алексей_Сафронов
-	Вектор *a:YTChannel +hi-inv-rel:channel
+	Вектор *a:YoutubeChannel +hi-inv-rel:channel
 		Vec_1 yt:youtube.com/watch?v=9EGXVq3j5E4 interviewee:Алексей_Гончаров
 		Vec_2 yt:youtube.com/watch?v=3tSNugLOcg author:Марьяна_Таволжанская
 		Vec_3 yt:youtube.com/watch?v=g-fBteUPpuM speaker:Владимир_Фридман moderator:Андрей_Шевчук
@@ -169,7 +148,7 @@ videoes +a:Video
 		Vec_12 yt:youtube.com/watch?v=mWtB22DfmNY interviewee:Евгения_Керубини interviewer:Илья_Ярский ref:КрасноBY
 		Vec_13 yt:youtube.com/watch?v=uZy0RtvWBmU interviewee:Иван_Поляков
 		Vec_14 yt:youtube.com/watch?v=U-zhGPptoYM speaker:Владимир_Огородников
-	Вестник_Бури *a:YTChannel +hi-inv-rel:channel +interviewer:Андрей_Рудой
+	Вестник_Бури *a:YoutubeChannel +hi-inv-rel:channel +interviewer:Андрей_Рудой
 		ВБ_1 yt:youtube.com/watch?v=gclM6zI9Oic interviewee:Олег_Комолов
 		ВБ_2 yt:youtube.com/watch?v=aMasc8f2OSs interviewee:Макс_Якоби
 		ВБ_3 yt:youtube.com/watch?v=eYyvh9usNh0 interviewee:Алексей_Сафронов
@@ -200,7 +179,32 @@ videoes +a:Video
 		ВБ_23 yt:youtube.com/watch?v=1K3X788cznY interviewee:Табриз topic:"забастовка,крановщики" ref:МПРА
 		ВБ_24 yt:youtube.com/watch?v=kq_d02AKkxY interviewee:Михаил_Погорелов
 		ВБ_25 yt:youtube.com/watch?v=NpchURUVwow interviewee:Дмитрий_Кожнев
-	Простые_числа *a:YTChannel +hi-inv-rel:channel +interviewer:Олег_Комолов
+	Выход_есть *a:YoutubeChannel +hi-inv-rel:channel
+		ВЕ_1 yt:youtube.com/watch?v=vnL-olOdelc speaker:Василий_Садонин topic:"жак фреско,проект венера"
+	Клим_Жуков *a:YoutubeChannel +hi-inv-rel:channel +interviewer:Клим_Жуков
+		КЖ_1 yt:youtube.com/watch?v=IhNR70_8PY0 interviewee:Анна_Филинн topic:"коттеджкор"
+		КЖ_2 yt:youtube.com/watch?v=yQv1pgRbP-A interviewee:Владимир_Зайцев topic:"сталин"
+		КЖ_3 yt:youtube.com/watch?v=YjJ9aDv3Rx0 interviewee:Реми_Майснер
+		КЖ_4 yt:youtube.com/watch?v=iy_tvxvg5lo interviewee:Олег_Двуреченский
+		КЖ_5 yt:youtube.com/watch?v=Hm92LBUqYHM interviewee:Глеб_Таргонский
+	Красное_Радио *a:YoutubeChannel +hi-inv-rel:channel
+		КР_1 yt:youtube.com/watch?v=f1zayis8xDo speaker:Анжелика_Глазкова
+	Красное_ТВ *a:YoutubeChannel +hi-inv-rel:channel
+		КТВ_1 yt:youtube.com/watch?v=gCefKV1vijw speaker:Глеб_Таргонский,Владимир_Зайцев topic:"махно,анархизм"
+	Красный_поворот *a:YoutubeChannel +hi-inv-rel:channel
+		КП_1 yt:youtube.com/watch?v=M9tVnoVa9no speaker:Олег_Мецлер,Роман_Осин,Сергей_Крупенько,Сергей_Новиков
+		КП_2 yt:youtube.com/watch?v=UdPDjooICT4 speaker:Олег_Мецлер,Сергей_Крупенько ref:Красное_Радио
+		КП_3 yt:youtube.com/watch?v=rs3CYyb1RbE speaker:Сергей_Крупенько ref:Николай_Платошкин,Евгений_Спицын,Александр_Колпакиди
+		КП_4 yt:youtube.com/watch?v=7j4cOIOpZos speaker:Сергей_Крупенько interviewee:Галина_Канакова
+	КрасноBY *a:YoutubeChannel +hi-inv-rel:channel
+		KBY_1 yt:youtube.com/watch?v=stiOd6GpEzQ interviewee:Алексей_Сафронов
+		KBY_2 yt:youtube.com/watch?v=qkpYPLFrX5c date:18.05.2022 interviewee:Александр_Снитко topic:"куба"
+		KBY_3 yt:youtube.com/watch?v=cCkQBckTxFc date:03.06.2022 interviewee:Александр_Снитко topic:"куба"
+		KBY_4 yt:youtube.com/watch?v=lsQC7pRiBCg interviewee:Олег_Комолов
+		KBY_5 yt:youtube.com/watch?v=3OJygo35Rgs interviewee:Илья_Ярский interviewer:Евгения_Керубини
+		KBY_6 a:VideoConference yt:youtube.com/watch?v=Ed-gP0iC6vU speaker:Константин_Агеев,Мария_Тереза,Дмитрий_Исаенок,Сергей_Питерский,Асер_Тихомиров,Андрей_Рудой,Евгения_Керубини
+		KBY_7 yt:youtube.com/watch?v=2uAvuuOPJgA interviewee:Алексей_Сафронов
+	Простые_числа *a:YoutubeChannel +hi-inv-rel:channel +interviewer:Олег_Комолов
 		ПЧ_1 date:27.10.2023 yt:youtube.com/watch?v=DjQM7VbwS5A interviewee:Святослав_Варнашов v:69K^date:11.11.2023 ref:МК_Молот
 		ПЧ_2 yt:youtube.com/watch?v=8zfd3iqCqzc interviewee:Рустам_Гусейнов v:33K^date:11.11.2023
 		ПЧ_3 yt:youtube.com/watch?v=seXpyGJEYm8 interviewee:Александр_Буслов
@@ -244,7 +248,7 @@ videoes +a:Video
 		ПЧ_42 yt:youtube.com/watch?v=CkS4oRiHcqk interviewee:Даниил_Григорьев
 		ПЧ_43 yt:youtube.com/watch?v=mQgFjJNaTP0 interviewee:Александр_Бузгалин
 		ПЧ_44 yt:youtube.com/watch?v=AFUG8S7CFDk interviewee:Александр_Бузгалин
-	Рабкор *a:YTChannel +hi-inv-rel:channel
+	Рабкор *a:YoutubeChannel +hi-inv-rel:channel
 		Рабкор_1 yt:youtube.com/watch?v=ZrckW0D17pE interviewee:Александр_Штефанов interviewer:Евгения_Родионова
 		Рабкор_2 yt:youtube.com/watch?v=9GWLorT4aRg interviewee:Олег_Комолов interviewer:Евгения_Родионова
 		Рабкор_3 yt:youtube.com/watch?v=MNkQivWEMM8 participant:Ксения_Собчак,Василий_Садонин,Евгений_Баженов,Олег_Михайлов,Алексей_Сафронов,Виктор_Вахштайн,Анна_Очкина,Олег_Михайлов
@@ -301,10 +305,10 @@ videoes +a:Video
 		Рабкор_54 yt:youtube.com/watch?v=qh8Qyu2WrIc interviewee:Игорь_Стрелков interviewer:Александр_Рыбин
 		Рабкор_55 yt:youtube.com/watch?v=rjAo-9fjiec interviewee:Сергей_Удальцов interviewer:Борис_Кагарлицкий
 		Рабкор_56 yt:youtube.com/watch?v=aX54b1Cmbk4 interviewee:Эдуард_Лимонов interviewer:Борис_Кагарлицкий
-	Факел *a:YTChannel +hi-inv-rel:channel
+	Факел *a:YoutubeChannel +hi-inv-rel:channel
 		Ф_1 yt:youtube.com/watch?v=tlLIuOE9vpc interviewee:Владимир_Лесик
 		Ф_2 yt:youtube.com/watch?v=S5eSvvzorP8 speaker:Степан_Кошкарев ref:ПрофКон
-	Poligraf_Red *a:YTChannel +hi-inv-rel:channel
+	Poligraf_Red *a:YoutubeChannel +hi-inv-rel:channel
 		PR_1 yt:youtube.com/watch?v=8NC3rHMNJ_g speaker:Антон_Бархатков topic:"капитал маркса,товарный фетишизм"
 		PR_2 yt:youtube.com/watch?v=8NC3rHMNJ_g speaker:Акаиша topic:"зло"
 		PR_3 yt:youtube.com/watch?v=8NC3rHMNJ_g speaker:Евгения_Керубини,Константин_Агеев topic:"starwars" ref:Клим_Жуков
