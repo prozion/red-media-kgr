@@ -187,6 +187,7 @@ videoes +a:Video
 		КЖ_3 yt:youtube.com/watch?v=YjJ9aDv3Rx0 interviewee:Реми_Майснер
 		КЖ_4 yt:youtube.com/watch?v=iy_tvxvg5lo interviewee:Олег_Двуреченский
 		КЖ_5 yt:youtube.com/watch?v=Hm92LBUqYHM interviewee:Глеб_Таргонский
+		КЖ_6 yt:youtube.com/watch?v=OeaRswljpvE participant:Михаил_Подстрешный date:17.12.2023
 	Красное_Радио *a:YoutubeChannel +hi-inv-rel:channel
 		КР_1 yt:youtube.com/watch?v=f1zayis8xDo speaker:Анжелика_Глазкова
 	Красное_ТВ *a:YoutubeChannel +hi-inv-rel:channel
@@ -305,6 +306,7 @@ videoes +a:Video
 		Рабкор_54 yt:youtube.com/watch?v=qh8Qyu2WrIc interviewee:Игорь_Стрелков interviewer:Александр_Рыбин
 		Рабкор_55 yt:youtube.com/watch?v=rjAo-9fjiec interviewee:Сергей_Удальцов interviewer:Борис_Кагарлицкий
 		Рабкор_56 yt:youtube.com/watch?v=aX54b1Cmbk4 interviewee:Эдуард_Лимонов interviewer:Борис_Кагарлицкий
+		Рабкор_57 yt:youtube.com/watch?v=rbNsEt3h3U4 interviewee:Рустам_Гусейнов interviewer:Евгения_Родионова topic:"кооператив,макаренко,mondragon"
 	Факел *a:YoutubeChannel +hi-inv-rel:channel
 		Ф_1 yt:youtube.com/watch?v=tlLIuOE9vpc interviewee:Владимир_Лесик
 		Ф_2 yt:youtube.com/watch?v=S5eSvvzorP8 speaker:Степан_Кошкарев ref:ПрофКон
